@@ -1,0 +1,39 @@
+<svg width="1000" height="240" viewBox="0 0 1000 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Xaena — Full-Stack Developer">
+  <defs>
+    <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"  stop-color="#e8003d" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#e8003d"/>
+      <stop offset="100%" stop-color="#e8003d" stop-opacity="0"/>
+      <animateTransform attributeName="gradientTransform" type="translate" values="-1 0; 1 0; -1 0" dur="9s" repeatCount="indefinite"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="82%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#e8003d" stop-opacity="0.10"/>
+      <stop offset="55%" stop-color="#0d1117" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1000" height="240" fill="#0d1117"/>
+  <rect width="1000" height="240" fill="url(#halo)"/>
+
+  <!-- sağda sakin eşmerkezli yaylar -->
+  <g fill="none" stroke="#1f2735" stroke-width="1.5">
+    <circle cx="845" cy="120" r="46"/>
+    <circle cx="845" cy="120" r="78" opacity="0.7"/>
+    <circle cx="845" cy="120" r="110" opacity="0.45"/>
+    <circle cx="845" cy="120" r="142" opacity="0.25"/>
+  </g>
+  <circle cx="845" cy="120" r="46" fill="none" stroke="#e8003d" stroke-width="1.5"
+          stroke-dasharray="70 220" stroke-linecap="round" opacity="0.9">
+    <animateTransform attributeName="transform" type="rotate" from="0 845 120" to="360 845 120" dur="14s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- editoryal tipografi -->
+  <text x="72" y="106" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="700" fill="#f0f3f9" letter-spacing="0.5">Xaena</text>
+  <text x="74" y="140" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="15" font-weight="600" fill="#9aa3b8" letter-spacing="5">FULL-STACK  DEVELOPER</text>
+
+  <!-- animasyonlu aksan çizgisi -->
+  <rect x="74" y="158" width="330" height="2" fill="#1f2735"/>
+  <rect x="74" y="158" width="330" height="2" fill="url(#sweep)"/>
+
+  <text x="74" y="192" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="14" fill="#6b7488">Streaming platforms, real-time systems and media pipelines — built end to end.</text>
+</svg>
