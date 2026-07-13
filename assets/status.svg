@@ -1,0 +1,28 @@
+<svg width="1000" height="96" viewBox="0 0 1000 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Currently building AnimeRank">
+  <defs><style>
+    .lbl  { font-family:'Segoe UI',Helvetica,Arial,sans-serif; }
+    .data { font-family:'SF Mono',Consolas,'Cascadia Code',monospace; }
+  </style></defs>
+
+  <rect x="0.5" y="0.5" width="999" height="95" fill="#0d1119" stroke="#1c2534" stroke-width="1"/>
+  <line x1="0" y1="0" x2="1000" y2="0" stroke="#232d3f" stroke-width="1"/>
+
+  <!-- canlı gösterge segmentleri (VU-metre esintili, dekoratif değil düzenli) -->
+  <g>
+    <rect x="32" y="34" width="4" height="28" fill="#c7883d"/>
+    <rect x="40" y="34" width="4" height="28" fill="#c7883d" opacity="0.55"/>
+    <rect x="48" y="34" width="4" height="28" fill="#c7883d" opacity="0.3"/>
+    <rect x="56" y="34" width="4" height="28" fill="#232d3f"/>
+  </g>
+
+  <line x1="82" y1="24" x2="82" y2="72" stroke="#232d3f" stroke-width="1"/>
+
+  <text x="102" y="42" class="lbl" font-size="10.5" font-weight="600" fill="#5c6579" letter-spacing="3">CURRENTLY BUILDING</text>
+  <text x="102" y="66" class="lbl" font-size="17" fill="#dfe3ea">
+    <tspan font-weight="700" fill="#eef1f6">AnimeRank</tspan>
+    <tspan fill="#8993a8"> — production anime streaming platform, live beta</tspan>
+  </text>
+
+  <text x="944" y="42" text-anchor="end" class="data" font-size="10" fill="#5c6579">BUILD</text>
+  <text x="944" y="66" text-anchor="end" class="data" font-size="12" fill="#c7883d">v9-beta</text>
+</svg>

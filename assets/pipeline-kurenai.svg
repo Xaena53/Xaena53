@@ -1,0 +1,74 @@
+<svg width="1000" height="300" viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kurenai subtitle translation pipeline">
+  <defs>
+    <pattern id="g3" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0V28" fill="none" stroke="#131a26" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow3" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M0 0 L8 4 L0 8 z" fill="#3a4560"/>
+    </marker>
+    <style>
+      .lbl  { font-family:'Segoe UI',Helvetica,Arial,sans-serif; }
+      .data { font-family:'SF Mono',Consolas,'Cascadia Code',monospace; }
+      .node { fill:#0d1119; stroke:#232d3f; stroke-width:1; }
+    </style>
+  </defs>
+
+  <rect width="1000" height="300" fill="#0a0d13"/>
+  <rect width="1000" height="300" fill="url(#g3)"/>
+  <rect x="0.5" y="0.5" width="999" height="299" fill="none" stroke="#1c2534"/>
+
+  <text x="32" y="38" class="data" font-size="10.5" fill="#5c6579" letter-spacing="3">03 — SYSTEM ARCHITECTURE</text>
+  <text x="32" y="60" class="lbl" font-size="18" font-weight="700" fill="#eef1f6">Kurenai Translation Pipeline</text>
+  <text x="32" y="80" class="lbl" font-size="12" fill="#8993a8">raw subtitle → batched GPU translation → season-matched, budget-governed output</text>
+
+  <g>
+    <rect x="32" y="122" width="150" height="80" class="node"/>
+    <path d="M32 122h10M32 122v10M182 122h-10M182 122v10M32 202h10M32 202v-10M182 202h-10M182 202v-10" stroke="#3a4560" stroke-width="1"/>
+    <text x="52" y="150" class="lbl" font-size="13.5" font-weight="700" fill="#eef1f6">Raw Subtitle</text>
+    <text x="52" y="167" class="data" font-size="9.5" fill="#6b7488">.ass / .srt</text>
+    <text x="52" y="180" class="data" font-size="9.5" fill="#6b7488">source language</text>
+
+    <rect x="236" y="122" width="164" height="80" class="node"/>
+    <path d="M236 122h10M236 122v10M400 122h-10M400 122v10M236 202h10M236 202v-10M400 202h-10M400 202v-10" stroke="#3a4560" stroke-width="1"/>
+    <text x="256" y="150" class="lbl" font-size="13.5" font-weight="700" fill="#eef1f6">Batch Segmenter</text>
+    <text x="256" y="167" class="data" font-size="9.5" fill="#6b7488">episode-aware</text>
+    <text x="256" y="180" class="data" font-size="9.5" fill="#6b7488">chunk sizing</text>
+
+    <rect x="454" y="122" width="180" height="80" class="node"/>
+    <path d="M454 122h10M454 122v10M634 122h-10M634 122v10M454 202h10M454 202v-10M634 202h-10M634 202v-10" stroke="#3a4560" stroke-width="1"/>
+    <text x="474" y="150" class="lbl" font-size="13.5" font-weight="700" fill="#eef1f6">GPU Translate</text>
+    <text x="474" y="167" class="data" font-size="9.5" fill="#6b7488">CUDA batch API</text>
+    <text x="474" y="180" class="data" font-size="9.5" fill="#6b7488">FastAPI worker</text>
+
+    <rect x="688" y="122" width="164" height="80" class="node"/>
+    <path d="M688 122h10M688 122v10M852 122h-10M852 122v10M688 202h10M688 202v-10M852 202h-10M852 202v-10" stroke="#3a4560" stroke-width="1"/>
+    <text x="708" y="150" class="lbl" font-size="13.5" font-weight="700" fill="#eef1f6">Episode Match</text>
+    <text x="708" y="167" class="data" font-size="9.5" fill="#6b7488">season-aware</text>
+    <text x="708" y="180" class="data" font-size="9.5" fill="#6b7488">re-align timing</text>
+
+    <rect x="872" y="122" width="96" height="80" fill="#151107" stroke="#c7883d" stroke-width="1.25"/>
+    <text x="888" y="156" class="lbl" font-size="13" font-weight="700" fill="#e2b273">Output</text>
+    <text x="888" y="175" class="data" font-size="9.5" fill="#a3782f">.ass / .vtt</text>
+
+    <line x1="182" y1="162" x2="232" y2="162" stroke="#3a4560" stroke-width="1.25" marker-end="url(#arrow3)"/>
+    <line x1="400" y1="162" x2="450" y2="162" stroke="#3a4560" stroke-width="1.25" marker-end="url(#arrow3)"/>
+    <line x1="634" y1="162" x2="684" y2="162" stroke="#3a4560" stroke-width="1.25" marker-end="url(#arrow3)"/>
+    <line x1="852" y1="162" x2="868" y2="162" stroke="#c7883d" stroke-width="1.5" marker-end="url(#arrow3)"/>
+  </g>
+
+  <g>
+    <rect x="454" y="256" width="180" height="24" fill="none" stroke="#232d3f" stroke-width="1"/>
+    <text x="470" y="272" class="lbl" font-size="11.5" font-weight="700" fill="#dfe3ea">Budget-Cap Gate</text>
+    <path d="M544 256 V222" fill="none" stroke="#3a4560" stroke-width="1" stroke-dasharray="1 4"/>
+    <text x="32" y="272" class="data" font-size="9.5" fill="#4d5567">— — — governs GPU translate, not a data path</text>
+  </g>
+
+  <g>
+    <rect x="782" y="248" width="186" height="42" fill="none" stroke="#232d3f" stroke-width="1"/>
+    <line x1="782" y1="262" x2="968" y2="262" stroke="#232d3f" stroke-width="1"/>
+    <text x="790" y="258" class="data" font-size="9" fill="#5c6579">DWG NO.</text>
+    <text x="960" y="258" class="data" font-size="9" fill="#8993a8" text-anchor="end">XR-012</text>
+    <text x="790" y="276" class="data" font-size="9" fill="#5c6579">SYSTEM</text>
+    <text x="960" y="276" class="data" font-size="9" fill="#8993a8" text-anchor="end">KURENAI · REV 07.26</text>
+  </g>
+</svg>

@@ -1,74 +1,64 @@
 <div align="center">
 
-<img src="assets/hero.svg" alt="Xaena — Full-Stack Developer" width="100%"/>
+<img src="assets/hero.svg" alt="Xaena53 — Full-Stack Developer, streaming and real-time systems" width="100%"/>
 
-<img src="assets/now.svg" alt="currently building AnimeRank" width="100%"/>
+<img src="assets/status.svg" alt="currently building AnimeRank" width="100%"/>
 
 </div>
 
 <br/>
 
-## 🎬 AnimeRank — Streaming Engineering
+<div align="center">
+<img src="assets/pipeline-animerank.svg" alt="AnimeRank media pipeline architecture" width="100%"/>
+</div>
 
-A production-grade anime streaming platform built end to end — from a **peer-to-peer ingest swarm** to a **server-side adaptive HLS pipeline** with **GPU transcoding**, **4K restoration** and **AI-assisted subtitles**.
+A production anime streaming platform built end to end — peer-to-peer ingest, GPU-accelerated adaptive HLS, 4K restoration for legacy sources, and an AI-assisted subtitle pipeline sitting alongside a 21,000+ title catalog.
+
+<br/>
+
+<div align="center">
+<img src="assets/pipeline-repchat.svg" alt="RepChat live-support architecture" width="100%"/>
+</div>
+
+A live-support runtime running in production — embeddable widget, WebSocket gateway, category-routed queues, and an AI greeter that resolves the easy tickets before a human ever sees them.
+
+<br/>
+
+<div align="center">
+<img src="assets/pipeline-kurenai.svg" alt="Kurenai subtitle translation pipeline" width="100%"/>
+</div>
+
+A GPU-batched translation pipeline for anime subtitles — season-aware episode matching and a budget-cap gate that governs spend without touching correctness.
+
+<br/>
+
+<div align="center">
+<img src="assets/pipeline-security.svg" alt="Production hardening — defense in depth" width="100%"/>
+</div>
+
+<br/>
+
+<div align="center">
+<img src="assets/stack.svg" alt="Technology stack datasheet" width="100%"/>
+</div>
+
+<br/>
+
+### 06 — Telemetry
 
 <div align="center">
 
-<img src="assets/pipeline.svg" alt="AnimeRank media pipeline" width="100%"/>
-
-<img src="assets/metrics.svg" alt="engineering metrics" width="100%"/>
+<img height="165" src="https://github-readme-stats.vercel.app/api?username=Xaena53&show_icons=true&hide_border=true&bg_color=0a0d13&title_color=eef1f6&icon_color=c7883d&text_color=8993a8&rank_icon=percentile" alt="github stats"/>
+<img height="165" src="https://streak-stats.demolab.com?user=Xaena53&hide_border=true&background=0a0d13&ring=c7883d&fire=c7883d&currStreakLabel=eef1f6&sideLabels=8993a8&currStreakNum=eef1f6&sideNums=eef1f6&dates=5c6579" alt="streak"/>
 
 <br/><br/>
 
-<img src="assets/f-p2p.svg" alt="P2P streaming engine" width="49%"/> <img src="assets/f-4k.svg" alt="4K restoration and quality" width="49%"/>
-
-</div>
-
-<br/>
-
-## 🧩 More Projects
-
-<div align="center">
-
-<img src="assets/p-repchat.svg" alt="RepChat" width="49%"/> <img src="assets/p-kurenai.svg" alt="Kurenai" width="49%"/>
-
-<img src="assets/p-security.svg" alt="Production Hardening" width="49%"/>
-
-</div>
-
-<br/>
-
-## 🛠 Stack
-
-<div align="center">
-
-<img src="https://skillicons.dev/icons?i=js,ts,py,nodejs,express,fastapi&theme=dark" alt="core stack"/>
-
-<img src="https://skillicons.dev/icons?i=react,tailwind,mongodb,postgres,supabase,redis&theme=dark" alt="data and frontend"/>
-
-<img src="https://skillicons.dev/icons?i=docker,nginx,linux,git,githubactions,vscode&theme=dark" alt="infra and tools"/>
-
-<sub>+ ffmpeg · NVENC · hls.js · WebTorrent · CUDA · OWASP</sub>
-
-</div>
-
-<br/>
-
-## 📊 Activity
-
-<div align="center">
-
-<img height="165" src="https://github-readme-stats.vercel.app/api?username=Xaena53&show_icons=true&hide_border=true&bg_color=0d1117&title_color=f0f3f9&icon_color=e8003d&text_color=9aa3b8&rank_icon=percentile" alt="github stats"/>
-<img height="165" src="https://streak-stats.demolab.com?user=Xaena53&hide_border=true&background=0d1117&ring=e8003d&fire=e8003d&currStreakLabel=f0f3f9&sideLabels=9aa3b8&currStreakNum=f0f3f9&sideNums=f0f3f9&dates=6b7488" alt="streak"/>
-
-<br/><br/>
-
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=Xaena53&bg_color=0d1117&color=9aa3b8&line=e8003d&point=f0f3f9&area=true&area_color=e8003d&hide_border=true&custom_title=%20" width="100%" alt="activity graph"/>
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=Xaena53&bg_color=0a0d13&color=8993a8&line=c7883d&point=eef1f6&area=true&area_color=c7883d&hide_border=true&custom_title=%20" width="100%" alt="activity graph"/>
 
 </div>
 
 <br/>
 
 <div align="center">
-<sub>ship fast · measure honestly · polish relentlessly</sub>
+<sub><code>DWG SET XR-001 — XR-020 · REV 2026.07</code></sub>
 </div>

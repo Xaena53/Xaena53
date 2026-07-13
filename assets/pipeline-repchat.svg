@@ -1,0 +1,65 @@
+<svg width="1000" height="300" viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RepChat live-support architecture">
+  <defs>
+    <pattern id="g2" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0V28" fill="none" stroke="#131a26" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow2" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M0 0 L8 4 L0 8 z" fill="#3a4560"/>
+    </marker>
+    <style>
+      .lbl  { font-family:'Segoe UI',Helvetica,Arial,sans-serif; }
+      .data { font-family:'SF Mono',Consolas,'Cascadia Code',monospace; }
+      .node { fill:#0d1119; stroke:#232d3f; stroke-width:1; }
+    </style>
+  </defs>
+
+  <rect width="1000" height="300" fill="#0a0d13"/>
+  <rect width="1000" height="300" fill="url(#g2)"/>
+  <rect x="0.5" y="0.5" width="999" height="299" fill="none" stroke="#1c2534"/>
+
+  <text x="32" y="38" class="data" font-size="10.5" fill="#5c6579" letter-spacing="3">02 — SYSTEM ARCHITECTURE</text>
+  <text x="32" y="60" class="lbl" font-size="18" font-weight="700" fill="#eef1f6">RepChat Support Runtime</text>
+  <text x="32" y="80" class="lbl" font-size="12" fill="#8993a8">embeddable widget → real-time gateway → routed to agent or resolved by AI</text>
+
+  <g>
+    <rect x="32" y="122" width="150" height="80" class="node"/>
+    <path d="M32 122h10M32 122v10M182 122h-10M182 122v10M32 202h10M32 202v-10M182 202h-10M182 202v-10" stroke="#3a4560" stroke-width="1"/>
+    <text x="52" y="150" class="lbl" font-size="13.5" font-weight="700" fill="#eef1f6">Visitor Widget</text>
+    <text x="52" y="167" class="data" font-size="9.5" fill="#6b7488">embed snippet</text>
+    <text x="52" y="180" class="data" font-size="9.5" fill="#6b7488">file attach</text>
+
+    <rect x="236" y="122" width="180" height="80" class="node"/>
+    <path d="M236 122h10M236 122v10M416 122h-10M416 122v10M236 202h10M236 202v-10M416 202h-10M416 202v-10" stroke="#3a4560" stroke-width="1"/>
+    <text x="256" y="150" class="lbl" font-size="13.5" font-weight="700" fill="#eef1f6">WebSocket Gateway</text>
+    <text x="256" y="167" class="data" font-size="9.5" fill="#6b7488">category router</text>
+    <text x="256" y="180" class="data" font-size="9.5" fill="#6b7488">session persist</text>
+
+    <rect x="470" y="80" width="188" height="66" class="node"/>
+    <text x="490" y="107" class="lbl" font-size="12.5" font-weight="700" fill="#dfe3ea">AI Greeter</text>
+    <text x="490" y="125" class="data" font-size="9.5" fill="#6b7488">auto first-response</text>
+
+    <rect x="470" y="178" width="188" height="66" class="node"/>
+    <text x="490" y="205" class="lbl" font-size="12.5" font-weight="700" fill="#dfe3ea">Support Queue</text>
+    <text x="490" y="223" class="data" font-size="9.5" fill="#6b7488">category-sorted</text>
+
+    <rect x="712" y="178" width="150" height="66" fill="#151107" stroke="#c7883d" stroke-width="1.25"/>
+    <text x="732" y="205" class="lbl" font-size="13" font-weight="700" fill="#e2b273">Agent</text>
+    <text x="732" y="223" class="data" font-size="9.5" fill="#a3782f">e-mail notify</text>
+
+    <line x1="182" y1="162" x2="232" y2="162" stroke="#3a4560" stroke-width="1.25" marker-end="url(#arrow2)"/>
+    <path d="M416 148 C440 130 448 122 466 113" fill="none" stroke="#3a4560" stroke-width="1.25" marker-end="url(#arrow2)"/>
+    <path d="M416 176 C440 196 448 202 466 209" fill="none" stroke="#3a4560" stroke-width="1.25" marker-end="url(#arrow2)"/>
+    <line x1="658" y1="211" x2="708" y2="211" stroke="#c7883d" stroke-width="1.5" marker-end="url(#arrow2)"/>
+    <path d="M564 146 C588 160 600 168 614 176" fill="none" stroke="#3a4560" stroke-width="1" stroke-dasharray="1 4"/>
+    <text x="470" y="70" class="data" font-size="9.5" fill="#4d5567">— — — hands off if unresolved</text>
+  </g>
+
+  <g>
+    <rect x="782" y="248" width="186" height="42" fill="none" stroke="#232d3f" stroke-width="1"/>
+    <line x1="782" y1="262" x2="968" y2="262" stroke="#232d3f" stroke-width="1"/>
+    <text x="790" y="258" class="data" font-size="9" fill="#5c6579">DWG NO.</text>
+    <text x="960" y="258" class="data" font-size="9" fill="#8993a8" text-anchor="end">XR-011</text>
+    <text x="790" y="276" class="data" font-size="9" fill="#5c6579">SYSTEM</text>
+    <text x="960" y="276" class="data" font-size="9" fill="#8993a8" text-anchor="end">REPCHAT · REV 07.26</text>
+  </g>
+</svg>

@@ -1,39 +1,64 @@
-<svg width="1000" height="240" viewBox="0 0 1000 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Xaena — Full-Stack Developer">
+<svg width="1000" height="290" viewBox="0 0 1000 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Xaena53 — Full-Stack Developer, streaming and real-time systems">
   <defs>
-    <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%"  stop-color="#e8003d" stop-opacity="0"/>
-      <stop offset="50%" stop-color="#e8003d"/>
-      <stop offset="100%" stop-color="#e8003d" stop-opacity="0"/>
-      <animateTransform attributeName="gradientTransform" type="translate" values="-1 0; 1 0; -1 0" dur="9s" repeatCount="indefinite"/>
-    </linearGradient>
-    <radialGradient id="halo" cx="82%" cy="30%" r="60%">
-      <stop offset="0%" stop-color="#e8003d" stop-opacity="0.10"/>
-      <stop offset="55%" stop-color="#0d1117" stop-opacity="0"/>
-    </radialGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#141b28" stroke-width="1"/>
+    </pattern>
+    <style>
+      .disp  { font-family: Georgia, 'Times New Roman', serif; }
+      .lbl   { font-family: 'Segoe UI', Helvetica, Arial, sans-serif; }
+      .data  { font-family: 'SF Mono', Consolas, 'Cascadia Code', monospace; }
+    </style>
   </defs>
 
-  <rect width="1000" height="240" fill="#0d1117"/>
-  <rect width="1000" height="240" fill="url(#halo)"/>
+  <rect width="1000" height="290" fill="#0a0d13"/>
+  <rect width="1000" height="290" fill="url(#grid)"/>
+  <rect x="0.5" y="0.5" width="999" height="289" fill="none" stroke="#1c2534" stroke-width="1"/>
 
-  <!-- sağda sakin eşmerkezli yaylar -->
-  <g fill="none" stroke="#1f2735" stroke-width="1.5">
-    <circle cx="845" cy="120" r="46"/>
-    <circle cx="845" cy="120" r="78" opacity="0.7"/>
-    <circle cx="845" cy="120" r="110" opacity="0.45"/>
-    <circle cx="845" cy="120" r="142" opacity="0.25"/>
+  <!-- kimlik etiketi -->
+  <text x="56" y="54" class="lbl" font-size="11" font-weight="600" fill="#5c6579" letter-spacing="3">IDENTIFICATION — GITHUB / XAENA53</text>
+
+  <!-- ana başlık -->
+  <text x="54" y="128" class="disp" font-size="66" font-weight="700" fill="#eef1f6" letter-spacing="-1.5">Xaena53</text>
+  <text x="56" y="160" class="lbl" font-size="14" font-weight="600" fill="#c7a06a" letter-spacing="3">FULL-STACK DEVELOPER</text>
+
+  <!-- ölçü çizgisi: uçlarda tik, ortada amber işaret -->
+  <g stroke="#2a3548" stroke-width="1">
+    <line x1="56" y1="182" x2="56" y2="190"/>
+    <line x1="56" y1="186" x2="430" y2="186"/>
+    <line x1="430" y1="182" x2="430" y2="190"/>
   </g>
-  <circle cx="845" cy="120" r="46" fill="none" stroke="#e8003d" stroke-width="1.5"
-          stroke-dasharray="70 220" stroke-linecap="round" opacity="0.9">
-    <animateTransform attributeName="transform" type="rotate" from="0 845 120" to="360 845 120" dur="14s" repeatCount="indefinite"/>
-  </circle>
+  <rect x="240" y="182.5" width="7" height="7" fill="#c7883d" transform="rotate(45 243.5 186)"/>
 
-  <!-- editoryal tipografi -->
-  <text x="72" y="106" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="700" fill="#f0f3f9" letter-spacing="0.5">Xaena</text>
-  <text x="74" y="140" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="15" font-weight="600" fill="#9aa3b8" letter-spacing="5">FULL-STACK  DEVELOPER</text>
+  <text x="56" y="214" class="lbl" font-size="13.5" fill="#8993a8">Streaming platforms, real-time systems and media pipelines —</text>
+  <text x="56" y="234" class="lbl" font-size="13.5" fill="#8993a8">architected, transcoded and shipped end to end.</text>
 
-  <!-- animasyonlu aksan çizgisi -->
-  <rect x="74" y="158" width="330" height="2" fill="#1f2735"/>
-  <rect x="74" y="158" width="330" height="2" fill="url(#sweep)"/>
+  <!-- sağ: osiloskop okuması (dekor değil, "gerçek-zamanlı sistemler" temasını yansıtır) -->
+  <g>
+    <line x1="620" y1="70" x2="620" y2="200" stroke="#1c2534" stroke-width="1"/>
+    <text x="632" y="76" class="data" font-size="10" fill="#4d5567">SIGNAL / RT-CHANNEL-04</text>
+    <polyline points="632,150 660,150 672,110 686,178 700,124 714,158 728,150 760,150 774,96 788,190 802,132 816,154 830,150 940,150"
+      fill="none" stroke="#c7883d" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="632" y1="150" x2="940" y2="150" stroke="#1c2534" stroke-width="1" stroke-dasharray="1 4"/>
+    <text x="632" y="196" class="data" font-size="9.5" fill="#4d5567">0ms</text>
+    <text x="784" y="196" class="data" font-size="9.5" fill="#4d5567">250ms</text>
+    <text x="928" y="196" class="data" font-size="9.5" fill="#4d5567">500ms</text>
+  </g>
 
-  <text x="74" y="192" font-family="Segoe UI, Inter, system-ui, sans-serif" font-size="14" fill="#6b7488">Streaming platforms, real-time systems and media pipelines — built end to end.</text>
+  <!-- başlık bloğu (çizim etiketi) -->
+  <g>
+    <rect x="782" y="228" width="162" height="42" fill="none" stroke="#232d3f" stroke-width="1"/>
+    <line x1="782" y1="242" x2="944" y2="242" stroke="#232d3f" stroke-width="1"/>
+    <text x="790" y="238" class="data" font-size="9" fill="#5c6579">DWG NO.</text>
+    <text x="936" y="238" class="data" font-size="9" fill="#8993a8" text-anchor="end">XR-001</text>
+    <text x="790" y="256" class="data" font-size="9" fill="#5c6579">SHEET</text>
+    <text x="936" y="256" class="data" font-size="9" fill="#8993a8" text-anchor="end">PROFILE · REV 07.26</text>
+  </g>
+
+  <!-- köşe tescil işaretleri -->
+  <g stroke="#2a3548" stroke-width="1.25">
+    <path d="M20 12 h14 M12 20 v14" fill="none"/>
+    <path d="M980 12 h-14 M988 20 v14" fill="none"/>
+    <path d="M20 278 h14 M12 270 v-14" fill="none"/>
+    <path d="M980 278 h-14 M988 270 v-14" fill="none"/>
+  </g>
 </svg>

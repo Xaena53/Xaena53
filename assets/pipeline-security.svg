@@ -1,0 +1,58 @@
+<svg width="1000" height="320" viewBox="0 0 1000 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Production hardening — defense in depth audit">
+  <defs>
+    <pattern id="g4" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0V28" fill="none" stroke="#131a26" stroke-width="1"/>
+    </pattern>
+    <style>
+      .lbl  { font-family:'Segoe UI',Helvetica,Arial,sans-serif; }
+      .data { font-family:'SF Mono',Consolas,'Cascadia Code',monospace; }
+    </style>
+  </defs>
+
+  <rect width="1000" height="320" fill="#0a0d13"/>
+  <rect width="1000" height="320" fill="url(#g4)"/>
+  <rect x="0.5" y="0.5" width="999" height="319" fill="none" stroke="#1c2534"/>
+
+  <text x="32" y="38" class="data" font-size="10.5" fill="#5c6579" letter-spacing="3">04 — SECURITY AUDIT</text>
+  <text x="32" y="60" class="lbl" font-size="18" font-weight="700" fill="#eef1f6">Production Hardening — Defense in Depth</text>
+  <text x="32" y="80" class="lbl" font-size="12" fill="#8993a8">three audit rounds, each layer closing a class of vulnerability before the next begins</text>
+
+  <!-- katman 1 (en dış / en genel) -->
+  <g>
+    <rect x="32" y="108" width="936" height="60" fill="#0d1119" stroke="#232d3f" stroke-width="1"/>
+    <text x="52" y="132" class="data" font-size="10" fill="#c7883d" letter-spacing="1">ROUND 01</text>
+    <text x="52" y="152" class="lbl" font-size="13" font-weight="700" fill="#eef1f6">Mass-Assignment &amp; NoSQL-Injection Sweep</text>
+    <text x="612" y="152" class="data" font-size="10" fill="#6b7488">field allow-lists · query sanitization · schema validation</text>
+    <text x="944" y="140" class="data" font-size="13" fill="#7a9a7f" text-anchor="end">✓ closed</text>
+  </g>
+
+  <!-- katman 2 -->
+  <g>
+    <rect x="56" y="180" width="888" height="60" fill="#0d1119" stroke="#232d3f" stroke-width="1"/>
+    <text x="76" y="204" class="data" font-size="10" fill="#c7883d" letter-spacing="1">ROUND 02</text>
+    <text x="76" y="224" class="lbl" font-size="13" font-weight="700" fill="#eef1f6">Rate Limiting &amp; CSP Architecture</text>
+    <text x="612" y="224" class="data" font-size="10" fill="#6b7488">per-route limits · strict CSP · device-limit enforcement</text>
+    <text x="920" y="212" class="data" font-size="13" fill="#7a9a7f" text-anchor="end">✓ closed</text>
+  </g>
+
+  <!-- katman 3 (en iç / en kritik) -->
+  <g>
+    <rect x="80" y="252" width="840" height="60" fill="#151107" stroke="#c7883d" stroke-width="1.25"/>
+    <text x="100" y="276" class="data" font-size="10" fill="#e2b273" letter-spacing="1">ROUND 03</text>
+    <text x="100" y="296" class="lbl" font-size="13" font-weight="700" fill="#eef1f6">Payment Locks &amp; Session Revocation</text>
+    <text x="612" y="296" class="data" font-size="10" fill="#a3908a">double-fulfillment locks · logout-side revocation · XP self-award fix</text>
+    <text x="896" y="284" class="data" font-size="13" fill="#7a9a7f" text-anchor="end">✓ closed</text>
+  </g>
+
+  <!-- daralan konturu belirten ölçü çizgileri -->
+  <g stroke="#2a3548" stroke-width="1">
+    <line x1="32" y1="98" x2="32" y2="90"/><line x1="968" y1="98" x2="968" y2="90"/>
+    <line x1="32" y1="94" x2="968" y2="94"/>
+  </g>
+
+  <g>
+    <rect x="782" y="66" width="186" height="34" fill="none" stroke="#232d3f" stroke-width="1"/>
+    <text x="790" y="88" class="data" font-size="9" fill="#5c6579">SCOPE</text>
+    <text x="960" y="88" class="data" font-size="9" fill="#8993a8" text-anchor="end">18 AGENTS · 17 COMMITS</text>
+  </g>
+</svg>
