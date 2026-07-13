@@ -26,7 +26,7 @@
   <line x1="734" y1="56" x2="734" y2="120" stroke="#161d2b" stroke-width="1"/>
 
   <g>
-    <text x="56" y="98" class="n" font-size="34" fill="#eef1f6" id="repos">6</text>
+    <text x="56" y="98" class="n" font-size="34" fill="#eef1f6" id="repos">2</text>
     <text x="56" y="116" class="lbl" font-size="11" fill="#8993a8" letter-spacing="1">PUBLIC REPOSITORIES</text>
   </g>
   <g>
@@ -34,7 +34,7 @@
     <text x="290" y="116" class="lbl" font-size="11" fill="#8993a8" letter-spacing="1">FOLLOWERS</text>
   </g>
   <g>
-    <text x="524" y="98" class="n" font-size="34" fill="#eef1f6" id="stars">2</text>
+    <text x="524" y="98" class="n" font-size="34" fill="#eef1f6" id="stars">0</text>
     <text x="524" y="116" class="lbl" font-size="11" fill="#8993a8" letter-spacing="1">STARS EARNED</text>
   </g>
   <g>
