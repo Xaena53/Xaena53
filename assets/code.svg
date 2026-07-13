@@ -15,48 +15,65 @@
     <style>
       .lbl  { font-family:'Segoe UI',Helvetica,Arial,sans-serif; }
       .data { font-family:'SF Mono',Consolas,'Cascadia Code',monospace; }
-      .kw   { fill:#7f93bd; }   /* keywords */
-      .fn   { fill:#eef1f6; }   /* identifiers / calls */
-      .str  { fill:#c7883d; }   /* string / literal */
-      .pn   { fill:#6b7488; }   /* punctuation */
+      .kw   { fill:#7f93bd; }
+      .fn   { fill:#eef1f6; }
+      .str  { fill:#c7883d; }
+      .pn   { fill:#6b7488; }
 
-      @keyframes clipL1 { 0%,0.6%{width:0;} 10.4%{width:328px;} 100%{width:328px;} }
-      @keyframes clipL2 { 0%,11.2%{width:0;} 20.8%{width:320px;} 100%{width:320px;} }
-      @keyframes clipL3 { 0%,21.6%{width:0;} 30.5%{width:298px;} 100%{width:298px;} }
-      @keyframes clipL4 { 0%,31.3%{width:0;} 39.9%{width:291px;} 100%{width:291px;} }
-      @keyframes clipL5 { 0%,40.7%{width:0;} 48.9%{width:276px;} 100%{width:276px;} }
-      @keyframes clipL6 { 0%,49.7%{width:0;} 50.8%{width:43px;}  100%{width:43px;} }
-      @keyframes clipL7 { 0%,51.6%{width:0;} 61.4%{width:328px;} 100%{width:328px;} }
-      @keyframes clipL8 { 0%,62.1%{width:0;} 69.9%{width:262px;} 100%{width:262px;} }
-      @keyframes clipL9 { 0%,70.7%{width:0;} 71.6%{width:14px;}  100%{width:14px;} }
+      /* Her satır kendi karakter sayısı kadar steps() ile atlayarak dolar —
+         gerçek tuş vuruşu hissi; düz genişlik animasyonu bir "yükleme çubuğu"
+         gibi görünüyordu, artık harf harf beliriyor. */
+      @keyframes clipL1 { 0%{width:0;} 0.9%{width:0;animation-timing-function:steps(44,end);} 10.8%{width:328px;} 100%{width:328px;} }
+      @keyframes clipL2 { 0%{width:0;} 11.9%{width:0;animation-timing-function:steps(42,end);} 21.4%{width:320px;} 100%{width:320px;} }
+      @keyframes clipL3 { 0%{width:0;} 22.1%{width:0;animation-timing-function:steps(39,end);} 30.9%{width:298px;} 100%{width:298px;} }
+      @keyframes clipL4 { 0%{width:0;} 32.2%{width:0;animation-timing-function:steps(38,end);} 40.8%{width:291px;} 100%{width:291px;} }
+      @keyframes clipL5 { 0%{width:0;} 41.4%{width:0;animation-timing-function:steps(36,end);} 49.6%{width:276px;} 100%{width:276px;} }
+      @keyframes clipL6 { 0%{width:0;} 50.3%{width:0;animation-timing-function:steps(5,end);}  51.4%{width:43px;}  100%{width:43px;} }
+      @keyframes clipL7 { 0%{width:0;} 53.0%{width:0;animation-timing-function:steps(43,end);} 62.8%{width:328px;} 100%{width:328px;} }
+      @keyframes clipL8 { 0%{width:0;} 63.6%{width:0;animation-timing-function:steps(34,end);} 71.3%{width:262px;} 100%{width:262px;} }
+      @keyframes clipL9 { 0%{width:0;} 71.9%{width:0;animation-timing-function:steps(1,end);}  72.6%{width:14px;}  100%{width:14px;} }
 
-      .clipL1{animation:clipL1 16s linear infinite;} .clipL2{animation:clipL2 16s linear infinite;}
-      .clipL3{animation:clipL3 16s linear infinite;} .clipL4{animation:clipL4 16s linear infinite;}
-      .clipL5{animation:clipL5 16s linear infinite;} .clipL6{animation:clipL6 16s linear infinite;}
-      .clipL7{animation:clipL7 16s linear infinite;} .clipL8{animation:clipL8 16s linear infinite;}
-      .clipL9{animation:clipL9 16s linear infinite;}
+      .clipL1{animation:clipL1 17s linear infinite;} .clipL2{animation:clipL2 17s linear infinite;}
+      .clipL3{animation:clipL3 17s linear infinite;} .clipL4{animation:clipL4 17s linear infinite;}
+      .clipL5{animation:clipL5 17s linear infinite;} .clipL6{animation:clipL6 17s linear infinite;}
+      .clipL7{animation:clipL7 17s linear infinite;} .clipL8{animation:clipL8 17s linear infinite;}
+      .clipL9{animation:clipL9 17s linear infinite;}
 
-      @keyframes bodyVis { 0%{opacity:0;} 1%{opacity:1;} 90.4%{opacity:1;} 96.6%,100%{opacity:0;} }
-      .body { animation: bodyVis 16s linear infinite; }
+      @keyframes bodyVis { 0%{opacity:0;} 1%{opacity:1;} 90.2%{opacity:1;} 96.1%,100%{opacity:0;} }
+      .body { animation: bodyVis 17s linear infinite; }
 
+      /* karet aynı steps() ritmiyle satır boyunca "zıplayarak" ilerler */
       @keyframes caretMove {
-        0%{transform:translate(56px,118px);} 0.6%{transform:translate(56px,118px);}
-        10.4%{transform:translate(384px,118px);} 11.2%{transform:translate(56px,140px);}
-        20.8%{transform:translate(376px,140px);} 21.6%{transform:translate(56px,162px);}
-        30.5%{transform:translate(354px,162px);} 31.3%{transform:translate(56px,184px);}
-        39.9%{transform:translate(347px,184px);} 40.7%{transform:translate(56px,206px);}
-        48.9%{transform:translate(332px,206px);} 49.7%{transform:translate(56px,228px);}
-        50.8%{transform:translate(99px,228px);}  51.6%{transform:translate(56px,250px);}
-        61.4%{transform:translate(384px,250px);} 62.1%{transform:translate(56px,272px);}
-        69.9%{transform:translate(318px,272px);} 70.7%{transform:translate(56px,294px);}
-        71.6%{transform:translate(70px,294px);}  100%{transform:translate(70px,294px);}
+        0%{transform:translate(56px,118px);}
+        0.9%{transform:translate(56px,118px);animation-timing-function:steps(44,end);}
+        10.8%{transform:translate(384px,118px);}
+        11.9%{transform:translate(56px,140px);animation-timing-function:steps(42,end);}
+        21.4%{transform:translate(376px,140px);}
+        22.1%{transform:translate(56px,162px);animation-timing-function:steps(39,end);}
+        30.9%{transform:translate(354px,162px);}
+        32.2%{transform:translate(56px,184px);animation-timing-function:steps(38,end);}
+        40.8%{transform:translate(347px,184px);}
+        41.4%{transform:translate(56px,206px);animation-timing-function:steps(36,end);}
+        49.6%{transform:translate(332px,206px);}
+        50.3%{transform:translate(56px,228px);animation-timing-function:steps(5,end);}
+        51.4%{transform:translate(99px,228px);}
+        53.0%{transform:translate(56px,250px);animation-timing-function:steps(43,end);}
+        62.8%{transform:translate(384px,250px);}
+        63.6%{transform:translate(56px,272px);animation-timing-function:steps(34,end);}
+        71.3%{transform:translate(318px,272px);}
+        71.9%{transform:translate(56px,294px);}
+        72.6%{transform:translate(70px,294px);}
+        100%{transform:translate(70px,294px);}
       }
-      @keyframes caretVis { 0%,0.6%{opacity:0;} 1%{opacity:1;} 90.4%{opacity:1;} 96.6%,100%{opacity:0;} }
-      .caret { animation: caretMove 16s linear infinite, caretVis 16s linear infinite; }
+      @keyframes caretVis { 0%,0.9%{opacity:0;} 1.4%{opacity:1;} 90.2%{opacity:1;} 96.1%,100%{opacity:0;} }
+      .caret { animation: caretMove 17s linear infinite, caretVis 17s linear infinite; }
+
+      @keyframes caretBlink { 0%,100%{ opacity:1; } 50%{ opacity:.15; } }
+      .caretBlink { animation: caretBlink 0.95s step-end infinite; }
 
       @media (prefers-reduced-motion: reduce) {
         .clipL1,.clipL2,.clipL3,.clipL4,.clipL5,.clipL6,.clipL7,.clipL8,.clipL9 { animation:none !important; width:340px !important; }
-        .body,.caret { animation:none !important; opacity:1; }
+        .body,.caret,.caretBlink { animation:none !important; opacity:1; }
         .caret { display:none; }
       }
     </style>
@@ -96,7 +113,9 @@
     <text x="944" y="308" text-anchor="end" class="data" font-size="10" fill="#3f4759">9</text>
   </g>
 
-  <rect class="caret" x="0" y="0" width="7" height="15" fill="#c7883d"/>
+  <g class="caret">
+    <rect class="caretBlink" x="0" y="0" width="7" height="15" fill="#c7883d"/>
+  </g>
 
   <g>
     <rect x="782" y="340" width="186" height="30" fill="none" stroke="#232d3f" stroke-width="1"/>
