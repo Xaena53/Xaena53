@@ -44,17 +44,14 @@ A GPU-batched translation pipeline for anime subtitles — season-aware episode 
 
 <br/>
 
-### 06 — Telemetry
+<div align="center">
+<img src="assets/code.svg" alt="Live build — self-typing code panel" width="100%"/>
+</div>
+
+<br/>
 
 <div align="center">
-
-<img height="165" src="https://github-readme-stats.vercel.app/api?username=Xaena53&show_icons=true&hide_border=true&bg_color=0a0d13&title_color=eef1f6&icon_color=c7883d&text_color=8993a8&rank_icon=percentile" alt="github stats"/>
-<img height="165" src="https://streak-stats.demolab.com?user=Xaena53&hide_border=true&background=0a0d13&ring=c7883d&fire=c7883d&currStreakLabel=eef1f6&sideLabels=8993a8&currStreakNum=eef1f6&sideNums=eef1f6&dates=5c6579" alt="streak"/>
-
-<br/><br/>
-
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=Xaena53&bg_color=0a0d13&color=8993a8&line=c7883d&point=eef1f6&area=true&area_color=c7883d&hide_border=true&custom_title=%20" width="100%" alt="activity graph"/>
-
+<img src="assets/telemetry.svg" alt="Live GitHub telemetry" width="100%"/>
 </div>
 
 <br/>

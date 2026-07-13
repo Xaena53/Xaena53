@@ -1,0 +1,28 @@
+name: telemetry
+on:
+  schedule:
+    - cron: "0 4 * * *"   # her gün 07:00 TR
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node scripts/update-telemetry.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: commit if changed
+        run: |
+          git config user.name "telemetry-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git diff --quiet assets/telemetry.svg && exit 0
+          git add assets/telemetry.svg
+          git commit -m "chore: refresh telemetry sheet [skip ci]"
+          git push

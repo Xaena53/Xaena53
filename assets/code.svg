@@ -1,0 +1,106 @@
+<svg width="1000" height="380" viewBox="0 0 1000 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Live build — self-typing code panel">
+  <defs>
+    <pattern id="g6" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0V28" fill="none" stroke="#131a26" stroke-width="1"/>
+    </pattern>
+    <clipPath id="cl1"><rect class="clipL1" x="56" y="118" width="0" height="18"/></clipPath>
+    <clipPath id="cl2"><rect class="clipL2" x="56" y="140" width="0" height="18"/></clipPath>
+    <clipPath id="cl3"><rect class="clipL3" x="56" y="162" width="0" height="18"/></clipPath>
+    <clipPath id="cl4"><rect class="clipL4" x="56" y="184" width="0" height="18"/></clipPath>
+    <clipPath id="cl5"><rect class="clipL5" x="56" y="206" width="0" height="18"/></clipPath>
+    <clipPath id="cl6"><rect class="clipL6" x="56" y="228" width="0" height="18"/></clipPath>
+    <clipPath id="cl7"><rect class="clipL7" x="56" y="250" width="0" height="18"/></clipPath>
+    <clipPath id="cl8"><rect class="clipL8" x="56" y="272" width="0" height="18"/></clipPath>
+    <clipPath id="cl9"><rect class="clipL9" x="56" y="294" width="0" height="18"/></clipPath>
+    <style>
+      .lbl  { font-family:'Segoe UI',Helvetica,Arial,sans-serif; }
+      .data { font-family:'SF Mono',Consolas,'Cascadia Code',monospace; }
+      .kw   { fill:#7f93bd; }   /* keywords */
+      .fn   { fill:#eef1f6; }   /* identifiers / calls */
+      .str  { fill:#c7883d; }   /* string / literal */
+      .pn   { fill:#6b7488; }   /* punctuation */
+
+      @keyframes clipL1 { 0%,0.6%{width:0;} 10.4%{width:328px;} 100%{width:328px;} }
+      @keyframes clipL2 { 0%,11.2%{width:0;} 20.8%{width:320px;} 100%{width:320px;} }
+      @keyframes clipL3 { 0%,21.6%{width:0;} 30.5%{width:298px;} 100%{width:298px;} }
+      @keyframes clipL4 { 0%,31.3%{width:0;} 39.9%{width:291px;} 100%{width:291px;} }
+      @keyframes clipL5 { 0%,40.7%{width:0;} 48.9%{width:276px;} 100%{width:276px;} }
+      @keyframes clipL6 { 0%,49.7%{width:0;} 50.8%{width:43px;}  100%{width:43px;} }
+      @keyframes clipL7 { 0%,51.6%{width:0;} 61.4%{width:328px;} 100%{width:328px;} }
+      @keyframes clipL8 { 0%,62.1%{width:0;} 69.9%{width:262px;} 100%{width:262px;} }
+      @keyframes clipL9 { 0%,70.7%{width:0;} 71.6%{width:14px;}  100%{width:14px;} }
+
+      .clipL1{animation:clipL1 16s linear infinite;} .clipL2{animation:clipL2 16s linear infinite;}
+      .clipL3{animation:clipL3 16s linear infinite;} .clipL4{animation:clipL4 16s linear infinite;}
+      .clipL5{animation:clipL5 16s linear infinite;} .clipL6{animation:clipL6 16s linear infinite;}
+      .clipL7{animation:clipL7 16s linear infinite;} .clipL8{animation:clipL8 16s linear infinite;}
+      .clipL9{animation:clipL9 16s linear infinite;}
+
+      @keyframes bodyVis { 0%{opacity:0;} 1%{opacity:1;} 90.4%{opacity:1;} 96.6%,100%{opacity:0;} }
+      .body { animation: bodyVis 16s linear infinite; }
+
+      @keyframes caretMove {
+        0%{transform:translate(56px,118px);} 0.6%{transform:translate(56px,118px);}
+        10.4%{transform:translate(384px,118px);} 11.2%{transform:translate(56px,140px);}
+        20.8%{transform:translate(376px,140px);} 21.6%{transform:translate(56px,162px);}
+        30.5%{transform:translate(354px,162px);} 31.3%{transform:translate(56px,184px);}
+        39.9%{transform:translate(347px,184px);} 40.7%{transform:translate(56px,206px);}
+        48.9%{transform:translate(332px,206px);} 49.7%{transform:translate(56px,228px);}
+        50.8%{transform:translate(99px,228px);}  51.6%{transform:translate(56px,250px);}
+        61.4%{transform:translate(384px,250px);} 62.1%{transform:translate(56px,272px);}
+        69.9%{transform:translate(318px,272px);} 70.7%{transform:translate(56px,294px);}
+        71.6%{transform:translate(70px,294px);}  100%{transform:translate(70px,294px);}
+      }
+      @keyframes caretVis { 0%,0.6%{opacity:0;} 1%{opacity:1;} 90.4%{opacity:1;} 96.6%,100%{opacity:0;} }
+      .caret { animation: caretMove 16s linear infinite, caretVis 16s linear infinite; }
+
+      @media (prefers-reduced-motion: reduce) {
+        .clipL1,.clipL2,.clipL3,.clipL4,.clipL5,.clipL6,.clipL7,.clipL8,.clipL9 { animation:none !important; width:340px !important; }
+        .body,.caret { animation:none !important; opacity:1; }
+        .caret { display:none; }
+      }
+    </style>
+  </defs>
+
+  <rect width="1000" height="380" fill="#0a0d13"/>
+  <rect width="1000" height="380" fill="url(#g6)"/>
+  <rect x="0.5" y="0.5" width="999" height="379" fill="none" stroke="#1c2534"/>
+
+  <text x="32" y="38" class="data" font-size="10.5" fill="#5c6579" letter-spacing="3">06 — LIVE BUILD</text>
+  <text x="32" y="60" class="lbl" font-size="18" font-weight="700" fill="#eef1f6">packageHls() — HLS Packager Runtime</text>
+  <text x="32" y="80" class="lbl" font-size="12" fill="#8993a8">the function behind the "HLS Packager" node in sheet XR-010</text>
+
+  <rect x="32" y="98" width="936" height="234" fill="#0d1119" stroke="#232d3f" stroke-width="1"/>
+  <path d="M32 98h10M32 98v10M968 98h-10M968 98v10M32 332h10M32 332v-10M968 332h-10M968 332v-10" stroke="#3a4560" stroke-width="1" fill="none"/>
+  <text x="52" y="98" class="data" font-size="9" fill="#4d5567" transform="translate(0,-4)">packager.js</text>
+
+  <g class="body">
+    <g clip-path="url(#cl1)"><text x="56" y="132" class="data" font-size="13"><tspan class="kw">async function </tspan><tspan class="fn">packageHls</tspan><tspan class="pn">(source, mal, ep) {</tspan></text></g>
+    <g clip-path="url(#cl2)"><text x="56" y="154" class="data" font-size="13"><tspan class="pn">  </tspan><tspan class="kw">const</tspan><tspan class="pn"> rungs = </tspan><tspan class="fn">pickLadder</tspan><tspan class="pn">(source.height);</tspan></text></g>
+    <g clip-path="url(#cl3)"><text x="56" y="176" class="data" font-size="13"><tspan class="pn">  </tspan><tspan class="kw">const</tspan><tspan class="pn"> args = </tspan><tspan class="fn">buildFfmpegArgs</tspan><tspan class="pn">(rungs, {</tspan></text></g>
+    <g clip-path="url(#cl4)"><text x="56" y="198" class="data" font-size="13"><tspan class="pn">    codec: </tspan><tspan class="str">'h264_nvenc'</tspan><tspan class="pn">, preset: </tspan><tspan class="str">'p6'</tspan><tspan class="pn">,</tspan></text></g>
+    <g clip-path="url(#cl5)"><text x="56" y="220" class="data" font-size="13"><tspan class="pn">    hlsTime: 4, playlistType: </tspan><tspan class="str">'vod'</tspan><tspan class="pn">,</tspan></text></g>
+    <g clip-path="url(#cl6)"><text x="56" y="242" class="data" font-size="13"><tspan class="pn">  });</tspan></text></g>
+    <g clip-path="url(#cl7)"><text x="56" y="264" class="data" font-size="13"><tspan class="pn">  </tspan><tspan class="kw">await</tspan><tspan class="pn"> </tspan><tspan class="fn">spawnFfmpeg</tspan><tspan class="pn">(args, </tspan><tspan class="fn">outDir</tspan><tspan class="pn">(mal, ep));</tspan></text></g>
+    <g clip-path="url(#cl8)"><text x="56" y="286" class="data" font-size="13"><tspan class="pn">  </tspan><tspan class="kw">return</tspan><tspan class="pn"> packager.</tspan><tspan class="fn">verify</tspan><tspan class="pn">(mal, ep);</tspan></text></g>
+    <g clip-path="url(#cl9)"><text x="56" y="308" class="data" font-size="13"><tspan class="pn">}</tspan></text></g>
+
+    <text x="944" y="132" text-anchor="end" class="data" font-size="10" fill="#3f4759">1</text>
+    <text x="944" y="154" text-anchor="end" class="data" font-size="10" fill="#3f4759">2</text>
+    <text x="944" y="176" text-anchor="end" class="data" font-size="10" fill="#3f4759">3</text>
+    <text x="944" y="198" text-anchor="end" class="data" font-size="10" fill="#3f4759">4</text>
+    <text x="944" y="220" text-anchor="end" class="data" font-size="10" fill="#3f4759">5</text>
+    <text x="944" y="242" text-anchor="end" class="data" font-size="10" fill="#3f4759">6</text>
+    <text x="944" y="264" text-anchor="end" class="data" font-size="10" fill="#3f4759">7</text>
+    <text x="944" y="286" text-anchor="end" class="data" font-size="10" fill="#3f4759">8</text>
+    <text x="944" y="308" text-anchor="end" class="data" font-size="10" fill="#3f4759">9</text>
+  </g>
+
+  <rect class="caret" x="0" y="0" width="7" height="15" fill="#c7883d"/>
+
+  <g>
+    <rect x="782" y="340" width="186" height="30" fill="none" stroke="#232d3f" stroke-width="1"/>
+    <text x="790" y="359" class="data" font-size="9" fill="#5c6579">DWG NO.</text>
+    <text x="960" y="359" class="data" font-size="9" fill="#8993a8" text-anchor="end">XR-013 · REV 07.26</text>
+  </g>
+</svg>

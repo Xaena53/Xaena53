@@ -1,0 +1,44 @@
+<svg width="1000" height="140" viewBox="0 0 1000 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Live GitHub telemetry">
+  <defs>
+    <pattern id="g7" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0V28" fill="none" stroke="#131a26" stroke-width="1"/>
+    </pattern>
+    <style>
+      .lbl  { font-family:'Segoe UI',Helvetica,Arial,sans-serif; }
+      .data { font-family:'SF Mono',Consolas,'Cascadia Code',monospace; }
+      .n    { font-family:Georgia,'Times New Roman',serif; font-weight:700; }
+      @keyframes blink { 0%,100%{ opacity:1; } 50%{ opacity:.4; } }
+      .live { animation: blink 1.8s ease-in-out infinite; }
+      @media (prefers-reduced-motion: reduce) { *{ animation:none !important; } }
+    </style>
+  </defs>
+
+  <rect width="1000" height="140" fill="#0a0d13"/>
+  <rect width="1000" height="140" fill="url(#g7)"/>
+  <rect x="0.5" y="0.5" width="999" height="139" fill="none" stroke="#1c2534"/>
+
+  <circle class="live" cx="44" cy="34" r="3.5" fill="#7a9a7f"/>
+  <text x="56" y="38" class="data" font-size="10.5" fill="#5c6579" letter-spacing="3">07 — TELEMETRY · LIVE, REFRESHED DAILY</text>
+
+  <line x1="32" y1="56" x2="968" y2="56" stroke="#232d3f" stroke-width="1"/>
+  <line x1="266" y1="56" x2="266" y2="120" stroke="#161d2b" stroke-width="1"/>
+  <line x1="500" y1="56" x2="500" y2="120" stroke="#161d2b" stroke-width="1"/>
+  <line x1="734" y1="56" x2="734" y2="120" stroke="#161d2b" stroke-width="1"/>
+
+  <g>
+    <text x="56" y="98" class="n" font-size="34" fill="#eef1f6" id="repos">6</text>
+    <text x="56" y="116" class="lbl" font-size="11" fill="#8993a8" letter-spacing="1">PUBLIC REPOSITORIES</text>
+  </g>
+  <g>
+    <text x="290" y="98" class="n" font-size="34" fill="#eef1f6" id="followers">3</text>
+    <text x="290" y="116" class="lbl" font-size="11" fill="#8993a8" letter-spacing="1">FOLLOWERS</text>
+  </g>
+  <g>
+    <text x="524" y="98" class="n" font-size="34" fill="#eef1f6" id="stars">2</text>
+    <text x="524" y="116" class="lbl" font-size="11" fill="#8993a8" letter-spacing="1">STARS EARNED</text>
+  </g>
+  <g>
+    <text x="758" y="98" class="n" font-size="34" fill="#c7883d">07</text>
+    <text x="758" y="116" class="lbl" font-size="11" fill="#8993a8" letter-spacing="1">DRAWING SHEETS IN SET</text>
+  </g>
+</svg>
