@@ -1,0 +1,26 @@
+<svg width="492" height="188" viewBox="0 0 492 188" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="P2P streaming engine">
+  <defs><style>.t{font-family:'Segoe UI',Inter,system-ui,sans-serif;}.m{font-family:'Cascadia Code',Consolas,monospace;}</style></defs>
+  <rect x="1" y="1" width="490" height="186" rx="14" fill="#10141d" stroke="#1f2735" stroke-width="1.5"/>
+  <rect x="1" y="1" width="490" height="4" rx="2" fill="#00c2d4"/>
+
+  <text x="28" y="44" class="t" font-size="19" font-weight="700" fill="#f0f3f9">P2P Streaming Engine</text>
+  <text x="28" y="66" class="t" font-size="12.5" fill="#6b7488">torrent swarm → server-side HLS, no re-download</text>
+
+  <!-- mini peer topolojisi -->
+  <g stroke="#2a3348" stroke-width="1.5" fill="none">
+    <line x1="330" y1="40" x2="410" y2="24"/><line x1="330" y1="40" x2="420" y2="52"/>
+    <line x1="330" y1="40" x2="400" y2="76"/><line x1="330" y1="40" x2="360" y2="18"/>
+  </g>
+  <g fill="#00c2d4">
+    <circle cx="330" cy="40" r="7"/><circle cx="410" cy="24" r="4"/><circle cx="420" cy="52" r="4"/>
+    <circle cx="400" cy="76" r="4"/><circle cx="360" cy="18" r="4"/>
+  </g>
+
+  <line x1="28" y1="90" x2="464" y2="90" stroke="#1f2735" stroke-width="1"/>
+
+  <g class="t" font-size="13" fill="#9aa3b8">
+    <text x="28" y="118">◆ Multi-source ingest (AnimeTosho · Nyaa · Tosho · AniRena)</text>
+    <text x="28" y="142">◆ Season-aware verification &amp; per-title quality scoring</text>
+    <text x="28" y="166">◆ On-demand transcode to seekable fMP4 HLS</text>
+  </g>
+</svg>

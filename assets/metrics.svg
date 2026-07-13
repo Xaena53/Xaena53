@@ -1,0 +1,29 @@
+<svg width="1000" height="96" viewBox="0 0 1000 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="engineering metrics">
+  <defs><style>
+    .t{font-family:'Segoe UI',Inter,system-ui,sans-serif;}
+    .n{font-family:'Segoe UI',Inter,system-ui,sans-serif;font-weight:800;}
+  </style></defs>
+  <rect width="1000" height="96" fill="#0d1117"/>
+
+  <g>
+    <rect x="0"   y="10" width="188" height="76" rx="12" fill="#10141d" stroke="#1f2735" stroke-width="1.5"/>
+    <text x="94" y="48" text-anchor="middle" class="n" font-size="26" fill="#e8003d">3-tier</text>
+    <text x="94" y="70" text-anchor="middle" class="t" font-size="12" fill="#8b93a7">adaptive HLS ladder</text>
+
+    <rect x="203" y="10" width="188" height="76" rx="12" fill="#10141d" stroke="#1f2735" stroke-width="1.5"/>
+    <text x="297" y="48" text-anchor="middle" class="n" font-size="26" fill="#00c2d4">4K</text>
+    <text x="297" y="70" text-anchor="middle" class="t" font-size="12" fill="#8b93a7">AI restoration lane</text>
+
+    <rect x="406" y="10" width="188" height="76" rx="12" fill="#10141d" stroke="#1f2735" stroke-width="1.5"/>
+    <text x="500" y="48" text-anchor="middle" class="n" font-size="26" fill="#f0f3f9">P2P</text>
+    <text x="500" y="70" text-anchor="middle" class="t" font-size="12" fill="#8b93a7">multi-source ingest</text>
+
+    <rect x="609" y="10" width="188" height="76" rx="12" fill="#10141d" stroke="#1f2735" stroke-width="1.5"/>
+    <text x="703" y="48" text-anchor="middle" class="n" font-size="26" fill="#2ecc71">21K+</text>
+    <text x="703" y="70" text-anchor="middle" class="t" font-size="12" fill="#8b93a7">anime catalog</text>
+
+    <rect x="812" y="10" width="188" height="76" rx="12" fill="#10141d" stroke="#1f2735" stroke-width="1.5"/>
+    <text x="906" y="48" text-anchor="middle" class="n" font-size="26" fill="#b06cf0">GPU</text>
+    <text x="906" y="70" text-anchor="middle" class="t" font-size="12" fill="#8b93a7">NVENC transcode</text>
+  </g>
+</svg>

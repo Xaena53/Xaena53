@@ -8,19 +8,37 @@
 
 <br/>
 
-### Projects
+## 🎬 AnimeRank — Streaming Engineering
+
+A production-grade anime streaming platform built end to end — from a **peer-to-peer ingest swarm** to a **server-side adaptive HLS pipeline** with **GPU transcoding**, **4K restoration** and **AI-assisted subtitles**.
 
 <div align="center">
 
-<img src="assets/p-animerank.svg" alt="AnimeRank" width="49%"/> <img src="assets/p-repchat.svg" alt="RepChat" width="49%"/>
+<img src="assets/pipeline.svg" alt="AnimeRank media pipeline" width="100%"/>
 
-<img src="assets/p-kurenai.svg" alt="Kurenai" width="49%"/> <img src="assets/p-security.svg" alt="Production Hardening" width="49%"/>
+<img src="assets/metrics.svg" alt="engineering metrics" width="100%"/>
+
+<br/><br/>
+
+<img src="assets/f-p2p.svg" alt="P2P streaming engine" width="49%"/> <img src="assets/f-4k.svg" alt="4K restoration and quality" width="49%"/>
 
 </div>
 
 <br/>
 
-### Stack
+## 🧩 More Projects
+
+<div align="center">
+
+<img src="assets/p-repchat.svg" alt="RepChat" width="49%"/> <img src="assets/p-kurenai.svg" alt="Kurenai" width="49%"/>
+
+<img src="assets/p-security.svg" alt="Production Hardening" width="49%"/>
+
+</div>
+
+<br/>
+
+## 🛠 Stack
 
 <div align="center">
 
@@ -30,11 +48,13 @@
 
 <img src="https://skillicons.dev/icons?i=docker,nginx,linux,git,githubactions,vscode&theme=dark" alt="infra and tools"/>
 
+<sub>+ ffmpeg · NVENC · hls.js · WebTorrent · CUDA · OWASP</sub>
+
 </div>
 
 <br/>
 
-### Activity
+## 📊 Activity
 
 <div align="center">
 
@@ -44,10 +64,6 @@
 <br/><br/>
 
 <img src="https://github-readme-activity-graph.vercel.app/graph?username=Xaena53&bg_color=0d1117&color=9aa3b8&line=e8003d&point=f0f3f9&area=true&area_color=e8003d&hide_border=true&custom_title=%20" width="100%" alt="activity graph"/>
-
-<br/>
-
-<img src="https://raw.githubusercontent.com/Xaena53/Xaena53/output/github-snake-dark.svg" width="100%" alt="contribution snake"/>
 
 </div>
 
