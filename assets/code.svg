@@ -17,7 +17,7 @@
       .data { font-family:'SF Mono',Consolas,'Cascadia Code',monospace; }
       .kw   { fill:#7f93bd; }
       .fn   { fill:#eef1f6; }
-      .str  { fill:#c7883d; }
+      .str  { fill:#e8003d; }
       .pn   { fill:#6b7488; }
 
       /* Her satır kendi karakter sayısı kadar steps() ile atlayarak dolar —
@@ -114,7 +114,7 @@
   </g>
 
   <g class="caret">
-    <rect class="caretBlink" x="0" y="0" width="7" height="15" fill="#c7883d"/>
+    <rect class="caretBlink" x="0" y="0" width="7" height="15" fill="#e8003d"/>
   </g>
 
   <g>

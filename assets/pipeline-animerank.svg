@@ -7,7 +7,7 @@
       <path d="M0 0 L8 4 L0 8 z" fill="#3a4560"/>
     </marker>
     <marker id="arrowA" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6.5" markerHeight="6.5" orient="auto">
-      <path d="M0 0 L8 4 L0 8 z" fill="#c7883d"/>
+      <path d="M0 0 L8 4 L0 8 z" fill="#e8003d"/>
     </marker>
     <style>
       .lbl  { font-family:'Segoe UI',Helvetica,Arial,sans-serif; }
@@ -60,14 +60,14 @@
     <text x="702" y="167" class="data" font-size="9.5" fill="#6b7488">fMP4 · fansub</text>
     <text x="702" y="180" class="data" font-size="9.5" fill="#6b7488">intro-injected</text>
 
-    <rect class="active" x="866" y="122" width="102" height="80" fill="#151107" stroke="#c7883d" stroke-width="1.25"/>
-    <text x="886" y="156" class="lbl" font-size="14" font-weight="700" fill="#e2b273">Player</text>
-    <text x="886" y="175" class="data" font-size="9.5" fill="#a3782f">hls.js</text>
+    <rect class="active" x="866" y="122" width="102" height="80" fill="#1a0710" stroke="#e8003d" stroke-width="1.25"/>
+    <text x="886" y="156" class="lbl" font-size="14" font-weight="700" fill="#f28fa0">Player</text>
+    <text x="886" y="175" class="data" font-size="9.5" fill="#b0576a">hls.js</text>
 
     <line class="flow" x1="184" y1="162" x2="234" y2="162" stroke="#3a4560" stroke-width="1.25" marker-end="url(#arrow)"/>
     <line class="flow" x1="402" y1="162" x2="452" y2="162" stroke="#3a4560" stroke-width="1.25" marker-end="url(#arrow)"/>
     <line class="flow" x1="628" y1="162" x2="678" y2="162" stroke="#3a4560" stroke-width="1.25" marker-end="url(#arrow)"/>
-    <line class="flowA" x1="832" y1="162" x2="862" y2="162" stroke="#c7883d" stroke-width="1.5" marker-end="url(#arrowA)"/>
+    <line class="flowA" x1="832" y1="162" x2="862" y2="162" stroke="#e8003d" stroke-width="1.5" marker-end="url(#arrowA)"/>
   </g>
 
   <g>

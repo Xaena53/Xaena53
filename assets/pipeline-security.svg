@@ -8,7 +8,7 @@
       .data { font-family:'SF Mono',Consolas,'Cascadia Code',monospace; }
 
       @keyframes scanLayer { 0%,72%,100%{ stroke:#232d3f; } 12%,28%{ stroke:#5c6d90; } }
-      @keyframes scanLayerA{ 0%,72%,100%{ stroke:#c7883d; } 12%,28%{ stroke:#e2b273; } }
+      @keyframes scanLayerA{ 0%,72%,100%{ stroke:#e8003d; } 12%,28%{ stroke:#f28fa0; } }
       @keyframes checkFade { 0%,100%{ opacity:1; } 50%{ opacity:.35; } }
 
       .layer1 { animation: scanLayer 6s ease-in-out infinite; animation-delay: 0s; }
@@ -32,7 +32,7 @@
 
   <g>
     <rect class="layer1" x="32" y="108" width="936" height="60" fill="#0d1119" stroke="#232d3f" stroke-width="1"/>
-    <text x="52" y="132" class="data" font-size="10" fill="#c7883d" letter-spacing="1">ROUND 01</text>
+    <text x="52" y="132" class="data" font-size="10" fill="#e8003d" letter-spacing="1">ROUND 01</text>
     <text x="52" y="152" class="lbl" font-size="13" font-weight="700" fill="#eef1f6">Mass-Assignment &amp; NoSQL-Injection Sweep</text>
     <text x="612" y="152" class="data" font-size="10" fill="#6b7488">field allow-lists · query sanitization · schema validation</text>
     <text class="check data" x="944" y="140" font-size="13" fill="#7a9a7f" text-anchor="end">✓ closed</text>
@@ -40,15 +40,15 @@
 
   <g>
     <rect class="layer2" x="56" y="180" width="888" height="60" fill="#0d1119" stroke="#232d3f" stroke-width="1"/>
-    <text x="76" y="204" class="data" font-size="10" fill="#c7883d" letter-spacing="1">ROUND 02</text>
+    <text x="76" y="204" class="data" font-size="10" fill="#e8003d" letter-spacing="1">ROUND 02</text>
     <text x="76" y="224" class="lbl" font-size="13" font-weight="700" fill="#eef1f6">Rate Limiting &amp; CSP Architecture</text>
     <text x="612" y="224" class="data" font-size="10" fill="#6b7488">per-route limits · strict CSP · device-limit enforcement</text>
     <text class="check data" x="920" y="212" font-size="13" fill="#7a9a7f" text-anchor="end">✓ closed</text>
   </g>
 
   <g>
-    <rect class="layer3" x="80" y="252" width="840" height="60" fill="#151107" stroke="#c7883d" stroke-width="1.25"/>
-    <text x="100" y="276" class="data" font-size="10" fill="#e2b273" letter-spacing="1">ROUND 03</text>
+    <rect class="layer3" x="80" y="252" width="840" height="60" fill="#1a0710" stroke="#e8003d" stroke-width="1.25"/>
+    <text x="100" y="276" class="data" font-size="10" fill="#f28fa0" letter-spacing="1">ROUND 03</text>
     <text x="100" y="296" class="lbl" font-size="13" font-weight="700" fill="#eef1f6">Payment Locks &amp; Session Revocation</text>
     <text x="612" y="296" class="data" font-size="10" fill="#a3908a">double-fulfillment locks · logout-side revocation · XP self-award fix</text>
     <text class="check data" x="896" y="284" font-size="13" fill="#7a9a7f" text-anchor="end">✓ closed</text>

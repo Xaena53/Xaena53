@@ -1,64 +1,86 @@
-<svg width="1000" height="248" viewBox="0 0 1000 248" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Technology stack datasheet">
+<svg width="1000" height="400" viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Technology stack — skills portfolio">
   <defs>
     <pattern id="g5" width="28" height="28" patternUnits="userSpaceOnUse">
       <path d="M28 0H0V28" fill="none" stroke="#131a26" stroke-width="1"/>
     </pattern>
-    <clipPath id="tableClip"><rect x="32" y="80" width="936" height="150"/></clipPath>
+    <clipPath id="sweepClip"><rect x="32" y="90" width="936" height="270"/></clipPath>
     <style>
       .lbl  { font-family:'Segoe UI',Helvetica,Arial,sans-serif; }
       .data { font-family:'SF Mono',Consolas,'Cascadia Code',monospace; }
+      .chip { transition: none; }
+      .chip rect { fill:#10141d; stroke:#232d3f; }
 
-      @keyframes scanY { 0%{ transform:translateY(0); opacity:0; } 6%{ opacity:1; } 94%{ opacity:1; } 100%{ transform:translateY(150px); opacity:0; } }
-      .scanbar { animation: scanY 5s ease-in-out infinite; }
+      @keyframes sweepY { 0%{ transform:translateY(0); opacity:0; } 4%{ opacity:.8; } 92%{ opacity:.8; } 100%{ transform:translateY(270px); opacity:0; } }
+      .sweep { animation: sweepY 11s ease-in-out infinite; }
 
       @media (prefers-reduced-motion: reduce) { *{ animation:none !important; } }
     </style>
   </defs>
 
-  <rect width="1000" height="248" fill="#0a0d13"/>
-  <rect width="1000" height="248" fill="url(#g5)"/>
-  <rect x="0.5" y="0.5" width="999" height="247" fill="none" stroke="#1c2534"/>
+  <rect width="1000" height="400" fill="#0a0d13"/>
+  <rect width="1000" height="400" fill="url(#g5)"/>
+  <rect x="0.5" y="0.5" width="999" height="399" fill="none" stroke="#1c2534"/>
 
   <text x="32" y="38" class="data" font-size="10.5" fill="#5c6579" letter-spacing="3">05 — SPECIFICATION</text>
   <text x="32" y="60" class="lbl" font-size="18" font-weight="700" fill="#eef1f6">Stack Datasheet</text>
+  <text x="32" y="80" class="lbl" font-size="12" fill="#8993a8">what actually ships — grouped by role, not alphabetized for show</text>
 
-  <line x1="32" y1="80" x2="968" y2="80" stroke="#232d3f" stroke-width="1"/>
-  <line x1="192" y1="80" x2="192" y2="230" stroke="#232d3f" stroke-width="1"/>
-  <line x1="540" y1="80" x2="540" y2="230" stroke="#161d2b" stroke-width="1"/>
+  <rect x="32" y="90" width="936" height="270" fill="#0d1119" stroke="#232d3f" stroke-width="1"/>
+  <path d="M32 90h10M32 90v10M968 90h-10M968 90v10M32 360h10M32 360v-10M968 360h-10M968 360v-10" stroke="#3a4560" stroke-width="1" fill="none"/>
+  <line x1="466" y1="90" x2="466" y2="360" stroke="#161d2b" stroke-width="1"/>
 
-  <g clip-path="url(#tableClip)">
-    <rect class="scanbar" x="32" y="80" width="936" height="1" fill="#c7883d" opacity="0.7"/>
-    <rect class="scanbar" x="32" y="80" width="936" height="18" fill="#c7883d" opacity="0.05"/>
+  <g clip-path="url(#sweepClip)">
+    <rect class="sweep" x="32" y="90" width="936" height="1" fill="#e8003d"/>
   </g>
 
-  <g class="data" font-size="12" fill="#dfe3ea">
-    <text x="32"  y="106" fill="#8993a8" letter-spacing="1">LANGUAGES</text>
-    <text x="212" y="106">JavaScript · TypeScript · Python</text>
-    <line x1="32" y1="120" x2="968" y2="120" stroke="#161d2b" stroke-width="1"/>
+  <g transform="translate(24,10)">
+    <text x="32" y="100" class="lbl cap" font-size="10.5" fill="#8993a8" letter-spacing="2">LANGUAGES</text>
+    <g transform="translate(32.0,114)"><rect width="107.0" height="24" rx="3" fill="#10141d" stroke="#232d3f" stroke-width="1"/><circle cx="14" cy="12" r="4" fill="#f0db4f"/><text x="24" y="16" class="data" font-size="11" fill="#dfe3ea">JavaScript</text></g>
+    <g transform="translate(147.0,114)"><rect width="107.0" height="24" rx="3" fill="#10141d" stroke="#232d3f" stroke-width="1"/><circle cx="14" cy="12" r="4" fill="#3178c6"/><text x="24" y="16" class="data" font-size="11" fill="#dfe3ea">TypeScript</text></g>
+    <g transform="translate(262.0,114)"><rect width="81.0" height="24" rx="3" fill="#10141d" stroke="#232d3f" stroke-width="1"/><circle cx="14" cy="12" r="4" fill="#ffd43b"/><text x="24" y="16" class="data" font-size="11" fill="#dfe3ea">Python</text></g>
 
-    <text x="32"  y="144" fill="#8993a8" letter-spacing="1">BACKEND</text>
-    <text x="212" y="144">Node.js · Express · FastAPI · WebSocket</text>
-    <line x1="32" y1="158" x2="968" y2="158" stroke="#161d2b" stroke-width="1"/>
+    <text x="32" y="168" class="lbl cap" font-size="10.5" fill="#8993a8" letter-spacing="2">BACKEND</text>
+    <g transform="translate(32.0,182)"><rect width="87.5" height="24" rx="3" fill="#10141d" stroke="#232d3f" stroke-width="1"/><circle cx="14" cy="12" r="4" fill="#3c873a"/><text x="24" y="16" class="data" font-size="11" fill="#dfe3ea">Node.js</text></g>
+    <g transform="translate(127.5,182)"><rect width="87.5" height="24" rx="3" fill="#10141d" stroke="#232d3f" stroke-width="1"/><circle cx="14" cy="12" r="4" fill="#9e9e9e"/><text x="24" y="16" class="data" font-size="11" fill="#dfe3ea">Express</text></g>
+    <g transform="translate(223.0,182)"><rect width="87.5" height="24" rx="3" fill="#10141d" stroke="#232d3f" stroke-width="1"/><circle cx="14" cy="12" r="4" fill="#009688"/><text x="24" y="16" class="data" font-size="11" fill="#dfe3ea">FastAPI</text></g>
+    <g transform="translate(318.5,182)"><rect width="100.5" height="24" rx="3" fill="#10141d" stroke="#232d3f" stroke-width="1"/><circle cx="14" cy="12" r="4" fill="#6b8ba4"/><text x="24" y="16" class="data" font-size="11" fill="#dfe3ea">WebSocket</text></g>
 
-    <text x="32"  y="182" fill="#8993a8" letter-spacing="1">DATA</text>
-    <text x="212" y="182">MongoDB · PostgreSQL · Supabase · Redis</text>
-    <line x1="32" y1="196" x2="968" y2="196" stroke="#161d2b" stroke-width="1"/>
+    <text x="32" y="236" class="lbl cap" font-size="10.5" fill="#8993a8" letter-spacing="2">DATA</text>
+    <g transform="translate(32.0,250)"><rect width="87.5" height="24" rx="3" fill="#10141d" stroke="#232d3f" stroke-width="1"/><circle cx="14" cy="12" r="4" fill="#47a248"/><text x="24" y="16" class="data" font-size="11" fill="#dfe3ea">MongoDB</text></g>
+    <g transform="translate(127.5,250)"><rect width="107.0" height="24" rx="3" fill="#10141d" stroke="#232d3f" stroke-width="1"/><circle cx="14" cy="12" r="4" fill="#336791"/><text x="24" y="16" class="data" font-size="11" fill="#dfe3ea">PostgreSQL</text></g>
+    <g transform="translate(242.5,250)"><rect width="94.0" height="24" rx="3" fill="#10141d" stroke="#232d3f" stroke-width="1"/><circle cx="14" cy="12" r="4" fill="#3ecf8e"/><text x="24" y="16" class="data" font-size="11" fill="#dfe3ea">Supabase</text></g>
+    <g transform="translate(344.5,250)"><rect width="74.5" height="24" rx="3" fill="#10141d" stroke="#232d3f" stroke-width="1"/><circle cx="14" cy="12" r="4" fill="#dc382d"/><text x="24" y="16" class="data" font-size="11" fill="#dfe3ea">Redis</text></g>
 
-    <text x="32"  y="220" fill="#8993a8" letter-spacing="1">MEDIA</text>
-    <text x="212" y="220">ffmpeg · NVENC · hls.js · WebTorrent · CUDA</text>
+    <text x="32" y="304" class="lbl cap" font-size="10.5" fill="#8993a8" letter-spacing="2">MEDIA</text>
+    <g transform="translate(32.0,318)"><rect width="81.0" height="24" rx="3" fill="#10141d" stroke="#232d3f" stroke-width="1"/><circle cx="14" cy="12" r="4" fill="#5cb85c"/><text x="24" y="16" class="data" font-size="11" fill="#dfe3ea">ffmpeg</text></g>
+    <g transform="translate(121.0,318)"><rect width="74.5" height="24" rx="3" fill="#10141d" stroke="#232d3f" stroke-width="1"/><circle cx="14" cy="12" r="4" fill="#76b900"/><text x="24" y="16" class="data" font-size="11" fill="#dfe3ea">NVENC</text></g>
+    <g transform="translate(203.5,318)"><rect width="81.0" height="24" rx="3" fill="#10141d" stroke="#232d3f" stroke-width="1"/><circle cx="14" cy="12" r="4" fill="#e8003d"/><text x="24" y="16" class="data" font-size="11" fill="#dfe3ea">hls.js</text></g>
+    <g transform="translate(292.5,318)"><rect width="107.0" height="24" rx="3" fill="#10141d" stroke="#232d3f" stroke-width="1"/><circle cx="14" cy="12" r="4" fill="#ff4081"/><text x="24" y="16" class="data" font-size="11" fill="#dfe3ea">WebTorrent</text></g>
+    <g transform="translate(407.5,318)"><rect width="68.0" height="24" rx="3" fill="#10141d" stroke="#232d3f" stroke-width="1"/><circle cx="14" cy="12" r="4" fill="#76b900"/><text x="24" y="16" class="data" font-size="11" fill="#dfe3ea">CUDA</text></g>
+
+    <text x="498" y="100" class="lbl cap" font-size="10.5" fill="#8993a8" letter-spacing="2">FRONTEND</text>
+    <g transform="translate(498.0,114)"><rect width="74.5" height="24" rx="3" fill="#10141d" stroke="#232d3f" stroke-width="1"/><circle cx="14" cy="12" r="4" fill="#61dafb"/><text x="24" y="16" class="data" font-size="11" fill="#dfe3ea">React</text></g>
+    <g transform="translate(580.5,114)"><rect width="94.0" height="24" rx="3" fill="#10141d" stroke="#232d3f" stroke-width="1"/><circle cx="14" cy="12" r="4" fill="#38bdf8"/><text x="24" y="16" class="data" font-size="11" fill="#dfe3ea">Tailwind</text></g>
+
+    <text x="498" y="168" class="lbl cap" font-size="10.5" fill="#8993a8" letter-spacing="2">INFRA</text>
+    <g transform="translate(498.0,182)"><rect width="81.0" height="24" rx="3" fill="#10141d" stroke="#232d3f" stroke-width="1"/><circle cx="14" cy="12" r="4" fill="#2496ed"/><text x="24" y="16" class="data" font-size="11" fill="#dfe3ea">Docker</text></g>
+    <g transform="translate(587.0,182)"><rect width="74.5" height="24" rx="3" fill="#10141d" stroke="#232d3f" stroke-width="1"/><circle cx="14" cy="12" r="4" fill="#009639"/><text x="24" y="16" class="data" font-size="11" fill="#dfe3ea">Nginx</text></g>
+    <g transform="translate(669.5,182)"><rect width="74.5" height="24" rx="3" fill="#10141d" stroke="#232d3f" stroke-width="1"/><circle cx="14" cy="12" r="4" fill="#f2c94c"/><text x="24" y="16" class="data" font-size="11" fill="#dfe3ea">Linux</text></g>
+
+    <text x="498" y="236" class="lbl cap" font-size="10.5" fill="#8993a8" letter-spacing="2">TOOLING</text>
+    <g transform="translate(498.0,250)"><rect width="61.5" height="24" rx="3" fill="#10141d" stroke="#232d3f" stroke-width="1"/><circle cx="14" cy="12" r="4" fill="#f05032"/><text x="24" y="16" class="data" font-size="11" fill="#dfe3ea">Git</text></g>
+    <g transform="translate(567.5,250)"><rect width="133.0" height="24" rx="3" fill="#10141d" stroke="#232d3f" stroke-width="1"/><circle cx="14" cy="12" r="4" fill="#2088ff"/><text x="24" y="16" class="data" font-size="11" fill="#dfe3ea">GitHub Actions</text></g>
+    <g transform="translate(708.5,250)"><rect width="87.5" height="24" rx="3" fill="#10141d" stroke="#232d3f" stroke-width="1"/><circle cx="14" cy="12" r="4" fill="#007acc"/><text x="24" y="16" class="data" font-size="11" fill="#dfe3ea">VS Code</text></g>
+
+    <text x="498" y="304" class="lbl cap" font-size="10.5" fill="#8993a8" letter-spacing="2">SECURITY</text>
+    <g transform="translate(498.0,318)"><rect width="74.5" height="24" rx="3" fill="#10141d" stroke="#232d3f" stroke-width="1"/><circle cx="14" cy="12" r="4" fill="#e8003d"/><text x="24" y="16" class="data" font-size="11" fill="#dfe3ea">OWASP</text></g>
+    <g transform="translate(580.5,318)"><rect width="126.5" height="24" rx="3" fill="#10141d" stroke="#232d3f" stroke-width="1"/><circle cx="14" cy="12" r="4" fill="#6b7488"/><text x="24" y="16" class="data" font-size="11" fill="#dfe3ea">Rate Limiting</text></g>
+    <g transform="translate(715.0,318)"><rect width="61.5" height="24" rx="3" fill="#10141d" stroke="#232d3f" stroke-width="1"/><circle cx="14" cy="12" r="4" fill="#6b7488"/><text x="24" y="16" class="data" font-size="11" fill="#dfe3ea">CSP</text></g>
   </g>
 
-  <g class="data" font-size="12" fill="#dfe3ea">
-    <text x="560" y="106" fill="#8993a8" letter-spacing="1">FRONTEND</text>
-    <text x="680" y="106">React · Tailwind</text>
-
-    <text x="560" y="144" fill="#8993a8" letter-spacing="1">INFRA</text>
-    <text x="680" y="144">Docker · Nginx · Linux</text>
-
-    <text x="560" y="182" fill="#8993a8" letter-spacing="1">TOOLING</text>
-    <text x="680" y="182">Git · GitHub Actions · VS Code</text>
-
-    <text x="560" y="220" fill="#8993a8" letter-spacing="1">SECURITY</text>
-    <text x="680" y="220">OWASP · rate limiting · CSP</text>
+  <g>
+    <rect x="782" y="368" width="186" height="24" fill="none" stroke="#232d3f" stroke-width="1"/>
+    <text x="790" y="384" class="data" font-size="9" fill="#5c6579">DWG NO.</text>
+    <text x="960" y="384" class="data" font-size="9" fill="#8993a8" text-anchor="end">XR-014 · REV 07.26</text>
   </g>
 </svg>

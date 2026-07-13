@@ -7,7 +7,7 @@
       <path d="M0 0 L8 4 L0 8 z" fill="#3a4560"/>
     </marker>
     <marker id="arrow2A" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6.5" markerHeight="6.5" orient="auto">
-      <path d="M0 0 L8 4 L0 8 z" fill="#c7883d"/>
+      <path d="M0 0 L8 4 L0 8 z" fill="#e8003d"/>
     </marker>
     <style>
       .lbl  { font-family:'Segoe UI',Helvetica,Arial,sans-serif; }
@@ -56,14 +56,14 @@
     <text x="490" y="205" class="lbl" font-size="12.5" font-weight="700" fill="#dfe3ea">Support Queue</text>
     <text x="490" y="223" class="data" font-size="9.5" fill="#6b7488">category-sorted</text>
 
-    <rect class="active" x="712" y="178" width="150" height="66" fill="#151107" stroke="#c7883d" stroke-width="1.25"/>
-    <text x="732" y="205" class="lbl" font-size="13" font-weight="700" fill="#e2b273">Agent</text>
-    <text x="732" y="223" class="data" font-size="9.5" fill="#a3782f">e-mail notify</text>
+    <rect class="active" x="712" y="178" width="150" height="66" fill="#1a0710" stroke="#e8003d" stroke-width="1.25"/>
+    <text x="732" y="205" class="lbl" font-size="13" font-weight="700" fill="#f28fa0">Agent</text>
+    <text x="732" y="223" class="data" font-size="9.5" fill="#b0576a">e-mail notify</text>
 
     <line class="flow" x1="182" y1="162" x2="232" y2="162" stroke="#3a4560" stroke-width="1.25" marker-end="url(#arrow2)"/>
     <path class="flow" d="M416 148 C440 130 448 122 466 113" fill="none" stroke="#3a4560" stroke-width="1.25" marker-end="url(#arrow2)"/>
     <path class="flow" d="M416 176 C440 196 448 202 466 209" fill="none" stroke="#3a4560" stroke-width="1.25" marker-end="url(#arrow2)"/>
-    <line class="flowA" x1="658" y1="211" x2="708" y2="211" stroke="#c7883d" stroke-width="1.5" marker-end="url(#arrow2A)"/>
+    <line class="flowA" x1="658" y1="211" x2="708" y2="211" stroke="#e8003d" stroke-width="1.5" marker-end="url(#arrow2A)"/>
     <path class="ctrl" d="M564 146 C588 160 600 168 614 176" fill="none" stroke="#4a5570" stroke-width="1"/>
     <text x="470" y="70" class="data" font-size="9.5" fill="#4d5567">— — — hands off if unresolved</text>
   </g>

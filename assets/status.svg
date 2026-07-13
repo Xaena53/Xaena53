@@ -17,10 +17,10 @@
   <line x1="0" y1="0" x2="1000" y2="0" stroke="#232d3f" stroke-width="1"/>
 
   <g>
-    <rect class="bar" x="32" y="34" width="4" height="28" fill="#c7883d"/>
-    <rect class="bar" x="40" y="34" width="4" height="28" fill="#c7883d" opacity="0.6"/>
-    <rect class="bar" x="48" y="34" width="4" height="28" fill="#c7883d" opacity="0.35"/>
-    <rect class="bar" x="56" y="34" width="4" height="28" fill="#c7883d" opacity="0.2"/>
+    <rect class="bar" x="32" y="34" width="4" height="28" fill="#e8003d"/>
+    <rect class="bar" x="40" y="34" width="4" height="28" fill="#e8003d" opacity="0.6"/>
+    <rect class="bar" x="48" y="34" width="4" height="28" fill="#e8003d" opacity="0.35"/>
+    <rect class="bar" x="56" y="34" width="4" height="28" fill="#e8003d" opacity="0.2"/>
   </g>
 
   <line x1="82" y1="24" x2="82" y2="72" stroke="#232d3f" stroke-width="1"/>
@@ -32,5 +32,5 @@
   </text>
 
   <text x="944" y="42" text-anchor="end" class="data" font-size="10" fill="#5c6579">BUILD</text>
-  <text x="944" y="66" text-anchor="end" class="data" font-size="12" fill="#c7883d">v9-beta</text>
+  <text x="944" y="66" text-anchor="end" class="data" font-size="12" fill="#e8003d">v9-beta</text>
 </svg>
