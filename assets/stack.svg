@@ -3,9 +3,15 @@
     <pattern id="g5" width="28" height="28" patternUnits="userSpaceOnUse">
       <path d="M28 0H0V28" fill="none" stroke="#131a26" stroke-width="1"/>
     </pattern>
+    <clipPath id="tableClip"><rect x="32" y="80" width="936" height="150"/></clipPath>
     <style>
       .lbl  { font-family:'Segoe UI',Helvetica,Arial,sans-serif; }
       .data { font-family:'SF Mono',Consolas,'Cascadia Code',monospace; }
+
+      @keyframes scanY { 0%{ transform:translateY(0); opacity:0; } 6%{ opacity:1; } 94%{ opacity:1; } 100%{ transform:translateY(150px); opacity:0; } }
+      .scanbar { animation: scanY 5s ease-in-out infinite; }
+
+      @media (prefers-reduced-motion: reduce) { *{ animation:none !important; } }
     </style>
   </defs>
 
@@ -16,9 +22,14 @@
   <text x="32" y="38" class="data" font-size="10.5" fill="#5c6579" letter-spacing="3">05 — SPECIFICATION</text>
   <text x="32" y="60" class="lbl" font-size="18" font-weight="700" fill="#eef1f6">Stack Datasheet</text>
 
-  <!-- tablo -->
   <line x1="32" y1="80" x2="968" y2="80" stroke="#232d3f" stroke-width="1"/>
   <line x1="192" y1="80" x2="192" y2="230" stroke="#232d3f" stroke-width="1"/>
+  <line x1="540" y1="80" x2="540" y2="230" stroke="#161d2b" stroke-width="1"/>
+
+  <g clip-path="url(#tableClip)">
+    <rect class="scanbar" x="32" y="80" width="936" height="1" fill="#c7883d" opacity="0.7"/>
+    <rect class="scanbar" x="32" y="80" width="936" height="18" fill="#c7883d" opacity="0.05"/>
+  </g>
 
   <g class="data" font-size="12" fill="#dfe3ea">
     <text x="32"  y="106" fill="#8993a8" letter-spacing="1">LANGUAGES</text>
@@ -50,5 +61,4 @@
     <text x="560" y="220" fill="#8993a8" letter-spacing="1">SECURITY</text>
     <text x="680" y="220">OWASP · rate limiting · CSP</text>
   </g>
-  <line x1="540" y1="80" x2="540" y2="230" stroke="#161d2b" stroke-width="1"/>
 </svg>

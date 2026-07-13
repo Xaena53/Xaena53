@@ -3,17 +3,27 @@
     <pattern id="g1" width="28" height="28" patternUnits="userSpaceOnUse">
       <path d="M28 0H0V28" fill="none" stroke="#131a26" stroke-width="1"/>
     </pattern>
-    <marker id="tick" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-      <path d="M5 0 V10 M2 2 L8 8 M8 2 L2 8" stroke="#3a4560" stroke-width="1" fill="none" opacity="0"/>
-      <path d="M0 5 H10" stroke="#3a4560" stroke-width="1.4"/>
-    </marker>
     <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6.5" markerHeight="6.5" orient="auto">
       <path d="M0 0 L8 4 L0 8 z" fill="#3a4560"/>
+    </marker>
+    <marker id="arrowA" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M0 0 L8 4 L0 8 z" fill="#c7883d"/>
     </marker>
     <style>
       .lbl  { font-family:'Segoe UI',Helvetica,Arial,sans-serif; }
       .data { font-family:'SF Mono',Consolas,'Cascadia Code',monospace; }
       .node { fill:#0d1119; stroke:#232d3f; stroke-width:1; }
+
+      @keyframes flow    { to { stroke-dashoffset:-16; } }
+      @keyframes flowSlow{ to { stroke-dashoffset:-24; } }
+      @keyframes glow    { 0%,100%{ stroke-opacity:1; } 50%{ stroke-opacity:.45; } }
+
+      .flow      { stroke-dasharray:3 5; animation: flow 0.9s linear infinite; }
+      .flowA     { stroke-dasharray:3 5; animation: flow 0.7s linear infinite; }
+      .ctrl      { stroke-dasharray:1 4; animation: flowSlow 1.6s linear infinite; }
+      .active    { animation: glow 2.4s ease-in-out infinite; }
+
+      @media (prefers-reduced-motion: reduce) { *{ animation:none !important; } }
     </style>
   </defs>
 
@@ -25,64 +35,55 @@
   <text x="32" y="60" class="lbl" font-size="18" font-weight="700" fill="#eef1f6">AnimeRank Media Pipeline</text>
   <text x="32" y="80" class="lbl" font-size="12" fill="#8993a8">torrent swarm ingest → verified source → GPU-transcoded, seekable broadcast delivery</text>
 
-  <!-- ana hat -->
   <g>
-    <!-- P2P Swarm -->
     <rect x="32" y="122" width="152" height="80" class="node"/>
     <path d="M32 122h10M32 122v10M184 122h-10M184 122v10M32 202h10M32 202v-10M184 202h-10M184 202v-10" stroke="#3a4560" stroke-width="1"/>
     <text x="52" y="150" class="lbl" font-size="13.5" font-weight="700" fill="#eef1f6">P2P Swarm</text>
     <text x="52" y="167" class="data" font-size="9.5" fill="#6b7488">AnimeTosho</text>
     <text x="52" y="180" class="data" font-size="9.5" fill="#6b7488">Nyaa · AniRena</text>
 
-    <!-- Verify -->
     <rect x="238" y="122" width="164" height="80" class="node"/>
     <path d="M238 122h10M238 122v10M402 122h-10M402 122v10M238 202h10M238 202v-10M402 202h-10M402 202v-10" stroke="#3a4560" stroke-width="1"/>
     <text x="258" y="150" class="lbl" font-size="13.5" font-weight="700" fill="#eef1f6">Verify &amp; Select</text>
     <text x="258" y="167" class="data" font-size="9.5" fill="#6b7488">season guard</text>
     <text x="258" y="180" class="data" font-size="9.5" fill="#6b7488">quality score</text>
 
-    <!-- GPU Transcode -->
     <rect x="456" y="122" width="172" height="80" class="node"/>
     <path d="M456 122h10M456 122v10M628 122h-10M628 122v10M456 202h10M456 202v-10M628 202h-10M628 202v-10" stroke="#3a4560" stroke-width="1"/>
     <text x="476" y="150" class="lbl" font-size="13.5" font-weight="700" fill="#eef1f6">GPU Transcode</text>
     <text x="476" y="167" class="data" font-size="9.5" fill="#6b7488">NVENC · 3-tier</text>
     <text x="476" y="180" class="data" font-size="9.5" fill="#6b7488">1080 / 720 / 480</text>
 
-    <!-- HLS Packager -->
     <rect x="682" y="122" width="150" height="80" class="node"/>
     <path d="M682 122h10M682 122v10M832 122h-10M832 122v10M682 202h10M682 202v-10M832 202h-10M832 202v-10" stroke="#3a4560" stroke-width="1"/>
     <text x="702" y="150" class="lbl" font-size="13.5" font-weight="700" fill="#eef1f6">HLS Packager</text>
     <text x="702" y="167" class="data" font-size="9.5" fill="#6b7488">fMP4 · fansub</text>
     <text x="702" y="180" class="data" font-size="9.5" fill="#6b7488">intro-injected</text>
 
-    <!-- Player -->
-    <rect x="866" y="122" width="102" height="80" fill="#151107" stroke="#c7883d" stroke-width="1.25"/>
+    <rect class="active" x="866" y="122" width="102" height="80" fill="#151107" stroke="#c7883d" stroke-width="1.25"/>
     <text x="886" y="156" class="lbl" font-size="14" font-weight="700" fill="#e2b273">Player</text>
     <text x="886" y="175" class="data" font-size="9.5" fill="#a3782f">hls.js</text>
 
-    <!-- oklar -->
-    <line x1="184" y1="162" x2="234" y2="162" stroke="#3a4560" stroke-width="1.25" marker-end="url(#arrow)"/>
-    <line x1="402" y1="162" x2="452" y2="162" stroke="#3a4560" stroke-width="1.25" marker-end="url(#arrow)"/>
-    <line x1="628" y1="162" x2="678" y2="162" stroke="#3a4560" stroke-width="1.25" marker-end="url(#arrow)"/>
-    <line x1="832" y1="162" x2="862" y2="162" stroke="#c7883d" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <line class="flow" x1="184" y1="162" x2="234" y2="162" stroke="#3a4560" stroke-width="1.25" marker-end="url(#arrow)"/>
+    <line class="flow" x1="402" y1="162" x2="452" y2="162" stroke="#3a4560" stroke-width="1.25" marker-end="url(#arrow)"/>
+    <line class="flow" x1="628" y1="162" x2="678" y2="162" stroke="#3a4560" stroke-width="1.25" marker-end="url(#arrow)"/>
+    <line class="flowA" x1="832" y1="162" x2="862" y2="162" stroke="#c7883d" stroke-width="1.5" marker-end="url(#arrowA)"/>
   </g>
 
-  <!-- alt dallar -->
   <g>
     <rect x="238" y="256" width="164" height="66" class="node"/>
     <text x="258" y="282" class="lbl" font-size="12.5" font-weight="700" fill="#dfe3ea">4K Restoration</text>
     <text x="258" y="300" class="data" font-size="9.5" fill="#6b7488">AI upscale · legacy sources</text>
-    <path d="M320 256 C320 234 400 210 452 194" fill="none" stroke="#3a4560" stroke-width="1" stroke-dasharray="1 4"/>
+    <path class="ctrl" d="M320 256 C320 234 400 210 452 194" fill="none" stroke="#4a5570" stroke-width="1"/>
 
     <rect x="456" y="256" width="172" height="66" class="node"/>
     <text x="476" y="282" class="lbl" font-size="12.5" font-weight="700" fill="#dfe3ea">AI Subtitles</text>
     <text x="476" y="300" class="data" font-size="9.5" fill="#6b7488">GPU batch translate</text>
-    <path d="M542 256 C542 236 600 214 678 196" fill="none" stroke="#3a4560" stroke-width="1" stroke-dasharray="1 4"/>
+    <path class="ctrl" d="M542 256 C542 236 600 214 678 196" fill="none" stroke="#4a5570" stroke-width="1"/>
 
     <text x="32" y="296" class="data" font-size="9.5" fill="#4d5567">— — — control / governs, not data flow</text>
   </g>
 
-  <!-- başlık bloğu -->
   <g>
     <rect x="782" y="308" width="186" height="42" fill="none" stroke="#232d3f" stroke-width="1"/>
     <line x1="782" y1="322" x2="968" y2="322" stroke="#232d3f" stroke-width="1"/>

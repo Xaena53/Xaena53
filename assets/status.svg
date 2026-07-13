@@ -2,17 +2,25 @@
   <defs><style>
     .lbl  { font-family:'Segoe UI',Helvetica,Arial,sans-serif; }
     .data { font-family:'SF Mono',Consolas,'Cascadia Code',monospace; }
+
+    @keyframes level { 0%,100%{ transform:scaleY(1); } 50%{ transform:scaleY(.32); } }
+    .bar { transform-box: fill-box; transform-origin: bottom; animation: level 1.5s ease-in-out infinite; }
+    .bar:nth-of-type(1){ animation-delay: 0s; }
+    .bar:nth-of-type(2){ animation-delay: .2s; }
+    .bar:nth-of-type(3){ animation-delay: .4s; }
+    .bar:nth-of-type(4){ animation-delay: .6s; }
+
+    @media (prefers-reduced-motion: reduce) { *{ animation:none !important; } }
   </style></defs>
 
   <rect x="0.5" y="0.5" width="999" height="95" fill="#0d1119" stroke="#1c2534" stroke-width="1"/>
   <line x1="0" y1="0" x2="1000" y2="0" stroke="#232d3f" stroke-width="1"/>
 
-  <!-- canlı gösterge segmentleri (VU-metre esintili, dekoratif değil düzenli) -->
   <g>
-    <rect x="32" y="34" width="4" height="28" fill="#c7883d"/>
-    <rect x="40" y="34" width="4" height="28" fill="#c7883d" opacity="0.55"/>
-    <rect x="48" y="34" width="4" height="28" fill="#c7883d" opacity="0.3"/>
-    <rect x="56" y="34" width="4" height="28" fill="#232d3f"/>
+    <rect class="bar" x="32" y="34" width="4" height="28" fill="#c7883d"/>
+    <rect class="bar" x="40" y="34" width="4" height="28" fill="#c7883d" opacity="0.6"/>
+    <rect class="bar" x="48" y="34" width="4" height="28" fill="#c7883d" opacity="0.35"/>
+    <rect class="bar" x="56" y="34" width="4" height="28" fill="#c7883d" opacity="0.2"/>
   </g>
 
   <line x1="82" y1="24" x2="82" y2="72" stroke="#232d3f" stroke-width="1"/>

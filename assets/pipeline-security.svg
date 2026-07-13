@@ -6,6 +6,19 @@
     <style>
       .lbl  { font-family:'Segoe UI',Helvetica,Arial,sans-serif; }
       .data { font-family:'SF Mono',Consolas,'Cascadia Code',monospace; }
+
+      @keyframes scanLayer { 0%,72%,100%{ stroke:#232d3f; } 12%,28%{ stroke:#5c6d90; } }
+      @keyframes scanLayerA{ 0%,72%,100%{ stroke:#c7883d; } 12%,28%{ stroke:#e2b273; } }
+      @keyframes checkFade { 0%,100%{ opacity:1; } 50%{ opacity:.35; } }
+
+      .layer1 { animation: scanLayer 6s ease-in-out infinite; animation-delay: 0s; }
+      .layer2 { animation: scanLayer 6s ease-in-out infinite; animation-delay: .9s; }
+      .layer3 { animation: scanLayerA 6s ease-in-out infinite; animation-delay: 1.8s; }
+      .check  { animation: checkFade 2.6s ease-in-out infinite; }
+      .check:nth-of-type(2) { animation-delay: .3s; }
+      .check:nth-of-type(3) { animation-delay: .6s; }
+
+      @media (prefers-reduced-motion: reduce) { *{ animation:none !important; } }
     </style>
   </defs>
 
@@ -17,34 +30,30 @@
   <text x="32" y="60" class="lbl" font-size="18" font-weight="700" fill="#eef1f6">Production Hardening — Defense in Depth</text>
   <text x="32" y="80" class="lbl" font-size="12" fill="#8993a8">three audit rounds, each layer closing a class of vulnerability before the next begins</text>
 
-  <!-- katman 1 (en dış / en genel) -->
   <g>
-    <rect x="32" y="108" width="936" height="60" fill="#0d1119" stroke="#232d3f" stroke-width="1"/>
+    <rect class="layer1" x="32" y="108" width="936" height="60" fill="#0d1119" stroke="#232d3f" stroke-width="1"/>
     <text x="52" y="132" class="data" font-size="10" fill="#c7883d" letter-spacing="1">ROUND 01</text>
     <text x="52" y="152" class="lbl" font-size="13" font-weight="700" fill="#eef1f6">Mass-Assignment &amp; NoSQL-Injection Sweep</text>
     <text x="612" y="152" class="data" font-size="10" fill="#6b7488">field allow-lists · query sanitization · schema validation</text>
-    <text x="944" y="140" class="data" font-size="13" fill="#7a9a7f" text-anchor="end">✓ closed</text>
+    <text class="check data" x="944" y="140" font-size="13" fill="#7a9a7f" text-anchor="end">✓ closed</text>
   </g>
 
-  <!-- katman 2 -->
   <g>
-    <rect x="56" y="180" width="888" height="60" fill="#0d1119" stroke="#232d3f" stroke-width="1"/>
+    <rect class="layer2" x="56" y="180" width="888" height="60" fill="#0d1119" stroke="#232d3f" stroke-width="1"/>
     <text x="76" y="204" class="data" font-size="10" fill="#c7883d" letter-spacing="1">ROUND 02</text>
     <text x="76" y="224" class="lbl" font-size="13" font-weight="700" fill="#eef1f6">Rate Limiting &amp; CSP Architecture</text>
     <text x="612" y="224" class="data" font-size="10" fill="#6b7488">per-route limits · strict CSP · device-limit enforcement</text>
-    <text x="920" y="212" class="data" font-size="13" fill="#7a9a7f" text-anchor="end">✓ closed</text>
+    <text class="check data" x="920" y="212" font-size="13" fill="#7a9a7f" text-anchor="end">✓ closed</text>
   </g>
 
-  <!-- katman 3 (en iç / en kritik) -->
   <g>
-    <rect x="80" y="252" width="840" height="60" fill="#151107" stroke="#c7883d" stroke-width="1.25"/>
+    <rect class="layer3" x="80" y="252" width="840" height="60" fill="#151107" stroke="#c7883d" stroke-width="1.25"/>
     <text x="100" y="276" class="data" font-size="10" fill="#e2b273" letter-spacing="1">ROUND 03</text>
     <text x="100" y="296" class="lbl" font-size="13" font-weight="700" fill="#eef1f6">Payment Locks &amp; Session Revocation</text>
     <text x="612" y="296" class="data" font-size="10" fill="#a3908a">double-fulfillment locks · logout-side revocation · XP self-award fix</text>
-    <text x="896" y="284" class="data" font-size="13" fill="#7a9a7f" text-anchor="end">✓ closed</text>
+    <text class="check data" x="896" y="284" font-size="13" fill="#7a9a7f" text-anchor="end">✓ closed</text>
   </g>
 
-  <!-- daralan konturu belirten ölçü çizgileri -->
   <g stroke="#2a3548" stroke-width="1">
     <line x1="32" y1="98" x2="32" y2="90"/><line x1="968" y1="98" x2="968" y2="90"/>
     <line x1="32" y1="94" x2="968" y2="94"/>
