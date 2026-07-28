@@ -30,7 +30,7 @@
   <g>
     <text x="290" y="88" class="title" font-size="15" fill="#eef1f6" letter-spacing="1.5">REAL-TIME</text>
     <text x="290" y="105" class="data" font-size="10" fill="#8993a8">WebRTC mesh · WebSocket</text>
-    <text x="290" y="118" class="data" font-size="10" fill="#5c6579">signaling · TURN · SFU</text>
+    <text x="290" y="118" class="data" font-size="10" fill="#5c6579">signaling · TURN · ICE</text>
   </g>
   <g>
     <text x="524" y="88" class="title" font-size="15" fill="#eef1f6" letter-spacing="1.5">DISTRIBUTED</text>
