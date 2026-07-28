@@ -51,7 +51,7 @@ A GPU-batched translation pipeline for anime subtitles — season-aware episode 
 <br/>
 
 <div align="center">
-<img src="assets/telemetry.svg" alt="Live GitHub telemetry" width="100%"/>
+<img src="assets/focus.svg" alt="Engineering core competencies" width="100%"/>
 </div>
 
 <br/>
