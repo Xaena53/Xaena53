@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Refreshes assets/telemetry.svg with real, currently-fetchable public data
- * (repos / followers / stars). Intentionally does NOT touch contribution or
+ * (repos / followers / following). Intentionally does NOT touch contribution or
  * streak counts: the default GITHUB_TOKEN can only see public-repo activity,
  * and most of this account's real work lives in private repos — showing a
  * near-empty public contribution graph would be a less honest signal than
@@ -15,9 +15,9 @@ const query = `
   query($login: String!) {
     user(login: $login) {
       followers { totalCount }
-      repositories(first: 100, ownerAffiliations: OWNER, isFork: false) {
+      following { totalCount }
+      repositories(ownerAffiliations: OWNER, privacy: PUBLIC) {
         totalCount
-        nodes { stargazerCount }
       }
     }
   }`;
@@ -34,7 +34,7 @@ if (json.errors) { console.error('GraphQL errors', json.errors); process.exit(1)
 const u = json.data.user;
 const repos = u.repositories.totalCount;
 const followers = u.followers.totalCount;
-const stars = u.repositories.nodes.reduce((s, r) => s + (r.stargazerCount || 0), 0);
+const following = u.following.totalCount;
 
 const fs = await import('node:fs/promises');
 const path = new URL('../assets/telemetry.svg', import.meta.url);
@@ -47,7 +47,7 @@ const swap = (id, value) => {
 };
 swap('repos', repos);
 swap('followers', followers);
-swap('stars', stars);
+swap('following', following);
 
 await fs.writeFile(path, svg);
-console.log(`telemetry updated: repos=${repos} followers=${followers} stars=${stars}`);
+console.log(`telemetry updated: repos=${repos} followers=${followers} following=${following}`);
