@@ -55,8 +55,10 @@ An MCP server that hands Google Ads to a language model without handing it your 
 <br/>
 
 <div align="center">
-<img src="assets/stack.svg" alt="Technology stack datasheet" width="100%"/>
+<img src="assets/skilltree.svg" alt="Capability tree — 27 technologies grouped by role, each branch naming the shipped projects that use it" width="100%"/>
 </div>
+
+Grouped by the job each tool does, and every branch names the projects it is actually used in. The list was read off the dependency manifests in those repositories — it is a record of what ships, not a list of things tried once.
 
 <br/>
 
@@ -82,12 +84,6 @@ Numbers on this page are measured, not estimated: test counts come from the suit
 
 <div align="center">
 <img src="assets/opensource.svg" alt="Upstream contributions and shipped systems" width="100%"/>
-</div>
-
-<br/>
-
-<div align="center">
-<img src="assets/techicons.svg" alt="Working set — Node.js, Express, PostgreSQL/PostGIS, Docker, GitHub Actions, MapLibre, Python, PyTorch, OpenCV, FFmpeg, WebRTC, MCP" width="100%"/>
 </div>
 
 <br/>
