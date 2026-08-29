@@ -55,7 +55,7 @@ def esc(s):
 # ----------------------------------------------------------------- 08 · TELEMETRY
 def build_metrics():
     """Sol: test paketleri (yatay çubuk) · Sağ: gerçek model eğitim eğrisi."""
-    tests = [("AdsPilot", 455), ("EKT Akademi", 270), ("Asfalya", 213),
+    tests = [("AdsPilot", 646), ("EKT Akademi", 270), ("Asfalya", 213),
              ("MangaRank", 70), ("RepChat e2e", 40)]
     curve_csv = Path(r"C:/Asfalya/pipeline/runs/asfalya-v1/results.csv")
     curve = []
@@ -149,7 +149,10 @@ def build_asfalya():
 
 # ----------------------------------------------------------------- 05 · ADSPILOT
 def build_adspilot():
-    H = 230
+    # 268, 230 değil: alttaki künye satırı y=248'de duruyor ve 230'luk viewBox onu
+    # tamamen kırpıyordu — kartın en güçlü iddiası (hackathon kısa listesi, ilk canlı
+    # CAMARA çağrısı) hiç görünmüyordu.
+    H = 282
     s = [head(H, "AdsPilot — Google Ads automation with safety gates", "g5a",
               "05 — ADSPILOT · GUARDED AD AUTOMATION")]
     s.append(f'<text x="42" y="86" class="disp" font-size="21" fill="{INK}">AdsPilot</text>')
@@ -165,7 +168,8 @@ def build_adspilot():
         s.append(f'<rect x="{x}" y="{y}" width="3" height="36" fill="{ACCENT}"/>')
         s.append(f'<text x="{x+14}" y="{y+16}" class="data" font-size="10" fill="{INK}" letter-spacing="1">{t}</text>')
         s.append(f'<text x="{x+14}" y="{y+29}" class="lbl" font-size="9.5" fill="{INK3}">{sub}</text>')
-    s.append(f'<text x="42" y="{132+2*46+24}" class="lbl" font-size="10.5" fill="{INK2}">455 tests · AGPL-3.0 · shortlisted at the GSMA MENA Ignite hackathon · first live CAMARA network-API call executed</text>')
+    s.append(f'<text x="42" y="{132+2*46+26}" class="lbl" font-size="10.5" fill="{INK2}">646 tests · 94% line coverage · every gate mutation-verified · AGPL-3.0</text>')
+    s.append(f'<text x="42" y="{132+2*46+42}" class="lbl" font-size="10.5" fill="{INK2}">Shortlisted at the GSMA MENA Ignite hackathon · first live CAMARA network-API call executed</text>')
     s.append("</svg>")
     (ASSETS / "pipeline-adspilot.svg").write_text("\n".join(s), encoding="utf-8")
 

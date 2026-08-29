@@ -44,7 +44,7 @@ Computer vision for municipal road maintenance. Phone cameras ride on city buses
 <img src="assets/pipeline-adspilot.svg" alt="AdsPilot — guarded Google Ads automation over MCP" width="100%"/>
 </div>
 
-An MCP server that hands Google Ads to a language model without handing it your budget. Campaigns are created paused, budget increases require explicit human consent while cuts go through freely, the account owner sets a ceiling the model cannot raise, and scraped site copy is treated as untrusted input rather than instructions. Shortlisted at the GSMA MENA Ignite hackathon.
+An MCP server that hands Google Ads to a language model without handing it your budget. Campaigns are created paused, budget increases require explicit human consent while cuts go through freely, the account owner sets a ceiling the model cannot raise, and scraped site copy is treated as untrusted input rather than instructions. Every one of those gates is verified by mutation — the guard is broken on purpose to confirm a test catches it, because a guard whose removal leaves the suite green is not a tested guard. Shortlisted at the GSMA MENA Ignite hackathon.
 
 <br/>
 
@@ -75,10 +75,10 @@ Grouped by the job each tool does, and every branch names the projects it is act
 <br/>
 
 <div align="center">
-<img src="assets/metrics.svg" alt="Verified metrics — 1,048 passing tests and model training curve" width="100%"/>
+<img src="assets/metrics.svg" alt="Verified metrics — 1,239 passing tests and model training curve" width="100%"/>
 </div>
 
-Numbers on this page are measured, not estimated: test counts come from the suites that gate every push, and the training curve is the actual run that produced the road-damage model — including the class it is still weak at.
+Numbers on this page are measured, not estimated: test counts come from the suites that gate every push, and the training curve is the actual run that produced the road-damage model — including the class it is still weak at. Counting passing tests is the weaker half of the claim, though, since a test can run a line without checking what it did; the AdsPilot suite is held to the stricter standard of mutation, where each guard is broken to confirm the suite notices.
 
 <br/>
 
