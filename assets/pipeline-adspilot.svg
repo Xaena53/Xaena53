@@ -1,0 +1,41 @@
+<svg width="1000" height="230" viewBox="0 0 1000 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AdsPilot — Google Ads automation with safety gates">
+  <defs>
+    <pattern id="g5a" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0V28" fill="none" stroke="#131a26" stroke-width="1"/>
+    </pattern>
+    <style>
+      .lbl { font-family:'Segoe UI',Helvetica,Arial,sans-serif; }
+      .data { font-family:'SF Mono',Consolas,'Cascadia Code',monospace; }
+      .title { font-family:'Segoe UI Semibold','Segoe UI',Helvetica,Arial,sans-serif; font-weight:600; }
+      .disp { font-family:Georgia,'Times New Roman',serif; }
+      
+      @media (prefers-reduced-motion: reduce) { * { animation:none !important; } }
+    </style>
+  </defs>
+  <rect width="1000" height="230" fill="#0a0d13"/>
+  <rect width="1000" height="230" fill="url(#g5a)"/>
+  <rect x="0.5" y="0.5" width="999" height="229" fill="none" stroke="#1c2534"/>
+  <rect x="42" y="31" width="6" height="6" fill="#e8003d"/>
+  <text x="58" y="38" class="data" font-size="10.5" fill="#5c6579" letter-spacing="3">05 — ADSPILOT · GUARDED AD AUTOMATION</text>
+  <line x1="32" y1="56" x2="968" y2="56" stroke="#232d3f" stroke-width="1"/>
+
+<text x="42" y="86" class="disp" font-size="21" fill="#e6e9ef">AdsPilot</text>
+<text x="42" y="106" class="lbl" font-size="11.5" fill="#8b93a7">An MCP server that lets a model run Google Ads — behind gates that refuse to spend without consent</text>
+<rect x="42" y="132" width="446" height="36" fill="#0e131d" stroke="#243044"/>
+<rect x="42" y="132" width="3" height="36" fill="#e8003d"/>
+<text x="56" y="148" class="data" font-size="10" fill="#e6e9ef" letter-spacing="1">CAMPAIGNS START PAUSED</text>
+<text x="56" y="161" class="lbl" font-size="9.5" fill="#5c6579">no silent spend</text>
+<rect x="512" y="132" width="446" height="36" fill="#0e131d" stroke="#243044"/>
+<rect x="512" y="132" width="3" height="36" fill="#e8003d"/>
+<text x="526" y="148" class="data" font-size="10" fill="#e6e9ef" letter-spacing="1">BUDGET RAISE NEEDS CONSENT</text>
+<text x="526" y="161" class="lbl" font-size="9.5" fill="#5c6579">cuts are free</text>
+<rect x="42" y="178" width="446" height="36" fill="#0e131d" stroke="#243044"/>
+<rect x="42" y="178" width="3" height="36" fill="#e8003d"/>
+<text x="56" y="194" class="data" font-size="10" fill="#e6e9ef" letter-spacing="1">ACCOUNT OWNER SETS CEILING</text>
+<text x="56" y="207" class="lbl" font-size="9.5" fill="#5c6579">model cannot lift it</text>
+<rect x="512" y="178" width="446" height="36" fill="#0e131d" stroke="#243044"/>
+<rect x="512" y="178" width="3" height="36" fill="#e8003d"/>
+<text x="526" y="194" class="data" font-size="10" fill="#e6e9ef" letter-spacing="1">SITE DATA IS UNTRUSTED</text>
+<text x="526" y="207" class="lbl" font-size="9.5" fill="#5c6579">prompt-injection guard</text>
+<text x="42" y="248" class="lbl" font-size="10.5" fill="#8b93a7">455 tests · AGPL-3.0 · shortlisted at the GSMA MENA Ignite hackathon · first live CAMARA network-API call executed</text>
+</svg>

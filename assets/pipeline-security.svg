@@ -36,7 +36,7 @@
   <rect x="0.5" y="0.5" width="999" height="319" fill="none" stroke="#1c2534"/>
   <rect x="0.5" y="0.5" width="999" height="319" fill="none" stroke="#e8003d" stroke-width="1.5" class="frameScan" opacity="0.85"/>
 
-  <text x="32" y="38" class="data" font-size="10.5" fill="#5c6579" letter-spacing="3">04 — SECURITY AUDIT</text>
+  <text x="32" y="38" class="data" font-size="10.5" fill="#5c6579" letter-spacing="3">06 — SECURITY AUDIT</text>
   <text x="32" y="60" class="lbl" font-size="18" font-weight="700" fill="#eef1f6">Production Hardening — Defense in Depth</text>
   <text x="32" y="80" class="lbl" font-size="12" fill="#8993a8">three audit rounds, each layer closing a class of vulnerability before the next begins</text>
 

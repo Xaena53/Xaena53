@@ -2,7 +2,7 @@
 
 <img src="assets/hero.svg" alt="Xaena53 — Full-Stack Developer, streaming and real-time systems" width="100%"/>
 
-<img src="assets/status.svg" alt="currently building AnimeRank" width="100%"/>
+<img src="assets/status.svg" alt="currently building Asfalya" width="100%"/>
 
 </div>
 
@@ -33,6 +33,22 @@ A GPU-batched translation pipeline for anime subtitles — season-aware episode 
 <br/>
 
 <div align="center">
+<img src="assets/pipeline-asfalya.svg" alt="Asfalya — vehicle-mounted road damage detection for municipalities" width="100%"/>
+</div>
+
+Computer vision for municipal road maintenance. Phone cameras ride on city buses; a YOLO11 detector trained on 35,984 images finds potholes, cracks and sunken manholes; GPS interpolation and OSM map-matching pin each one to a street, and duplicate sightings across passes collapse into a single tracked repair. Faces and plates are blurred **before** detection — the pipeline refuses to process an unmasked frame at all, so the privacy rule cannot be forgotten. Node/Express + PostGIS behind a MapLibre panel, with weekly PDF reports for the public works desk.
+
+<br/>
+
+<div align="center">
+<img src="assets/pipeline-adspilot.svg" alt="AdsPilot — guarded Google Ads automation over MCP" width="100%"/>
+</div>
+
+An MCP server that hands Google Ads to a language model without handing it your budget. Campaigns are created paused, budget increases require explicit human consent while cuts go through freely, the account owner sets a ceiling the model cannot raise, and scraped site copy is treated as untrusted input rather than instructions. Shortlisted at the GSMA MENA Ignite hackathon.
+
+<br/>
+
+<div align="center">
 <img src="assets/pipeline-security.svg" alt="Production hardening — defense in depth" width="100%"/>
 </div>
 
@@ -57,5 +73,27 @@ A GPU-batched translation pipeline for anime subtitles — season-aware episode 
 <br/>
 
 <div align="center">
-<sub><code>DWG SET XR-001 — XR-020 · REV 2026.07</code></sub>
+<img src="assets/metrics.svg" alt="Verified metrics — 1,048 passing tests and model training curve" width="100%"/>
+</div>
+
+Numbers on this page are measured, not estimated: test counts come from the suites that gate every push, and the training curve is the actual run that produced the road-damage model — including the class it is still weak at.
+
+<br/>
+
+<div align="center">
+<img src="assets/opensource.svg" alt="Upstream contributions and shipped systems" width="100%"/>
+</div>
+
+<br/>
+
+<div align="center">
+
+**Node.js · Express · PostgreSQL/PostGIS · Python · PyTorch · YOLO · Docker · WebRTC · FFmpeg · MapLibre · MCP**
+
+<sub><a href="mailto:bedometom@gmail.com">bedometom@gmail.com</a></sub>
+
+<br/>
+
+<sub><code>DWG SET XR-001 — XR-024 · REV 2026.08</code></sub>
+
 </div>
