@@ -87,13 +87,17 @@ Numbers on this page are measured, not estimated: test counts come from the suit
 <br/>
 
 <div align="center">
+<img src="assets/techicons.svg" alt="Working set — Node.js, Express, PostgreSQL/PostGIS, Docker, GitHub Actions, MapLibre, Python, PyTorch, OpenCV, FFmpeg, WebRTC, MCP" width="100%"/>
+</div>
 
-**Node.js · Express · PostgreSQL/PostGIS · Python · PyTorch · YOLO · Docker · WebRTC · FFmpeg · MapLibre · MCP**
+<br/>
+
+<div align="center">
 
 <sub><a href="mailto:bedometom@gmail.com">bedometom@gmail.com</a></sub>
 
 <br/>
 
-<sub><code>DWG SET XR-001 — XR-024 · REV 2026.08</code></sub>
+<sub><code>DWG SET XR-001 — XR-025 · REV 2026.08</code></sub>
 
 </div>
