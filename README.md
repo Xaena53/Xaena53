@@ -17,6 +17,12 @@ Computer vision for municipal road maintenance. Phone cameras ride on city buses
 <br/>
 
 <div align="center">
+<img src="assets/plate-asfalya.jpg" alt="Asfalya screens — damage map of Eskişehir and two detection frames" width="100%"/>
+</div>
+
+<br/>
+
+<div align="center">
 <img src="assets/pipeline-aegis.svg" alt="Aegis — network-verified approvals for AI agents that spend money" width="100%"/>
 </div>
 
@@ -41,10 +47,22 @@ Batch translation for anime subtitles. Karaoke, song and on-screen effect lines 
 <br/>
 
 <div align="center">
+<img src="assets/plate-kurenai.jpg" alt="Kurenai screens — kurenai.shop and a station sign redrawn in Turkish" width="100%"/>
+</div>
+
+<br/>
+
+<div align="center">
 <img src="assets/pipeline-repchat.svg" alt="RepChat live-support architecture" width="100%"/>
 </div>
 
 A live-support runtime running in production: embeddable widget, WebSocket gateway, category-routed queues, and an AI greeter that resolves the easy tickets before a human ever sees them.
+
+<br/>
+
+<div align="center">
+<img src="assets/plate-repchat.jpg" alt="RepChat screens — operator inbox and the phone widget" width="100%"/>
+</div>
 
 <br/>
 
@@ -56,6 +74,18 @@ A live-support runtime running in production: embeddable widget, WebSocket gatew
 
 <div align="center">
 <img src="assets/work.svg" alt="More work — EKT Akademi, Warden of the Fields, Demir Cephe, Hapivanak, Çakmak Pen, MHRS data module" width="100%"/>
+</div>
+
+<br/>
+
+<div align="center">
+<img src="assets/plate-warden.jpg" alt="Warden of the Fields — Unreal Engine 5.8 captures of the village" width="100%"/>
+</div>
+
+<br/>
+
+<div align="center">
+<img src="assets/plate-clients.jpg" alt="Client sites in production — EKT Akademi and Çakmak Pen" width="100%"/>
 </div>
 
 <br/>
