@@ -2,7 +2,7 @@
 """Çark + etkinlik + kadran kartları.
 
 orbit.svg     08·B  teknoloji çarkı: yetkinlik ağacındaki 33 simge üç halkada döner (portfolyodaki çarkın SVG'si)
-activity.svg  00    açılışta kalemle çizilen Bedirhan Çetin imzası, sonra son 12 ayın katkı ısı haritası + proje başına son 26 haftanın haftalık commit'leri
+activity.svg  00    açılışta commit kutularıyla yazılan Bedirhan Çetin imzası, sonra son 12 ayın katkı ısı haritası + proje başına son 26 haftanın haftalık commit'leri
 dials.svg     11·B  ölçülmüş oranlar için kadranlar + depo başına eşit ağırlıklı dil dağılımı
 
 Veri: `python build_dash.py --cek` GitHub API'den veri/ altına çeker (gh girişli olmalı);
@@ -149,45 +149,77 @@ def orbit():
 
 
 # ----------------------------------------------------------------- 00 ETKİNLİK
-# İmza: Herr Von Muellerhoff (SIL OFL 1.1, google/fonts) harf konturlarından üretilir.
-# Her kontur kalem hızıyla sırayla çizilir (pathLength=1 + dashoffset), harf bitince içi mürekkeple dolar,
-# en sonda paraf çekilir ve kalem ucu parafın üzerinde yürür. Font yalnız derlemede okunur, repoya girmez.
-FONT = VERI / "font" / "HerrVonMuellerhoff-Regular.ttf"
-FONT_URL = "https://raw.githubusercontent.com/google/fonts/main/ofl/herrvonmuellerhoff/HerrVonMuellerhoff-Regular.ttf"
+# İmza commit kutularıyla yazılır. 7 satırlık ızgarada el yazısı okunmaz; bu yüzden her commit kutusu
+# 3×3 alt kutuya bölünür (3 px kutu + 1 px boşluk = 11 px, büyük kutuyla birebir hizalı) ve imza bu
+# 159×21'lik ızgaraya basılır. Alt kutular kalemin gerçek çizim sırasıyla yanar; sonra her biri kendi
+# büyük kutusunun merkezine toplanır ve imza commit haritasına dönüşür.
+# Harfler Allura'dan (SIL OFL 1.1, google/fonts): bu çözünürlükte en okunur el yazısı o çıktı.
+# Font yalnız derlemede okunur. Boş alt ızgara tek bir <pattern> ile çizilir.
+FONT = VERI / "font" / "Allura-Regular.ttf"
+FONT_URL = "https://raw.githubusercontent.com/google/fonts/main/ofl/allura/Allura-Regular.ttf"
 IMZA = "Bedirhan Çetin"
+ALT, ALT_BOS = 3, 1          # alt kutu kenarı ve aralığı (px)
 
 
-def imza_svg(kutu, t0, hiz=0.95):
-    """kutu=(x, y, w, h) içine ortalanmış imza. (svg satırları, css, yazım bitiş anı) döndürür.
-    hiz: saniyede çizilen normalize uzunluk (toplam iz uzunluğuna göre)."""
+def imza_hucre(x0, y0, c, g, sutun, t0, rampa, sure=2.6):
+    """Döndürür: (svg satırları, css, yazım bitiş anı, {(hafta, gün): toplanma gecikmesi için anahtar})."""
+    import numpy as np
+    from fontTools.pens.basePen import BasePen
     from fontTools.pens.boundsPen import BoundsPen
-    from fontTools.pens.perimeterPen import PerimeterPen
     from fontTools.pens.recordingPen import DecomposingRecordingPen
-    from fontTools.pens.svgPathPen import SVGPathPen
     from fontTools.pens.transformPen import TransformPen
     from fontTools.ttLib import TTFont
+    from PIL import Image, ImageDraw, ImageFont
 
     if not FONT.exists():
         FONT.parent.mkdir(parents=True, exist_ok=True)
         import urllib.request
         urllib.request.urlretrieve(FONT_URL, FONT)
     f = TTFont(FONT)
-    gs, cmap = f.getGlyphSet(), f.getBestCmap()
+    gs, cmap, upm = f.getGlyphSet(), f.getBestCmap(), f["head"].unitsPerEm
 
-    # harf başına kontur listesi, font biriminde
+    class Duz(BasePen):
+        """Konturu kırık çizgiye açar (kalemin geçtiği noktalar, sırasıyla)."""
+        def __init__(self):
+            super().__init__(None)
+            self.yollar, self.cur = [], []
+
+        def _moveTo(self, p):
+            self.cur = [p]
+
+        def _lineTo(self, p):
+            self.cur.append(p)
+
+        def _curveToOne(self, a, b, p):
+            s0 = self.cur[-1]
+            for i in range(1, 13):
+                t = i / 12
+                u = 1 - t
+                self.cur.append((u**3*s0[0] + 3*u*u*t*a[0] + 3*u*t*t*b[0] + t**3*p[0],
+                                 u**3*s0[1] + 3*u*u*t*a[1] + 3*u*t*t*b[1] + t**3*p[1]))
+
+        def _qCurveToOne(self, a, p):
+            s0 = self.cur[-1]
+            for i in range(1, 9):
+                t = i / 8
+                u = 1 - t
+                self.cur.append((u*u*s0[0] + 2*u*t*a[0] + t*t*p[0], u*u*s0[1] + 2*u*t*a[1] + t*t*p[1]))
+
+        def _closePath(self):
+            self.cur.append(self.cur[0])
+            self.yollar.append(self.cur)
+            self.cur = []
+
+        _endPath = _closePath
+
+    # harfler: (ilerleme, kayıt)
     harfler, ilerle = [], 0
     for ch in IMZA:
         ad = cmap[ord(ch)]
         if ch != " ":
             rp = DecomposingRecordingPen(gs)
             gs[ad].draw(rp)
-            konturlar, cur = [], []
-            for op, args in rp.value:
-                cur.append((op, args))
-                if op in ("closePath", "endPath"):
-                    konturlar.append(cur)
-                    cur = []
-            harfler.append((ilerle, konturlar))
+            harfler.append((ch, ilerle, rp.value))
         ilerle += gs[ad].width
 
     def oynat(kayit, pen):
@@ -195,70 +227,95 @@ def imza_svg(kutu, t0, hiz=0.95):
             getattr(pen, op)(*args)
 
     bp = BoundsPen(gs)
-    for dx, ks in harfler:
-        for k in ks:
-            oynat(k, TransformPen(bp, (1, 0, 0, 1, dx, 0)))
+    for _, dx, k in harfler:
+        oynat(k, TransformPen(bp, (1, 0, 0, 1, dx, 0)))
     xmin, ymin, xmax, ymax = bp.bounds
-    X, Y, W, Hh = kutu
-    s = min(W / (xmax - xmin), Hh / (ymax - ymin))
-    ox = X + (W - (xmax - xmin) * s) / 2 - xmin * s
-    oy = Y + (Hh + (ymax - ymin) * s) / 2 + ymin * s      # y aşağı: taban = oy
 
-    def tr(dx):
-        return (s, 0, 0, -s, ox + dx * s, oy)
+    gen, yuk = sutun * (c + g) - g, 7 * (c + g) - g          # ızgaranın piksel boyutu
+    kx, ky, kw, kh = 30, 1, gen - 60, yuk - 2               # imza kutusu (ızgaraya göre)
+    s = min(kw / (xmax - xmin), kh / (ymax - ymin))
+    ox = kx + (kw - (xmax - xmin) * s) / 2 - xmin * s
+    oy = ky + kh / 2 + (ymax + ymin) / 2 * s                  # taban çizgisi (y aşağı)
 
-    # konturları yazım sırasına koy (harf sırası, harf içinde soldan sağa), uzunlukları ölç
-    izler = []
-    for hi, (dx, ks) in enumerate(harfler):
-        for k in ks:
-            pp = PerimeterPen()
-            oynat(k, TransformPen(pp, tr(dx)))
-            b = BoundsPen(None)
-            oynat(k, TransformPen(b, tr(dx)))
-            sp = SVGPathPen(None, ntos=lambda v: f"{v:.1f}")
-            oynat(k, TransformPen(sp, tr(dx)))
-            izler.append((hi, b.bounds[0] if b.bounds else 0, pp.value, sp.getCommands()))
-    izler.sort(key=lambda t: (t[0], t[1]))
-    toplam = sum(t[2] for t in izler)
+    # kalem yolları: harf sırası, harf içinde konturlar
+    yollar = []
+    for _, dx, k in harfler:
+        d = Duz()
+        oynat(k, TransformPen(d, (s, 0, 0, -s, ox + dx * s, oy)))
+        yollar += [y for y in d.yollar if len(y) > 2]
+    # zamanlama: her yol uzunluğu oranında süre alır, yollar biraz üst üste biner (el akışı)
+    def uzunluk(y):
+        a = np.asarray(y)
+        return float(np.hypot(*np.diff(a, axis=0).T).sum())
 
-    satir, harf_son = [], {}
-    t = t0
-    for hi, _, uz, d in izler:
-        sure = max(0.12, uz / toplam / hiz * 2.2)
-        satir.append(f'<path class="mc" pathLength="1" style="animation-delay:{t:.2f}s;animation-duration:{sure:.2f}s" d="{d}"/>')
-        t += sure * 0.55                                   # konturlar biraz üst üste biner: el akışı
-        harf_son[hi] = max(harf_son.get(hi, 0), t + sure * 0.45)
-    yazim_son = t
-    dolgu = []
-    for hi, (dx, ks) in enumerate(harfler):
-        sp = SVGPathPen(None, ntos=lambda v: f"{v:.1f}")
-        for k in ks:
-            oynat(k, TransformPen(sp, tr(dx)))
-        dolgu.append(f'<path class="md" style="animation-delay:{harf_son[hi]:.2f}s" d="{sp.getCommands()}"/>')
+    tum = yollar
+    uz = [uzunluk(y) for y in tum]
+    birim = sure / (sum(uz) * 0.6)
+    noktalar, t = [], t0
+    for i, (y, u) in enumerate(zip(tum, uz)):
+        d = u * birim
+        a = np.asarray(y)
+        kum = np.concatenate([[0], np.cumsum(np.hypot(*np.diff(a, axis=0).T))])
+        for (px, py), k in zip(a, kum):
+            noktalar.append((t + d * k / max(kum[-1], 1e-6), px, py))
+        t += d * 0.6
+    yazim_son = max(n[0] for n in noktalar)
+    N = np.asarray(noktalar)
 
-    # paraf: ilk harfin altından başlayıp adın sonunu geçen, uçta hafif kıvrılan tek çizgi
-    L, R = ox + xmin * s, ox + xmax * s
-    yb = oy + 0.10 * (ymax - ymin) * s
-    paraf = (f"M{L + 0.03*(R-L):.1f},{yb + 4:.1f} C{L + 0.28*(R-L):.1f},{yb + 17:.1f} "
-             f"{L + 0.66*(R-L):.1f},{yb + 9:.1f} {R + 0.06*(R-L):.1f},{yb - 7:.1f}")
-    p0, psure = yazim_son + 0.15, 0.75
-    satir_paraf = [f'<path class="mp" pathLength="1" style="animation-delay:{p0:.2f}s;animation-duration:{psure:.2f}s" d="{paraf}"/>',
-                   f'<g class="uc" style="offset-path:path(\'{paraf}\');animation-delay:{p0:.2f}s;animation-duration:{psure:.2f}s">'
-                   f'<circle r="7" fill="{ACCENT}" opacity=".22"/><circle r="2.4" fill="#ffffff"/></g>']
+    # raster: yüksek çözünürlükte doldur, alt kutu başına kaplama oranı
+    K = 8
+    im = Image.new("L", (gen * K, yuk * K), 0)
+    dr = ImageDraw.Draw(im)
+    font = ImageFont.truetype(str(FONT), round(s * upm * K))
+    for ch, dx, _ in harfler:
+        dr.text(((ox + dx * s) * K, oy * K), ch, font=font, fill=255, anchor="ls", stroke_width=round(0.6 * K), stroke_fill=255)
+    m = np.asarray(im, dtype=np.float32) / 255
+
+    def alt_konum(i):            # alt kutu indeksi → ızgaraya göre piksel
+        return (i // 3) * (c + g) + (i % 3) * (ALT + ALT_BOS)
+
+    rect, kutular = [], {}
+    for sc in range(sutun * 3):
+        ax = alt_konum(sc)
+        for sr in range(21):
+            ay = alt_konum(sr)
+            kap = float(m[ay*K:(ay+ALT)*K, ax*K:(ax+ALT)*K].mean())
+            if kap < 0.10:
+                continue
+            sev = 2 + (kap > 0.22) + (kap > 0.45)
+            cx, cy = ax + ALT / 2, ay + ALT / 2
+            tz = float(N[np.argmin((N[:, 1] - cx) ** 2 + (N[:, 2] - cy) ** 2), 0])
+            wi, di = sc // 3, sr // 3
+            # toplanırken alt kutu büyük kutunun merkezine kayar
+            mx, my = wi * (c + g) + c / 2, di * (c + g) + c / 2
+            rect.append((tz, wi, di, f'x="{x0+ax}" y="{y0+ay}" width="{ALT}" height="{ALT}" rx="0.8" fill="{rampa[sev]}" '
+                                     f'style="--dx:{mx-cx:.1f}px;--dy:{my-cy:.1f}px;animation-delay:{tz:.2f}s,TOPLA_{wi}_{di}s"'))
+            kutular[(wi, di)] = True
+
+    # kalem ucu: yazım boyunca 90 anahtar karede yolu izler
+    ks = []
+    for q in np.linspace(0, 1, 90):
+        tq = t0 + q * (yazim_son - t0)
+        j = int(np.argmin(np.abs(N[:, 0] - tq)))
+        ks.append(f"{q*100:.1f}%{{transform:translate({x0+N[j,1]:.1f}px,{y0+N[j,2]:.1f}px);}}")
     css = (
-        "@keyframes ciz{from{stroke-dashoffset:1;}to{stroke-dashoffset:0;}}"
-        " @keyframes doldur{from{fill-opacity:0;}to{fill-opacity:1;}}"
-        " @keyframes kalemyol{0%{offset-distance:0%;opacity:0;}10%{opacity:1;}85%{opacity:1;}100%{offset-distance:100%;opacity:0;}}"
-        f" .mc,.mp{{fill:none;stroke:{ACCENT};stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1 1;"
-        "stroke-dashoffset:1;animation-name:ciz;animation-timing-function:cubic-bezier(.45,.05,.35,1);animation-fill-mode:forwards;}"
-        " .mc{stroke-width:1.1;}"
-        " .mp{stroke-width:1.8;}"
-        f" .md{{fill:{ACCENT};fill-opacity:0;stroke:none;animation:doldur .55s ease-out forwards;}}"
-        " .uc{offset-rotate:0deg;opacity:0;animation-name:kalemyol;animation-timing-function:cubic-bezier(.45,.05,.35,1);"
-        "animation-fill-mode:forwards;}"
+        "@keyframes yak{0%{opacity:0;transform:scale(.2);}55%{opacity:1;transform:scale(1.6);}100%{opacity:1;transform:scale(1);}}"
+        " @keyframes topla{from{opacity:1;transform:translate(0,0) scale(1);}"
+        "to{opacity:0;transform:translate(var(--dx),var(--dy)) scale(2.6);}}"
+        " .sc{opacity:0;transform-box:fill-box;transform-origin:center;animation-name:yak,topla;"
+        "animation-duration:.4s,.75s;animation-timing-function:cubic-bezier(.2,.8,.3,1),cubic-bezier(.5,0,.3,1);"
+        "animation-fill-mode:forwards,forwards;}"
+        f" @keyframes ucyol{{{''.join(ks)}}}"
+        " @keyframes ucgor{0%{opacity:0;}4%{opacity:1;}94%{opacity:1;}100%{opacity:0;}}"
+        f" .ucu{{animation:ucyol {yazim_son-t0:.2f}s linear {t0:.2f}s both,ucgor {yazim_son-t0:.2f}s linear {t0:.2f}s both;}}"
     )
-    svg = ["  <g>" + "".join(dolgu) + "</g>", "  <g>" + "".join(satir) + "</g>", "  " + "".join(satir_paraf)]
-    return svg, css, p0 + psure
+    uc = (f'<g class="ucu"><circle r="7" fill="{ACCENT}" opacity=".22"/>'
+          f'<circle r="2.4" fill="#ffffff"/></g>')
+    desen = ('<defs><pattern id="altiz" x="{x}" y="{y}" width="{p}" height="{p}" patternUnits="userSpaceOnUse">'.format(x=x0, y=y0, p=c + g)
+             + "".join(f'<rect x="{i*(ALT+ALT_BOS)}" y="{j*(ALT+ALT_BOS)}" width="{ALT}" height="{ALT}" rx="0.8" fill="{rampa[0]}"/>'
+                       for i in range(3) for j in range(3))
+             + f'</pattern></defs><rect class="altiz" x="{x0}" y="{y0}" width="{gen}" height="{yuk}" fill="url(#altiz)"/>')
+    return sorted(rect), uc, css, yazim_son, desen
 
 
 def activity():
@@ -285,9 +342,8 @@ def activity():
     # zaman çizelgesi (saniye): imza yazılır → bekler → dalga halinde gerçek haritaya döner → çubuklar yükselir
     DONUS_SUT, DONUS_SAT = 0.022, 0.03
     x0, y0, c, g = 216, 84, 11, 3
-    imza_parca, imza_css, imza_bit = imza_svg((x0 + 70, y0 - 8, len(hafta) * (c + g) - 140, 104), 0.3)
-    CIK0 = imza_bit + 0.8                 # imza bir an durur, sonra yukarı süzülerek söner
-    DONUS0 = CIK0 + 0.3
+    alt_kutular, uc, imza_css, imza_bit, desen = imza_hucre(x0, y0, c, g, len(hafta), 0.3, rampa)
+    DONUS0 = imza_bit + 1.0               # imza bir an durur, sonra alt kutular büyük kutulara toplanır
     CUBUK0 = DONUS0 + len(hafta) * DONUS_SUT + 0.5
     TUR, TARA0 = 9, DONUS0 + len(hafta) * DONUS_SUT + 2.0    # tarayıcı turu ve başlangıcı
 
@@ -295,7 +351,7 @@ def activity():
     H = top + len(satirlar) * 24 + 40
     css = (
         f"{imza_css}"
-        f" @keyframes cik{{to{{opacity:0;transform:translateY(-10px);}}}} .imza{{animation:cik .9s cubic-bezier(.4,0,.2,1) {CIK0:.2f}s forwards;}}"
+        f" @keyframes sonuk{{to{{opacity:0;}}}} .altiz{{animation:sonuk 1.3s ease-in-out {DONUS0-0.2:.2f}s forwards;}}"
         " @keyframes belir{from{opacity:0;transform:scale(.5);}to{opacity:1;transform:scale(1);}}"
         " @keyframes yuksel{from{transform:scaleY(0);}to{transform:scaleY(1);}}"
         " @keyframes sol{from{opacity:0;}to{opacity:1;}}"
@@ -310,7 +366,7 @@ def activity():
         "4%{opacity:.5;transform:scale(1.15);}10%{opacity:0;transform:scale(1);}100%{opacity:0;}}"
         " .kv{opacity:0;transform-box:fill-box;transform-origin:center;animation:kivilcim var(--t) linear infinite;}"
         " @keyframes yanip{0%,100%{opacity:.35;}50%{opacity:1;}} .bas{animation:yanip .9s ease-in-out infinite;}"
-        " @media (prefers-reduced-motion: reduce){.imza{display:none;}.kv,.tarayici{opacity:0 !important;}"
+        " @media (prefers-reduced-motion: reduce){.sc,.ucu,.altiz{display:none;}.kv,.tarayici{opacity:0 !important;}"
         ".ge,.sl{opacity:1 !important;transform:none !important;}.cb{transform:none !important;}}"
     )
     s = head(H, f"Activity — signed BEDİRHAN ÇETİN, then {tak['totalContributions']:,} contributions in the past year "
@@ -346,9 +402,13 @@ def activity():
                               f'rx="2" fill="{rampa[sv]}"><title>{gun["date"]}: {gun["contributionCount"]}</title></rect>')
     s.append(f'  <g class="sl" style="animation-delay:{DONUS0-0.35:.2f}s" fill="{rampa[0]}">' + "".join(bos) + "</g>")
     s.append("  <g>" + "".join(gercek) + "</g>")
-    s.append('  <g class="imza">')
-    s.extend(imza_parca)
-    s.append("  </g>")
+    s.append("  " + desen)
+    parca = []
+    for _, wi, di, oz in alt_kutular:
+        don = DONUS0 + wi * DONUS_SUT + di * DONUS_SAT
+        parca.append(f'<rect class="sc" {oz.replace(f"TOPLA_{wi}_{di}", f"{don:.2f}")}/>')
+    s.append("  <g>" + "".join(parca) + "</g>")
+    s.append("  " + uc)
     # tarayıcı geçerken dolu hücreler kıvılcımlanır: her hücrenin gecikmesi çizginin o sütuna varış anı
     gezi = len(hafta) * (c + g)
     kv = []
@@ -408,7 +468,7 @@ def activity():
     s.append(f'  <text x="{bx+26*bw}" y="{H-18}" text-anchor="end" class="data" font-size="8.5" fill="{INK3}">this week</text>')
     s.append("</svg>")
     (ASSETS / "activity.svg").write_text("\n".join(s), encoding="utf-8")
-    print("activity.svg", tak["totalContributions"], "katkı,", len(satirlar), "proje, imza biter", round(imza_bit, 2), "sn")
+    print("activity.svg", tak["totalContributions"], "katkı,", len(satirlar), "proje,", len(alt_kutular), "alt kutu, imza biter", round(imza_bit, 2), "sn")
 
 
 # ----------------------------------------------------------------- 11·B KADRANLAR
