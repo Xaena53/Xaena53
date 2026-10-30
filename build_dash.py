@@ -2,7 +2,7 @@
 """Çark + etkinlik + kadran kartları.
 
 orbit.svg     08·B  teknoloji çarkı: yetkinlik ağacındaki 33 simge üç halkada döner (portfolyodaki çarkın SVG'si)
-activity.svg  11·C  son 12 ayın katkı ısı haritası + proje başına son 26 haftanın haftalık commit'leri
+activity.svg  00    açılışta hücrelerle BEDİRHAN ÇETİN imzası, sonra son 12 ayın katkı ısı haritası + proje başına son 26 haftanın haftalık commit'leri
 dials.svg     11·B  ölçülmüş oranlar için kadranlar + depo başına eşit ağırlıklı dil dağılımı
 
 Veri: `python build_dash.py --cek` GitHub API'den veri/ altına çeker (gh girişli olmalı);
@@ -148,25 +148,58 @@ def orbit():
     print("orbit.svg", toplam, "simge")
 
 
-# ----------------------------------------------------------------- 11·C ETKİNLİK
+# ----------------------------------------------------------------- 00 ETKİNLİK
+# 7 satırlık ızgaraya sığan el yapımı yazı: gövde 1–5. satırlar, İ noktası 0, Ç çengeli 6.
+HARF = {
+    "B": ["110", "101", "110", "101", "110"],
+    "E": ["111", "100", "110", "100", "111"],
+    "D": ["110", "101", "101", "101", "110"],
+    "R": ["110", "101", "110", "101", "101"],
+    "H": ["101", "101", "111", "101", "101"],
+    "A": ["010", "101", "111", "101", "101"],
+    "N": ["1001", "1101", "1011", "1001", "1001"],
+    "T": ["111", "010", "010", "010", "010"],
+    "Ç": ["111", "100", "100", "100", "111"],
+    "İ": ["0", "1", "1", "1", "1"],
+}
+IMZA = "BEDİRHAN ÇETİN"
+
+
+def imza_hucreleri(sutun_sayisi):
+    """{(sütun, satır)} kümesi; yazı ızgarada yatayda ortalanır."""
+    gen = sum(2 if h == " " else len(HARF[h][0]) + 1 for h in IMZA) - 1
+    x = (sutun_sayisi - gen) // 2
+    hucre = set()
+    for h in IMZA:
+        if h == " ":
+            x += 2
+            continue
+        g = HARF[h]
+        for r, satir in enumerate(g):
+            for c, b in enumerate(satir):
+                if b == "1":
+                    hucre.add((x + c, r + 1))
+        if h == "İ":
+            hucre.add((x, 0))
+        if h == "Ç":
+            hucre.add((x + 1, 6))
+        x += len(g[0]) + 1
+    return hucre
+
+
 def activity():
     tak = json.loads((VERI / "takvim.json").read_text(encoding="utf-8"))["data"]["viewer"][
         "contributionsCollection"]["contributionCalendar"]
     hafta = tak["weeks"]
-    gunler = [g for w in hafta for g in w["contributionDays"]]
-    sayilar = [g["contributionCount"] for g in gunler]
+    sayilar = [g["contributionCount"] for w in hafta for g in w["contributionDays"]]
     aktif = sum(1 for c in sayilar if c)
     pozitif = sorted(c for c in sayilar if c)
     esikler = [pozitif[int(len(pozitif) * q)] for q in (0.25, 0.5, 0.75)] if pozitif else [1, 2, 3]
-    # tek renkli sıralı rampa: boş → vurgunun dört adımı
-    rampa = ["#111826", "#4a1424", "#7a1030", "#b00836", ACCENT]
+    rampa = ["#111826", "#4a1424", "#7a1030", "#b00836", ACCENT]   # tek renkli sıralı rampa
 
     def seviye(c):
-        if c == 0:
-            return 0
-        return 1 + sum(c > e for e in esikler)
+        return 0 if c == 0 else 1 + sum(c > e for e in esikler)
 
-    # en uzun ardışık aktif gün serisi
     seri = en = 0
     for c in sayilar:
         seri = seri + 1 if c else 0
@@ -174,45 +207,96 @@ def activity():
 
     hw = json.loads((VERI / "haftalik.json").read_text(encoding="utf-8"))
     satirlar = sorted(((ad, hw["seri"][d]) for d, ad in PROJE), key=lambda t: -sum(t[1]))
+
+    # zaman çizelgesi (saniye): imza yazılır → bekler → dalga halinde gerçek haritaya döner → çubuklar yükselir
+    YAZ0, YAZ_ADIM, DONUS0, DONUS_SUT, DONUS_SAT = 0.35, 0.034, 3.1, 0.022, 0.03
+    x0, y0, c, g = 216, 84, 11, 3
+    imza = imza_hucreleri(len(hafta))
+    sutunlar = sorted({k for k, _ in imza})
+    kalem_bas, kalem_son = YAZ0 + sutunlar[0] * YAZ_ADIM, YAZ0 + sutunlar[-1] * YAZ_ADIM
+    CUBUK0 = DONUS0 + len(hafta) * DONUS_SUT + 0.5
+
     top = 254
     H = top + len(satirlar) * 24 + 40
-    css = ("@keyframes tara{0%{transform:translateX(0);opacity:0;}6%{opacity:.9;}94%{opacity:.9;}100%{transform:translateX(742px);opacity:0;}}"
-           " .tarayici{animation:tara 9s linear infinite;}")
-    s = head(H, f"Activity — {tak['totalContributions']:,} contributions in the past year and weekly commits per project",
-             "gac", "11·C — ACTIVITY · COMMITS", css)
+    css = (
+        "@keyframes gir{from{opacity:0;transform:scale(.35);}to{opacity:1;transform:scale(1);}}"
+        " @keyframes son{to{opacity:0;transform:scale(.6);}}"
+        " @keyframes belir{from{opacity:0;transform:scale(.5);}to{opacity:1;transform:scale(1);}}"
+        " @keyframes yuksel{from{transform:scaleY(0);}to{transform:scaleY(1);}}"
+        " @keyframes sol{from{opacity:0;}to{opacity:1;}}"
+        f" @keyframes kalem{{0%{{transform:translateX(0);opacity:0;}}8%{{opacity:1;}}92%{{opacity:1;}}"
+        f"100%{{transform:translateX({(sutunlar[-1]-sutunlar[0])*(c+g)}px);opacity:0;}}}}"
+        f" @keyframes tara{{0%{{transform:translateX(0);opacity:0;}}6%{{opacity:.8;}}94%{{opacity:.8;}}"
+        f"100%{{transform:translateX({len(hafta)*(c+g)}px);opacity:0;}}}}"
+        " .im,.ge,.cb{transform-box:fill-box;transform-origin:center;}"
+        " .im{opacity:0;animation-name:gir,son;animation-duration:.32s,.9s;"
+        "animation-timing-function:cubic-bezier(.2,.8,.3,1),cubic-bezier(.4,0,.2,1);animation-fill-mode:forwards,forwards;}"
+        " .ge{opacity:0;animation:belir 1s cubic-bezier(.2,.7,.2,1) forwards;}"
+        " .cb{transform-origin:bottom;transform:scaleY(0);animation:yuksel .7s cubic-bezier(.2,.8,.2,1) forwards;}"
+        " .sl{opacity:0;animation:sol .8s ease-out forwards;}"
+        f" .kalem{{opacity:0;animation:kalem {kalem_son-kalem_bas:.2f}s linear {kalem_bas:.2f}s forwards;}}"
+        f" .tarayici{{opacity:0;animation:tara 9s linear {CUBUK0+1.5:.1f}s infinite;}}"
+        " @media (prefers-reduced-motion: reduce){.im,.kalem{opacity:0 !important;}"
+        ".ge,.sl{opacity:1 !important;transform:none !important;}.cb{transform:none !important;}}"
+    )
+    s = head(H, f"Activity — signed BEDİRHAN ÇETİN, then {tak['totalContributions']:,} contributions in the past year "
+                "and weekly commits per project", "gac", "00 — ACTIVITY · COMMITS", css)
 
-    # sol künye
+    # sol künye — dönüşle birlikte belirir
+    s.append(f'  <g class="sl" style="animation-delay:{DONUS0+0.3:.2f}s">')
     s.append(f'  <text x="42" y="104" class="disp" font-size="34" fill="{INK}">{tak["totalContributions"]:,}</text>')
     s.append(f'  <text x="42" y="122" class="lbl" font-size="10.5" fill="{INK2}">contributions, past 12 months</text>')
     for k, (v, e) in enumerate(((str(aktif), "active days"), (str(max(sayilar)), "busiest day"), (f"{en} days", "longest streak"))):
         y = 146 + k * 24
         s.append(f'  <text x="42" y="{y}" class="data" font-size="13" fill="{INK}">{v}</text>')
         s.append(f'  <text x="42" y="{y+12}" class="lbl" font-size="9" fill="{INK3}">{e}</text>')
+    s.append("  </g>")
 
-    # ısı haritası
-    x0, y0, c, g = 216, 84, 11, 3
+    # ısı haritası: boş ızgara (sabit) + gerçek hücreler (dalga) + imza hücreleri (yazılır, söner)
     ay_once, son_etiket = None, -9
+    bos, gercek, imz = [], [], []
     for wi, w in enumerate(hafta):
         ilk = w["contributionDays"][0]["date"]
         if ilk[5:7] != ay_once and wi < len(hafta) - 2 and wi - son_etiket >= 3:
             ay_once, son_etiket = ilk[5:7], wi
-            s.append(f'  <text x="{x0 + wi*(c+g)}" y="{y0-6}" class="data" font-size="8.5" fill="{INK3}">'
-                     f'{dt.date.fromisoformat(ilk).strftime("%b")}</text>')
+            s.append(f'  <text class="sl data" style="animation-delay:{DONUS0 + wi*DONUS_SUT:.2f}s" x="{x0 + wi*(c+g)}" y="{y0-6}" '
+                     f' font-size="8.5" fill="{INK3}">{dt.date.fromisoformat(ilk).strftime("%b")}</text>')
         for gun in w["contributionDays"]:
-            di = (dt.date.fromisoformat(gun["date"]).isoweekday()) % 7
-            s.append(f'  <rect x="{x0 + wi*(c+g)}" y="{y0 + di*(c+g)}" width="{c}" height="{c}" rx="2" '
-                     f'fill="{rampa[seviye(gun["contributionCount"])]}"><title>{gun["date"]}: {gun["contributionCount"]}</title></rect>')
+            di = dt.date.fromisoformat(gun["date"]).isoweekday() % 7
+            x, y = x0 + wi * (c + g), y0 + di * (c + g)
+            bos.append(f'<rect x="{x}" y="{y}" width="{c}" height="{c}" rx="2"/>')
+            don = DONUS0 + wi * DONUS_SUT + di * DONUS_SAT
+            sv = seviye(gun["contributionCount"])
+            if sv:
+                gercek.append(f'<rect class="ge" style="animation-delay:{don+0.15:.2f}s" x="{x}" y="{y}" width="{c}" height="{c}" '
+                              f'rx="2" fill="{rampa[sv]}"><title>{gun["date"]}: {gun["contributionCount"]}</title></rect>')
+    for (wi, di) in sorted(imza):
+        x, y = x0 + wi * (c + g), y0 + di * (c + g)
+        yaz = YAZ0 + wi * YAZ_ADIM + di * 0.012
+        don = DONUS0 + wi * DONUS_SUT + di * DONUS_SAT
+        imz.append(f'<rect class="im" style="animation-delay:{yaz:.2f}s,{don:.2f}s" x="{x}" y="{y}" width="{c}" height="{c}" '
+                   f'rx="2" fill="{ACCENT}"/>')
+    s.append(f'  <g fill="{rampa[0]}">' + "".join(bos) + "</g>")
+    s.append("  <g>" + "".join(gercek) + "</g>")
+    s.append("  <g>" + "".join(imz) + "</g>")
+    # kalem ucu: imzayı yazan parlak nokta
+    kx = x0 + sutunlar[0] * (c + g) + c / 2
+    s.append(f'  <g class="kalem"><circle cx="{kx}" cy="{y0 + 3.5*(c+g)}" r="9" fill="{ACCENT}" opacity=".18"/>'
+             f'<circle cx="{kx}" cy="{y0 + 3.5*(c+g)}" r="3" fill="#ffffff"/></g>')
     for di, ad in ((1, "Mon"), (3, "Wed"), (5, "Fri")):
-        s.append(f'  <text x="{x0-8}" y="{y0 + di*(c+g) + 9}" text-anchor="end" class="data" font-size="8" fill="{INK3}">{ad}</text>')
-    s.append(f'  <rect class="tarayici" x="{x0-2}" y="{y0-2}" width="2" height="{7*(c+g)+1}" fill="{INK}" opacity="0"/>')
-    # rampa açıklaması
+        s.append(f'  <text class="sl data" style="animation-delay:{DONUS0:.2f}s" x="{x0-8}" y="{y0 + di*(c+g) + 9}" '
+                 f'text-anchor="end" font-size="8" fill="{INK3}">{ad}</text>')
+    s.append(f'  <rect class="tarayici" x="{x0-2}" y="{y0-2}" width="2" height="{7*(c+g)+1}" fill="{INK}"/>')
+    sag = x0 + len(hafta) * (c + g) - g
     ly = y0 + 7 * (c + g) + 14
-    s.append(f'  <text x="{x0+742}" y="{ly+9}" text-anchor="end" class="data" font-size="8.5" fill="{INK3}">more</text>')
+    s.append(f'  <g class="sl" style="animation-delay:{DONUS0+0.8:.2f}s">')
+    s.append(f'  <text x="{sag}" y="{ly+9}" text-anchor="end" class="data" font-size="8.5" fill="{INK3}">more</text>')
     for k, r in enumerate(reversed(rampa)):
-        s.append(f'  <rect x="{x0+742-30-(k+1)*14}" y="{ly}" width="{c}" height="{c}" rx="2" fill="{r}"/>')
-    s.append(f'  <text x="{x0+742-30-5*14-6}" y="{ly+9}" text-anchor="end" class="data" font-size="8.5" fill="{INK3}">less</text>')
+        s.append(f'  <rect x="{sag-30-(k+1)*14}" y="{ly}" width="{c}" height="{c}" rx="2" fill="{r}"/>')
+    s.append(f'  <text x="{sag-30-5*14-6}" y="{ly+9}" text-anchor="end" class="data" font-size="8.5" fill="{INK3}">less</text>')
+    s.append("  </g>")
 
-    # proje başına haftalık commit
+    # proje başına haftalık commit — çubuklar sırayla yükselir
     s.append(f'  <line x1="32" y1="{top-36}" x2="968" y2="{top-36}" stroke="{RULE}"/>')
     s.append(f'  <text x="42" y="{top-16}" class="title" font-size="12" fill="{INK}" letter-spacing="1.5">COMMITS PER WEEK · LAST 26 WEEKS</text>')
     s.append(f'  <text x="958" y="{top-16}" text-anchor="end" class="data" font-size="9" fill="{INK3}">each row scaled to its own busiest week · total on the right</text>')
@@ -220,22 +304,28 @@ def activity():
     for k, (ad, say) in enumerate(satirlar):
         y = top + k * 24
         mx = max(say) or 1
+        t0 = CUBUK0 + k * 0.07
+        s.append(f'  <g class="sl" style="animation-delay:{t0:.2f}s">')
         s.append(f'  <text x="158" y="{y+12}" text-anchor="end" class="lbl" font-size="11" fill="{INK2}">{esc(ad)}</text>')
         s.append(f'  <line x1="{bx}" y1="{y+bh}" x2="{bx+26*bw}" y2="{y+bh}" stroke="#161d2b"/>')
+        s.append("  </g>")
         for wi, v in enumerate(say):
             if v:
                 h = max(2, round(bh * v / mx))
-                s.append(f'  <rect x="{bx + wi*bw + 1}" y="{y+bh-h}" width="{bw-2}" height="{h}" rx="1.5" fill="{ACCENT}" '
-                         f'opacity="{0.35 + 0.65*v/mx:.2f}"><title>{esc(ad)}, week {wi+1}: {v}</title></rect>')
+                s.append(f'  <rect class="cb" style="animation-delay:{t0 + 0.15 + wi*0.018:.2f}s" x="{bx + wi*bw + 1}" y="{y+bh-h}" '
+                         f'width="{bw-2}" height="{h}" rx="1.5" fill="{ACCENT}" opacity="{0.35 + 0.65*v/mx:.2f}">'
+                         f'<title>{esc(ad)}, week {wi+1}: {v}</title></rect>')
+        s.append(f'  <g class="sl" style="animation-delay:{t0+0.6:.2f}s">')
         s.append(f'  <text x="{bx+26*bw+16}" y="{y+12}" class="data" font-size="11" fill="{INK}">{sum(say):,}</text>')
-        aktif_h = sum(1 for v in say if v)
-        s.append(f'  <text x="958" y="{y+12}" text-anchor="end" class="data" font-size="9" fill="{INK3}">{aktif_h}/26 weeks active</text>')
+        s.append(f'  <text x="958" y="{y+12}" text-anchor="end" class="data" font-size="9" fill="{INK3}">'
+                 f'{sum(1 for v in say if v)}/26 weeks active</text>')
+        s.append("  </g>")
     bas = dt.date.fromisoformat(hw["baslangic"])
     s.append(f'  <text x="{bx}" y="{H-18}" class="data" font-size="8.5" fill="{INK3}">{bas.strftime("%d %b %Y")}</text>')
     s.append(f'  <text x="{bx+26*bw}" y="{H-18}" text-anchor="end" class="data" font-size="8.5" fill="{INK3}">this week</text>')
     s.append("</svg>")
     (ASSETS / "activity.svg").write_text("\n".join(s), encoding="utf-8")
-    print("activity.svg", tak["totalContributions"], "katkı,", len(satirlar), "proje")
+    print("activity.svg", tak["totalContributions"], "katkı,", len(satirlar), "proje,", len(imza), "imza hücresi")
 
 
 # ----------------------------------------------------------------- 11·B KADRANLAR

@@ -9,6 +9,12 @@
 <br/>
 
 <div align="center">
+<img src="assets/activity.svg" alt="Activity — the grid first signs BEDİRHAN ÇETİN, then turns into the contribution heatmap of the past year, with weekly commits per project" width="100%"/>
+</div>
+
+<br/>
+
+<div align="center">
 <img src="assets/pipeline-asfalya.svg" alt="Asfalya — vehicle-mounted road damage detection for municipalities" width="100%"/>
 </div>
 
@@ -126,12 +132,6 @@ Every number on this page is measured: test counts come from the suites that gat
 
 <div align="center">
 <img src="assets/dials.svg" alt="Telemetry dials — Aegis coverage, Asfalya mAP and capture rate, Warden tests, and the language mix" width="100%"/>
-</div>
-
-<br/>
-
-<div align="center">
-<img src="assets/activity.svg" alt="Activity — contribution heatmap for the past year and weekly commits per project" width="100%"/>
 </div>
 
 <br/>
