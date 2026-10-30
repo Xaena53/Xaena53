@@ -1,0 +1,50 @@
+# Her gece commit ağacı, etkinlik ve kadran kartlarını GitHub verisinden yeniden üretir.
+# Özel repoların verisi için PROFIL_TOKEN gerekir: fine-grained token,
+# All repositories · Contents: Read · Metadata: Read.
+name: kartlar
+
+on:
+  schedule:
+    - cron: "17 3 * * *"        # her gün 06:17 TR
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kartlar
+  cancel-in-progress: false
+
+jobs:
+  uret:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Bağımlılıklar
+        run: pip install --quiet fonttools pillow numpy
+
+      - name: Veriyi çek ve kartları üret
+        env:
+          GH_TOKEN: ${{ secrets.PROFIL_TOKEN }}
+          PYTHONIOENCODING: utf-8
+        run: |
+          test -n "$GH_TOKEN" || { echo "::error::PROFIL_TOKEN secret'ı yok"; exit 1; }
+          python build_dash.py --cek
+          python surum_damgala.py
+
+      - name: Değiştiyse commit at
+        run: |
+          git add assets README.md
+          if git diff --cached --quiet; then
+            echo "Değişiklik yok."
+            exit 0
+          fi
+          git config user.name "Xaena53"
+          git config user.email "bedometom@gmail.com"
+          git commit -m "Kartlar: günlük veri yenilemesi $(date -u +%F)"
+          git push
