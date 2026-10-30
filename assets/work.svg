@@ -1,0 +1,57 @@
+<svg width="1000" height="312" viewBox="0 0 1000 312" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="More work — shipped and in progress">
+  <defs>
+    <pattern id="g6w" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0V28" fill="none" stroke="#131a26" stroke-width="1"/>
+    </pattern>
+    <style>
+      .lbl { font-family:'Segoe UI',Helvetica,Arial,sans-serif; }
+      .data { font-family:'SF Mono',Consolas,'Cascadia Code',monospace; }
+      .title { font-family:'Segoe UI Semibold','Segoe UI',Helvetica,Arial,sans-serif; font-weight:600; }
+      .disp { font-family:Georgia,'Times New Roman',serif; }
+      
+      @media (prefers-reduced-motion: reduce) { * { animation:none !important; } }
+    </style>
+  </defs>
+  <rect width="1000" height="312" fill="#0a0d13"/>
+  <rect width="1000" height="312" fill="url(#g6w)"/>
+  <rect x="0.5" y="0.5" width="999" height="311" fill="none" stroke="#1c2534"/>
+  <rect x="42" y="31" width="6" height="6" fill="#e8003d"/>
+  <text x="58" y="38" class="data" font-size="10.5" fill="#5c6579" letter-spacing="3">07 — INDEX · MORE WORK</text>
+  <line x1="32" y1="56" x2="968" y2="56" stroke="#232d3f" stroke-width="1"/>
+
+<circle cx="46" cy="91" r="3.5" fill="#2e9e4f"/>
+<text x="60" y="95" class="title" font-size="12.5" fill="#e6e9ef">EKT Akademi</text>
+<text x="250" y="89" class="lbl" font-size="11" fill="#8b93a7">training platform · whole backend behind an existing static front end</text>
+<text x="250" y="103" class="data" font-size="9.5" fill="#5c6579">Node 22 · Express 5 · PostgreSQL · Prisma</text>
+<text x="958" y="95" text-anchor="end" class="data" font-size="9" fill="#5c6579" letter-spacing="1">LIVE</text>
+<line x1="42" y1="109" x2="958" y2="109" stroke="#161d2b"/>
+<circle cx="46" cy="127" r="3.5" fill="#d7a032"/>
+<text x="60" y="131" class="title" font-size="12.5" fill="#e6e9ef">Warden of the Fields</text>
+<text x="250" y="125" class="lbl" font-size="11" fill="#8b93a7">first-person open-world survival game</text>
+<text x="250" y="139" class="data" font-size="9.5" fill="#5c6579">Unreal Engine 5.8 · C++</text>
+<text x="958" y="131" text-anchor="end" class="data" font-size="9" fill="#5c6579" letter-spacing="1">IN DEVELOPMENT</text>
+<line x1="42" y1="145" x2="958" y2="145" stroke="#161d2b"/>
+<circle cx="46" cy="163" r="3.5" fill="#d7a032"/>
+<text x="60" y="167" class="title" font-size="12.5" fill="#e6e9ef">Demir Cephe</text>
+<text x="250" y="161" class="lbl" font-size="11" fill="#8b93a7">combined-arms war game with tanks, aircraft and infantry</text>
+<text x="250" y="175" class="data" font-size="9.5" fill="#5c6579">Roblox · Luau · Rojo</text>
+<text x="958" y="167" text-anchor="end" class="data" font-size="9" fill="#5c6579" letter-spacing="1">IN DEVELOPMENT</text>
+<line x1="42" y1="181" x2="958" y2="181" stroke="#161d2b"/>
+<circle cx="46" cy="199" r="3.5" fill="#2e9e4f"/>
+<text x="60" y="203" class="title" font-size="12.5" fill="#e6e9ef">Hapivanak</text>
+<text x="250" y="197" class="lbl" font-size="11" fill="#8b93a7">honey store with PayTR checkout and batch traceability</text>
+<text x="250" y="211" class="data" font-size="9.5" fill="#5c6579">TanStack Start · Cloudflare Workers · D1</text>
+<text x="958" y="203" text-anchor="end" class="data" font-size="9" fill="#5c6579" letter-spacing="1">LIVE</text>
+<line x1="42" y1="217" x2="958" y2="217" stroke="#161d2b"/>
+<circle cx="46" cy="235" r="3.5" fill="#2e9e4f"/>
+<text x="60" y="239" class="title" font-size="12.5" fill="#e6e9ef">Çakmak Pen</text>
+<text x="250" y="233" class="lbl" font-size="11" fill="#8b93a7">23-page corporate site for a joinery company</text>
+<text x="250" y="247" class="data" font-size="9.5" fill="#5c6579">static multi-page site · no build step</text>
+<text x="958" y="239" text-anchor="end" class="data" font-size="9" fill="#5c6579" letter-spacing="1">LIVE</text>
+<line x1="42" y1="253" x2="958" y2="253" stroke="#161d2b"/>
+<circle cx="46" cy="271" r="3.5" fill="#5f7fbf"/>
+<text x="60" y="275" class="title" font-size="12.5" fill="#e6e9ef">MHRS Data Module</text>
+<text x="250" y="269" class="lbl" font-size="11" fill="#8b93a7">synthetic hospital-appointment database for a six-team course project</text>
+<text x="250" y="283" class="data" font-size="9.5" fill="#5c6579">Python · SQLite · Faker</text>
+<text x="958" y="275" text-anchor="end" class="data" font-size="9" fill="#5c6579" letter-spacing="1">TEAM</text>
+</svg>

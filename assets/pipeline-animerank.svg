@@ -50,9 +50,9 @@
   <rect x="0.5" y="0.5" width="999" height="359" fill="none" stroke="#1c2534"/>
   <rect x="0.5" y="0.5" width="999" height="359" fill="none" stroke="#e8003d" stroke-width="1.5" class="frameScan" opacity="0.85"/>
 
-  <text x="32" y="38" class="data" font-size="10.5" fill="#5c6579" letter-spacing="3">01 — SYSTEM ARCHITECTURE</text>
+  <text x="32" y="38" class="data" font-size="10.5" fill="#5c6579" letter-spacing="3">03 — SYSTEM ARCHITECTURE</text>
   <text x="32" y="60" class="lbl" font-size="18" font-weight="700" fill="#eef1f6">AnimeRank Media Pipeline</text>
-  <text x="32" y="80" class="lbl" font-size="12" fill="#8993a8">torrent swarm ingest → verified source → GPU-transcoded, seekable broadcast delivery</text>
+  <text x="32" y="80" class="lbl" font-size="12" fill="#8993a8">torrent ingest → verified source → browser-safe H.264 → signed delivery from two media servers</text>
 
   <g>
     <rect x="32" y="122" width="152" height="80" class="node"/>
@@ -69,19 +69,19 @@
 
     <rect x="456" y="122" width="172" height="80" class="node"/>
     <path d="M456 122h10M456 122v10M628 122h-10M628 122v10M456 202h10M456 202v-10M628 202h-10M628 202v-10" stroke="#3a4560" stroke-width="1"/>
-    <text x="476" y="150" class="lbl" font-size="13.5" font-weight="700" fill="#eef1f6">GPU Transcode</text>
-    <text x="476" y="167" class="data" font-size="9.5" fill="#6b7488">NVENC · 3-tier</text>
-    <text x="476" y="180" class="data" font-size="9.5" fill="#6b7488">1080 / 720 / 480</text>
+    <text x="476" y="150" class="lbl" font-size="13.5" font-weight="700" fill="#eef1f6">H.264 Transcode</text>
+    <text x="476" y="167" class="data" font-size="9.5" fill="#6b7488">libx264 · CRF 20</text>
+    <text x="476" y="180" class="data" font-size="9.5" fill="#6b7488">4K capped at 14 Mbit</text>
 
     <rect x="682" y="122" width="150" height="80" class="node"/>
     <path d="M682 122h10M682 122v10M832 122h-10M832 122v10M682 202h10M682 202v-10M832 202h-10M832 202v-10" stroke="#3a4560" stroke-width="1"/>
-    <text x="702" y="150" class="lbl" font-size="13.5" font-weight="700" fill="#eef1f6">HLS Packager</text>
-    <text x="702" y="167" class="data" font-size="9.5" fill="#6b7488">fMP4 · fansub</text>
-    <text x="702" y="180" class="data" font-size="9.5" fill="#6b7488">intro-injected</text>
+    <text x="702" y="150" class="lbl" font-size="13.5" font-weight="700" fill="#eef1f6">Media Servers</text>
+    <text x="702" y="167" class="data" font-size="9.5" fill="#6b7488">2 nodes · signed URLs</text>
+    <text x="702" y="180" class="data" font-size="9.5" fill="#6b7488">night-window jobs</text>
 
     <rect class="active" x="866" y="122" width="102" height="80" fill="#1a0710" stroke="#e8003d" stroke-width="1.25"/>
     <text x="886" y="156" class="lbl" font-size="14" font-weight="700" fill="#f28fa0">Player</text>
-    <text x="886" y="175" class="data" font-size="9.5" fill="#b0576a">hls.js</text>
+    <text x="886" y="175" class="data" font-size="9.5" fill="#b0576a">Plyr · MP4</text>
 
     <line class="flow" x1="184" y1="162" x2="234" y2="162" stroke="#3a4560" stroke-width="1.25" marker-end="url(#arrow)"/>
     <line class="flow" x1="402" y1="162" x2="452" y2="162" stroke="#3a4560" stroke-width="1.25" marker-end="url(#arrow)"/>
@@ -96,16 +96,16 @@
 
   <g>
     <rect x="238" y="256" width="164" height="66" class="node"/>
-    <text x="258" y="282" class="lbl" font-size="12.5" font-weight="700" fill="#dfe3ea">4K Restoration</text>
-    <text x="258" y="300" class="data" font-size="9.5" fill="#6b7488">AI upscale · legacy sources</text>
+    <text x="258" y="282" class="lbl" font-size="12.5" font-weight="700" fill="#dfe3ea">4K Upscale</text>
+    <text x="258" y="300" class="data" font-size="9.5" fill="#6b7488">Adore model · TensorRT</text>
     <path class="ctrl" d="M320 256 C320 234 400 210 452 194" fill="none" stroke="#4a5570" stroke-width="1"/>
 
     <rect x="456" y="256" width="172" height="66" class="node"/>
     <text x="476" y="282" class="lbl" font-size="12.5" font-weight="700" fill="#dfe3ea">AI Subtitles</text>
-    <text x="476" y="300" class="data" font-size="9.5" fill="#6b7488">GPU batch translate</text>
+    <text x="476" y="300" class="data" font-size="9.5" fill="#6b7488">LLM batch · gated</text>
     <path class="ctrl" d="M542 256 C542 236 600 214 678 196" fill="none" stroke="#4a5570" stroke-width="1"/>
 
-    <text x="32" y="296" class="data" font-size="9.5" fill="#4d5567">— — — control / governs, not data flow</text>
+    <text x="32" y="296" class="data" font-size="9.5" fill="#4d5567">— — — side stages that feed the player</text>
   </g>
 
   <g>
@@ -114,7 +114,7 @@
     <text x="790" y="318" class="data" font-size="9" fill="#5c6579">DWG NO.</text>
     <text x="960" y="318" class="data" font-size="9" fill="#8993a8" text-anchor="end">XR-010</text>
     <text x="790" y="336" class="data" font-size="9" fill="#5c6579">SYSTEM</text>
-    <text x="960" y="336" class="data" font-size="9" fill="#8993a8" text-anchor="end">ANIMERANK · REV 07.26</text>
+    <text x="960" y="336" class="data" font-size="9" fill="#8993a8" text-anchor="end">ANIMERANK · REV 10.26</text>
   </g>
 
   <g stroke="#3a4560" stroke-width="1.25">

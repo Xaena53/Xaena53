@@ -22,46 +22,54 @@ CDN = "https://cdn.jsdelivr.net/npm/simple-icons@13/icons/{}.svg"
 # Siyah marka renkleri (Express, Socket.IO, JWT, WebRTC, OpenAI) koyu zeminde
 # görünmediği için açık griye çekildi — tanınırlık korunur, okunurluk kazanılır
 TREE = [
-    ("LANGUAGES", "every repository", [
+    ("LANGUAGES", "C++ in Warden · Luau in Demir Cephe", [
         ("javascript", "JavaScript", "#F7DF1E"),
         ("typescript", "TypeScript", "#3178C6"),
         ("python", "Python", "#4B8BBE"),
+        ("cplusplus", "C++", "#659AD2"),
+        ("lua", "Luau", "#7C8DF0"),
     ]),
-    ("BACKEND · API", "Asfalya · RepChat · EKT Akademi · AdsPilot", [
+    ("BACKEND · API", "Asfalya · EKT Akademi · Aegis · Kurenai", [
         ("nodedotjs", "Node.js", "#5FA04E"),
         ("express", "Express", "#cfd6e4"),
         ("fastapi", "FastAPI", "#12A594"),
         ("socketdotio", "Socket.IO", "#cfd6e4"),
         ("claude", "MCP", "#D97757"),
     ]),
-    ("DATA · AUTH", "PostGIS in Asfalya · Mongo in AnimeRank", [
+    ("DATA", "PostGIS in Asfalya · Prisma in EKT", [
         ("postgresql", "PostgreSQL", "#5A8DEE"),
+        ("prisma", "Prisma", "#cfd6e4"),
         ("mongodb", "MongoDB", "#47A248"),
-        ("supabase", "Supabase", "#3ECF8E"),
+        ("sqlite", "SQLite", "#4FA3D9"),
         ("redis", "Redis", "#FF4438"),
-        ("jsonwebtokens", "JWT", "#cfd6e4"),
     ]),
-    ("ML · VISION", "Asfalya detector · Patina restoration", [
+    ("ML · VISION", "YOLO in Asfalya · 4K upscaling · Kurenai", [
         ("pytorch", "PyTorch", "#EE4C2C"),
         ("opencv", "OpenCV", "#7B5CF0"),
-        ("nvidia", "CUDA", "#76B900"),
+        ("nvidia", "TensorRT", "#76B900"),
+        ("scikitlearn", "scikit-learn", "#F7931E"),
         ("openai", "LLM APIs", "#cfd6e4"),
     ]),
-    ("MEDIA · STREAMING", "AnimeRank HLS · RepChat calls · Kurenai", [
+    ("MEDIA · REAL-TIME", "AnimeRank transcode · RepChat calls", [
         ("ffmpeg", "FFmpeg", "#3FA34D"),
         ("webrtc", "WebRTC", "#cfd6e4"),
     ]),
-    ("FRONTEND", "Asfalya map panel · AnimeRank player UI", [
+    ("GAME ENGINES", "Warden of the Fields · Demir Cephe", [
+        ("unrealengine", "Unreal 5", "#cfd6e4"),
+        ("roblox", "Roblox", "#cfd6e4"),
+    ]),
+    ("FRONTEND", "Asfalya panel · Hapivanak storefront", [
         ("react", "React", "#61DAFB"),
+        ("vite", "Vite", "#A97BFF"),
         ("tailwindcss", "Tailwind", "#38BDF8"),
         ("maplibre", "MapLibre", "#6C9BE0"),
     ]),
-    ("OPS · DELIVERY", "every repo ships behind CI", [
+    ("OPS · DELIVERY", "CI on every repo · Workers for Hapivanak", [
         ("docker", "Docker", "#2496ED"),
         ("githubactions", "Actions", "#4C8EFF"),
         ("nginx", "nginx", "#009639"),
+        ("cloudflare", "Cloudflare", "#F38020"),
         ("linux", "Linux", "#E5B93C"),
-        ("git", "Git", "#F05032"),
     ]),
 ]
 
@@ -94,7 +102,7 @@ def build():
 
     o = [
         f'<svg width="1000" height="{H}" viewBox="0 0 1000 {H}" xmlns="http://www.w3.org/2000/svg" '
-        f'role="img" aria-label="Skill tree — languages, backend, data, machine learning, media, operations">',
+        f'role="img" aria-label="Skill tree — languages, backend, data, machine learning, media, game engines, frontend, operations">',
         '  <defs>',
         '    <pattern id="gst" width="28" height="28" patternUnits="userSpaceOnUse">',
         f'      <path d="M28 0H0V28" fill="none" stroke="{GRID}" stroke-width="1"/>',
@@ -109,10 +117,10 @@ def build():
         f'  <rect width="1000" height="{H}" fill="url(#gst)"/>',
         f'  <rect x="0.5" y="0.5" width="999" height="{H-1}" fill="none" stroke="{FRAME}"/>',
         f'  <rect x="42" y="31" width="6" height="6" fill="{ACCENT}"/>',
-        f'  <text x="58" y="38" class="data" font-size="10.5" fill="{INK3}" letter-spacing="3">07 — CAPABILITY TREE · DRAWN FROM SHIPPED REPOSITORIES</text>',
+        f'  <text x="58" y="38" class="data" font-size="10.5" fill="{INK3}" letter-spacing="3">08 — CAPABILITY TREE · DRAWN FROM SHIPPED REPOSITORIES</text>',
         f'  <line x1="32" y1="56" x2="968" y2="56" stroke="{RULE}" stroke-width="1"/>',
         f'  <text x="42" y="78" class="lbl" font-size="10.5" fill="{INK3}">'
-        'each branch lists where the tooling is actually used — not a wishlist</text>',
+        'each branch names the projects where the tool is used</text>',
     ]
 
     y_first = top + row_h // 2

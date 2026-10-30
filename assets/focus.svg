@@ -15,7 +15,7 @@
   <rect x="0.5" y="0.5" width="999" height="139" fill="none" stroke="#1c2534"/>
 
   <rect x="42" y="31" width="6" height="6" fill="#e8003d"/>
-  <text x="58" y="38" class="data" font-size="10.5" fill="#5c6579" letter-spacing="3">09 — ENGINEERING · CORE COMPETENCIES</text>
+  <text x="58" y="38" class="data" font-size="10.5" fill="#5c6579" letter-spacing="3">10 — ENGINEERING · CORE COMPETENCIES</text>
 
   <line x1="32" y1="56" x2="968" y2="56" stroke="#232d3f" stroke-width="1"/>
   <line x1="266" y1="56" x2="266" y2="122" stroke="#161d2b" stroke-width="1"/>
@@ -24,18 +24,18 @@
 
   <g>
     <text x="56" y="88" class="title" font-size="15" fill="#eef1f6" letter-spacing="1.5">STREAMING</text>
-    <text x="56" y="105" class="data" font-size="10" fill="#8993a8">P2P · HLS · adaptive</text>
-    <text x="56" y="118" class="data" font-size="10" fill="#5c6579">ffmpeg · NVENC transcode</text>
+    <text x="56" y="105" class="data" font-size="10" fill="#8993a8">P2P ingest · H.264</text>
+    <text x="56" y="118" class="data" font-size="10" fill="#5c6579">ffmpeg · 4K upscaling</text>
   </g>
   <g>
-    <text x="290" y="88" class="title" font-size="15" fill="#eef1f6" letter-spacing="1.5">REAL-TIME</text>
-    <text x="290" y="105" class="data" font-size="10" fill="#8993a8">WebRTC mesh · WebSocket</text>
-    <text x="290" y="118" class="data" font-size="10" fill="#5c6579">signaling · TURN · ICE</text>
+    <text x="290" y="88" class="title" font-size="15" fill="#eef1f6" letter-spacing="1.5">VISION · AI</text>
+    <text x="290" y="105" class="data" font-size="10" fill="#8993a8">YOLO · TensorRT</text>
+    <text x="290" y="118" class="data" font-size="10" fill="#5c6579">LLM pipelines · MCP</text>
   </g>
   <g>
     <text x="524" y="88" class="title" font-size="15" fill="#eef1f6" letter-spacing="1.5">DISTRIBUTED</text>
     <text x="524" y="105" class="data" font-size="10" fill="#8993a8">async queues · workers</text>
-    <text x="524" y="118" class="data" font-size="10" fill="#5c6579">fault-tolerant · self-heal</text>
+    <text x="524" y="118" class="data" font-size="10" fill="#5c6579">zero-downtime deploys</text>
   </g>
   <g>
     <text x="758" y="88" class="title" font-size="15" fill="#eef1f6" letter-spacing="1.5">HARDENING</text>

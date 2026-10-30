@@ -1,4 +1,4 @@
-<svg width="1000" height="290" viewBox="0 0 1000 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Xaena53 — Full-Stack Developer, streaming and real-time systems">
+<svg width="1000" height="290" viewBox="0 0 1000 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Xaena53 — Full-Stack Developer: backends, computer vision and AI tooling">
   <defs>
     <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
       <path d="M32 0H0V32" fill="none" stroke="#141b28" stroke-width="1"/>
@@ -42,8 +42,8 @@
   </g>
   <rect class="marker" x="240" y="182.5" width="7" height="7" fill="#e8003d" transform="rotate(45 243.5 186)"/>
 
-  <text x="56" y="214" class="lbl" font-size="13.5" fill="#8993a8">Streaming platforms, real-time systems and media pipelines —</text>
-  <text x="56" y="234" class="lbl" font-size="13.5" fill="#8993a8">architected, transcoded and shipped end to end.</text>
+  <text x="56" y="214" class="lbl" font-size="13.5" fill="#8993a8">Backends, computer vision and AI tooling,</text>
+  <text x="56" y="234" class="lbl" font-size="13.5" fill="#8993a8">designed, tested and taken live end to end.</text>
 
   <!-- canlı build kaydı: gerçek bir tail -f gibi sürekli yukarı akan log paneli -->
   <g>
@@ -55,22 +55,22 @@
     <g clip-path="url(#logClip)">
       <g class="logscroll">
         <g class="data" font-size="10.5">
-          <text x="640" y="110"><tspan fill="#e8003d">[gpu]</tspan><tspan fill="#9aa3b3"> nvenc session acquired</tspan></text>
-          <text x="640" y="128"><tspan fill="#e8003d">[p2p]</tspan><tspan fill="#9aa3b3"> swarm handshake · 41 peers</tspan></text>
-          <text x="640" y="146"><tspan fill="#e8003d">[hls]</tspan><tspan fill="#9aa3b3"> ladder 1080/720/480 queued</tspan></text>
-          <text x="640" y="164"><tspan fill="#e8003d">[hls]</tspan><tspan fill="#9aa3b3"> segment 0182 written</tspan></text>
-          <text x="640" y="182"><tspan fill="#e8003d">[cdn]</tspan><tspan fill="#9aa3b3"> edge cache warm</tspan></text>
-          <text x="640" y="200"><tspan fill="#7a9a7f">[ok]</tspan><tspan fill="#9aa3b3">  pipeline complete · 3.2s</tspan></text>
-          <text x="640" y="218"><tspan fill="#e8003d">[git]</tspan><tspan fill="#9aa3b3"> deploy tagged v9.4.1</tspan></text>
+          <text x="640" y="110"><tspan fill="#e8003d">[aegis]</tspan><tspan fill="#9aa3b3"> 1765 tests · sim-swap gate</tspan></text>
+          <text x="640" y="128"><tspan fill="#e8003d">[yolo]</tspan><tspan fill="#9aa3b3"> road damage mAP@50 0.632</tspan></text>
+          <text x="640" y="146"><tspan fill="#e8003d">[ekt]</tspan><tspan fill="#9aa3b3"> ektakademi.com · canli-1.0</tspan></text>
+          <text x="640" y="164"><tspan fill="#e8003d">[ue5]</tspan><tspan fill="#9aa3b3"> Warden M0 · 34/34 tests</tspan></text>
+          <text x="640" y="182"><tspan fill="#e8003d">[4k]</tspan><tspan fill="#9aa3b3"> Adore upscale · 13.5 fps</tspan></text>
+          <text x="640" y="200"><tspan fill="#7a9a7f">[ok]</tspan><tspan fill="#9aa3b3">   deploy · zero downtime</tspan></text>
+          <text x="640" y="218"><tspan fill="#e8003d">[git]</tspan><tspan fill="#9aa3b3"> push · main</tspan></text>
         </g>
         <g class="data" font-size="10.5" transform="translate(0,126)">
-          <text x="640" y="110"><tspan fill="#e8003d">[gpu]</tspan><tspan fill="#9aa3b3"> nvenc session acquired</tspan></text>
-          <text x="640" y="128"><tspan fill="#e8003d">[p2p]</tspan><tspan fill="#9aa3b3"> swarm handshake · 41 peers</tspan></text>
-          <text x="640" y="146"><tspan fill="#e8003d">[hls]</tspan><tspan fill="#9aa3b3"> ladder 1080/720/480 queued</tspan></text>
-          <text x="640" y="164"><tspan fill="#e8003d">[hls]</tspan><tspan fill="#9aa3b3"> segment 0182 written</tspan></text>
-          <text x="640" y="182"><tspan fill="#e8003d">[cdn]</tspan><tspan fill="#9aa3b3"> edge cache warm</tspan></text>
-          <text x="640" y="200"><tspan fill="#7a9a7f">[ok]</tspan><tspan fill="#9aa3b3">  pipeline complete · 3.2s</tspan></text>
-          <text x="640" y="218"><tspan fill="#e8003d">[git]</tspan><tspan fill="#9aa3b3"> deploy tagged v9.4.1</tspan></text>
+          <text x="640" y="110"><tspan fill="#e8003d">[aegis]</tspan><tspan fill="#9aa3b3"> 1765 tests · sim-swap gate</tspan></text>
+          <text x="640" y="128"><tspan fill="#e8003d">[yolo]</tspan><tspan fill="#9aa3b3"> road damage mAP@50 0.632</tspan></text>
+          <text x="640" y="146"><tspan fill="#e8003d">[ekt]</tspan><tspan fill="#9aa3b3"> ektakademi.com · canli-1.0</tspan></text>
+          <text x="640" y="164"><tspan fill="#e8003d">[ue5]</tspan><tspan fill="#9aa3b3"> Warden M0 · 34/34 tests</tspan></text>
+          <text x="640" y="182"><tspan fill="#e8003d">[4k]</tspan><tspan fill="#9aa3b3"> Adore upscale · 13.5 fps</tspan></text>
+          <text x="640" y="200"><tspan fill="#7a9a7f">[ok]</tspan><tspan fill="#9aa3b3">   deploy · zero downtime</tspan></text>
+          <text x="640" y="218"><tspan fill="#e8003d">[git]</tspan><tspan fill="#9aa3b3"> push · main</tspan></text>
         </g>
       </g>
     </g>
@@ -88,7 +88,7 @@
     <text x="790" y="238" class="data" font-size="9" fill="#5c6579">DWG NO.</text>
     <text x="936" y="238" class="data" font-size="9" fill="#8993a8" text-anchor="end">XR-001</text>
     <text x="790" y="256" class="data" font-size="9" fill="#5c6579">SHEET</text>
-    <text x="936" y="256" class="data" font-size="9" fill="#8993a8" text-anchor="end">PROFILE · REV 07.26</text>
+    <text x="936" y="256" class="data" font-size="9" fill="#8993a8" text-anchor="end">PROFILE · REV 10.26</text>
   </g>
 
   <g stroke="#2a3548" stroke-width="1.25">

@@ -1,4 +1,4 @@
-<svg width="1000" height="96" viewBox="0 0 1000 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Currently building AnimeRank">
+<svg width="1000" height="96" viewBox="0 0 1000 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Currently building Warden of the Fields">
   <defs><style>
     .lbl  { font-family:'Segoe UI',Helvetica,Arial,sans-serif; }
     .data { font-family:'SF Mono',Consolas,'Cascadia Code',monospace; }
@@ -27,10 +27,10 @@
 
   <text x="102" y="42" class="lbl" font-size="10.5" font-weight="600" fill="#5c6579" letter-spacing="3">CURRENTLY BUILDING</text>
   <text x="102" y="66" class="lbl" font-size="17" fill="#dfe3ea">
-    <tspan font-weight="700" fill="#eef1f6">Asfalya</tspan>
-    <tspan fill="#8993a8"> — production anime streaming platform, live beta</tspan>
+    <tspan font-weight="700" fill="#eef1f6">Warden of the Fields</tspan>
+    <tspan fill="#8993a8"> — open-world survival game in Unreal Engine 5</tspan>
   </text>
 
   <text x="944" y="42" text-anchor="end" class="data" font-size="10" fill="#5c6579">BUILD</text>
-  <text x="944" y="66" text-anchor="end" class="data" font-size="12" fill="#e8003d">v9-beta</text>
+  <text x="944" y="66" text-anchor="end" class="data" font-size="12" fill="#e8003d">UE 5.8 · C++</text>
 </svg>

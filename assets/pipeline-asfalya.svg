@@ -16,7 +16,7 @@
   <rect width="1000" height="250" fill="url(#g4a)"/>
   <rect x="0.5" y="0.5" width="999" height="249" fill="none" stroke="#1c2534"/>
   <rect x="42" y="31" width="6" height="6" fill="#e8003d"/>
-  <text x="58" y="38" class="data" font-size="10.5" fill="#5c6579" letter-spacing="3">04 — ASFALYA · MUNICIPAL ROAD INTELLIGENCE</text>
+  <text x="58" y="38" class="data" font-size="10.5" fill="#5c6579" letter-spacing="3">01 — ASFALYA · MUNICIPAL ROAD INTELLIGENCE</text>
   <line x1="32" y1="56" x2="968" y2="56" stroke="#232d3f" stroke-width="1"/>
 
 <text x="42" y="86" class="disp" font-size="21" fill="#e6e9ef">Asfalya</text>
@@ -50,6 +50,6 @@
 <text x="277" y="234" class="lbl" font-size="10" fill="#5c6579">mAP@50</text>
 <text x="512" y="220" class="data" font-size="16" fill="#e6e9ef">13/s</text>
 <text x="512" y="234" class="lbl" font-size="10" fill="#5c6579">frames processed</text>
-<text x="747" y="220" class="data" font-size="16" fill="#e6e9ef">213</text>
+<text x="747" y="220" class="data" font-size="16" fill="#e6e9ef">320</text>
 <text x="747" y="234" class="lbl" font-size="10" fill="#5c6579">tests passing</text>
 </svg>
