@@ -215,6 +215,7 @@ def activity():
     sutunlar = sorted({k for k, _ in imza})
     kalem_bas, kalem_son = YAZ0 + sutunlar[0] * YAZ_ADIM, YAZ0 + sutunlar[-1] * YAZ_ADIM
     CUBUK0 = DONUS0 + len(hafta) * DONUS_SUT + 0.5
+    TUR, TARA0 = 9, DONUS0 + len(hafta) * DONUS_SUT + 2.0    # tarayıcı turu ve başlangıcı
 
     top = 254
     H = top + len(satirlar) * 24 + 40
@@ -235,8 +236,12 @@ def activity():
         " .cb{transform-origin:bottom;transform:scaleY(0);animation:yuksel .7s cubic-bezier(.2,.8,.2,1) forwards;}"
         " .sl{opacity:0;animation:sol .8s ease-out forwards;}"
         f" .kalem{{opacity:0;animation:kalem {kalem_son-kalem_bas:.2f}s linear {kalem_bas:.2f}s forwards;}}"
-        f" .tarayici{{opacity:0;animation:tara 9s linear {CUBUK0+1.5:.1f}s infinite;}}"
-        " @media (prefers-reduced-motion: reduce){.im,.kalem{opacity:0 !important;}"
+        f" .tarayici{{opacity:0;animation:tara {TUR}s linear {TARA0:.1f}s infinite;}}"
+        " @keyframes kivilcim{0%{opacity:0;transform:scale(1);}1.2%{opacity:.9;transform:scale(1.45);}"
+        "4%{opacity:.5;transform:scale(1.15);}10%{opacity:0;transform:scale(1);}100%{opacity:0;}}"
+        " .kv{opacity:0;transform-box:fill-box;transform-origin:center;animation:kivilcim var(--t) linear infinite;}"
+        " @keyframes yanip{0%,100%{opacity:.35;}50%{opacity:1;}} .bas{animation:yanip .9s ease-in-out infinite;}"
+        " @media (prefers-reduced-motion: reduce){.im,.kalem,.kv,.tarayici{opacity:0 !important;}"
         ".ge,.sl{opacity:1 !important;transform:none !important;}.cb{transform:none !important;}}"
     )
     s = head(H, f"Activity — signed BEDİRHAN ÇETİN, then {tak['totalContributions']:,} contributions in the past year "
@@ -275,18 +280,38 @@ def activity():
         yaz = YAZ0 + wi * YAZ_ADIM + di * 0.012
         don = DONUS0 + wi * DONUS_SUT + di * DONUS_SAT
         imz.append(f'<rect class="im" style="animation-delay:{yaz:.2f}s,{don:.2f}s" x="{x}" y="{y}" width="{c}" height="{c}" '
-                   f'rx="2" fill="{ACCENT}"/>')
+                   f'rx="4" fill="{ACCENT}"/>')
     s.append(f'  <g fill="{rampa[0]}">' + "".join(bos) + "</g>")
     s.append("  <g>" + "".join(gercek) + "</g>")
+    # italik imza: grup taban çizgisine göre sağa eğilir; kalem ucu da aynı eğimin içinde yürür
+    taban = y0 + 6 * (c + g)
+    s.append(f'  <g transform="translate(-11,{taban}) skewX(-15) translate(0,{-taban})">')
     s.append("  <g>" + "".join(imz) + "</g>")
-    # kalem ucu: imzayı yazan parlak nokta
     kx = x0 + sutunlar[0] * (c + g) + c / 2
     s.append(f'  <g class="kalem"><circle cx="{kx}" cy="{y0 + 3.5*(c+g)}" r="9" fill="{ACCENT}" opacity=".18"/>'
              f'<circle cx="{kx}" cy="{y0 + 3.5*(c+g)}" r="3" fill="#ffffff"/></g>')
+    s.append("  </g>")
+    # tarayıcı geçerken dolu hücreler kıvılcımlanır: her hücrenin gecikmesi çizginin o sütuna varış anı
+    gezi = len(hafta) * (c + g)
+    kv = []
+    for wi, w in enumerate(hafta):
+        for gun in w["contributionDays"]:
+            if gun["contributionCount"]:
+                di = dt.date.fromisoformat(gun["date"]).isoweekday() % 7
+                x, y = x0 + wi * (c + g), y0 + di * (c + g)
+                t = TARA0 + TUR * (x - x0 + 2) / gezi
+                kv.append(f'<rect class="kv" style="--t:{TUR}s;animation-delay:{t:.2f}s" x="{x}" y="{y}" width="{c}" height="{c}" rx="2"/>')
+    s.append('  <g fill="#ffd2dc">' + "".join(kv) + "</g>")
     for di, ad in ((1, "Mon"), (3, "Wed"), (5, "Fri")):
         s.append(f'  <text class="sl data" style="animation-delay:{DONUS0:.2f}s" x="{x0-8}" y="{y0 + di*(c+g) + 9}" '
                  f'text-anchor="end" font-size="8" fill="{INK3}">{ad}</text>')
-    s.append(f'  <rect class="tarayici" x="{x0-2}" y="{y0-2}" width="2" height="{7*(c+g)+1}" fill="{INK}"/>')
+    yuk = 7 * (c + g) + 1
+    s.append(f'  <defs><linearGradient id="iz" x1="0" x2="1"><stop offset="0" stop-color="{ACCENT}" stop-opacity="0"/>'
+             f'<stop offset="1" stop-color="{ACCENT}" stop-opacity=".28"/></linearGradient></defs>')
+    s.append(f'  <g class="tarayici"><rect x="{x0-64}" y="{y0-2}" width="62" height="{yuk}" fill="url(#iz)"/>'
+             f'<rect x="{x0-2}" y="{y0-2}" width="2" height="{yuk}" fill="#ffffff"/>'
+             f'<circle class="bas" cx="{x0-1}" cy="{y0-6}" r="3" fill="{ACCENT}"/>'
+             f'<circle class="bas" cx="{x0-1}" cy="{y0+yuk+2}" r="3" fill="{ACCENT}"/></g>')
     sag = x0 + len(hafta) * (c + g) - g
     ly = y0 + 7 * (c + g) + 14
     s.append(f'  <g class="sl" style="animation-delay:{DONUS0+0.8:.2f}s">')
