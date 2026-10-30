@@ -99,6 +99,12 @@ Grouped by the job each tool does, and every branch names the projects it is use
 <br/>
 
 <div align="center">
+<img src="assets/orbit.svg" alt="Toolchain orbit — the same 33 technologies on three rotating rings" width="100%"/>
+</div>
+
+<br/>
+
+<div align="center">
 <img src="assets/code.svg" alt="Live build — the Aegis approval gate typing itself out" width="100%"/>
 </div>
 
@@ -115,6 +121,18 @@ Grouped by the job each tool does, and every branch names the projects it is use
 </div>
 
 Every number on this page is measured: test counts come from the suites that gate each push, and the training curve is the actual run that produced the road-damage model, including the class it is still weak at. A passing test only proves a line ran, so the Aegis suite is held to a stricter standard: each guard is broken on purpose to confirm a test notices.
+
+<br/>
+
+<div align="center">
+<img src="assets/dials.svg" alt="Telemetry dials — Aegis coverage, Asfalya mAP and capture rate, Warden tests, and the language mix" width="100%"/>
+</div>
+
+<br/>
+
+<div align="center">
+<img src="assets/activity.svg" alt="Activity — contribution heatmap for the past year and weekly commits per project" width="100%"/>
+</div>
 
 <br/>
 
