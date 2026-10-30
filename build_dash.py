@@ -339,41 +339,52 @@ def activity():
     hw = json.loads((VERI / "haftalik.json").read_text(encoding="utf-8"))
     satirlar = sorted(((ad, hw["seri"][d]) for d, ad in PROJE), key=lambda t: -sum(t[1]))
 
-    # zaman çizelgesi (saniye): imza yazılır → bekler → dalga halinde gerçek haritaya döner → çubuklar yükselir
-    DONUS_SUT, DONUS_SAT = 0.022, 0.03
+    # zaman çizelgesi (saniye): imza yazılır → bekler → tarama çizgisinin ilk geçişi haritayı açar
+    # (çizginin ulaştığı sütunda imza kutuları toplanır, boş kutular ve commit'ler kıvılcımla çıkar)
+    # → çubuklar yükselir → çizgi her TUR saniyede bir dolaşıp commit'li hücreleri parlatır
     x0, y0, c, g = 216, 84, 11, 3
     alt_kutular, uc, imza_css, imza_bit, desen = imza_hucre(x0, y0, c, g, len(hafta), 0.3, rampa)
-    DONUS0 = imza_bit + 1.0               # imza bir an durur, sonra alt kutular büyük kutulara toplanır
-    CUBUK0 = DONUS0 + len(hafta) * DONUS_SUT + 0.5
-    TUR, TARA0 = 9, DONUS0 + len(hafta) * DONUS_SUT + 2.0    # tarayıcı turu ve başlangıcı
+    gezi = len(hafta) * (c + g)
+    ILK0, ILK = imza_bit + 1.0, 3.8       # ilk geçiş: başlangıç ve süre
+    TUR, TARA0 = 9, ILK0 + ILK + 1.6      # sonraki turlar
+    CUBUK0 = ILK0 + ILK + 0.2
+
+    def varis(x):                         # çizginin ilk geçişte x'e vardığı an
+        return ILK0 + ILK * (x - x0 + 2) / gezi
 
     top = 254
     H = top + len(satirlar) * 24 + 40
     css = (
         f"{imza_css}"
-        f" @keyframes sonuk{{to{{opacity:0;}}}} .altiz{{animation:sonuk 1.3s ease-in-out {DONUS0-0.2:.2f}s forwards;}}"
-        " @keyframes belir{from{opacity:0;transform:scale(.5);}to{opacity:1;transform:scale(1);}}"
+        f" @keyframes sonuk{{to{{opacity:0;}}}} .altiz{{animation:sonuk .6s ease-in-out {ILK0+ILK:.2f}s forwards;}}"
+        " @keyframes belir{0%{opacity:0;transform:scale(.3);}45%{opacity:1;transform:scale(1.3);}100%{opacity:1;transform:scale(1);}}"
+        " @keyframes bosgel{from{opacity:0;}to{opacity:1;}}"
+        " @keyframes flas{0%{opacity:0;transform:scale(1);}12%{opacity:.95;transform:scale(1.55);}"
+        "40%{opacity:.45;transform:scale(1.15);}100%{opacity:0;transform:scale(1);}}"
         " @keyframes yuksel{from{transform:scaleY(0);}to{transform:scaleY(1);}}"
         " @keyframes sol{from{opacity:0;}to{opacity:1;}}"
         f" @keyframes tara{{0%{{transform:translateX(0);opacity:0;}}6%{{opacity:.8;}}94%{{opacity:.8;}}"
-        f"100%{{transform:translateX({len(hafta)*(c+g)}px);opacity:0;}}}}"
-        " .ge,.cb{transform-box:fill-box;transform-origin:center;}"
-        " .ge{opacity:0;animation:belir 1s cubic-bezier(.2,.7,.2,1) forwards;}"
+        f"100%{{transform:translateX({gezi}px);opacity:0;}}}}"
+        f" @keyframes tara1{{0%{{transform:translateX(0);opacity:0;}}3%{{opacity:1;}}96%{{opacity:1;}}"
+        f"100%{{transform:translateX({gezi}px);opacity:0;}}}}"
+        " .ge,.cb,.bs{transform-box:fill-box;transform-origin:center;}"
+        " .ge{opacity:0;animation:belir .55s cubic-bezier(.2,.8,.3,1) forwards;}"
+        " .bs{opacity:0;animation:bosgel .25s ease-out forwards;}"
         " .cb{transform-origin:bottom;transform:scaleY(0);animation:yuksel .7s cubic-bezier(.2,.8,.2,1) forwards;}"
         " .sl{opacity:0;animation:sol .8s ease-out forwards;}"
-        f" .tarayici{{opacity:0;animation:tara {TUR}s linear {TARA0:.1f}s infinite;}}"
+        f" .tarayici{{opacity:0;animation:tara1 {ILK}s linear {ILK0:.2f}s,tara {TUR}s linear {TARA0:.2f}s infinite;}}"
         " @keyframes kivilcim{0%{opacity:0;transform:scale(1);}1.2%{opacity:.9;transform:scale(1.45);}"
         "4%{opacity:.5;transform:scale(1.15);}10%{opacity:0;transform:scale(1);}100%{opacity:0;}}"
-        " .kv{opacity:0;transform-box:fill-box;transform-origin:center;animation:kivilcim var(--t) linear infinite;}"
+        " .kv{opacity:0;transform-box:fill-box;transform-origin:center;animation:flas .9s ease-out,kivilcim var(--t) linear infinite;}"
         " @keyframes yanip{0%,100%{opacity:.35;}50%{opacity:1;}} .bas{animation:yanip .9s ease-in-out infinite;}"
         " @media (prefers-reduced-motion: reduce){.sc,.ucu,.altiz{display:none;}.kv,.tarayici{opacity:0 !important;}"
-        ".ge,.sl{opacity:1 !important;transform:none !important;}.cb{transform:none !important;}}"
+        ".ge,.sl,.bs{opacity:1 !important;transform:none !important;}.cb{transform:none !important;}}"
     )
     s = head(H, f"Activity — signed BEDİRHAN ÇETİN, then {tak['totalContributions']:,} contributions in the past year "
                 "and weekly commits per project", "gac", "00 — ACTIVITY · COMMITS", css)
 
     # sol künye — dönüşle birlikte belirir
-    s.append(f'  <g class="sl" style="animation-delay:{DONUS0+0.3:.2f}s">')
+    s.append(f'  <g class="sl" style="animation-delay:{ILK0:.2f}s">')
     s.append(f'  <text x="42" y="104" class="disp" font-size="34" fill="{INK}">{tak["totalContributions"]:,}</text>')
     s.append(f'  <text x="42" y="122" class="lbl" font-size="10.5" fill="{INK2}">contributions, past 12 months</text>')
     for k, (v, e) in enumerate(((str(aktif), "active days"), (str(max(sayilar)), "busiest day"), (f"{en} days", "longest streak"))):
@@ -389,28 +400,27 @@ def activity():
         ilk = w["contributionDays"][0]["date"]
         if ilk[5:7] != ay_once and wi < len(hafta) - 2 and wi - son_etiket >= 3:
             ay_once, son_etiket = ilk[5:7], wi
-            s.append(f'  <text class="sl data" style="animation-delay:{DONUS0 + wi*DONUS_SUT:.2f}s" x="{x0 + wi*(c+g)}" y="{y0-6}" '
+            s.append(f'  <text class="sl data" style="animation-delay:{varis(x0 + wi*(c+g)):.2f}s" x="{x0 + wi*(c+g)}" y="{y0-6}" '
                      f' font-size="8.5" fill="{INK3}">{dt.date.fromisoformat(ilk).strftime("%b")}</text>')
         for gun in w["contributionDays"]:
             di = dt.date.fromisoformat(gun["date"]).isoweekday() % 7
             x, y = x0 + wi * (c + g), y0 + di * (c + g)
-            bos.append(f'<rect x="{x}" y="{y}" width="{c}" height="{c}" rx="2"/>')
-            don = DONUS0 + wi * DONUS_SUT + di * DONUS_SAT
+            bos.append(f'<rect class="bs" style="animation-delay:{varis(x):.2f}s" x="{x}" y="{y}" width="{c}" height="{c}" rx="2"/>')
             sv = seviye(gun["contributionCount"])
             if sv:
-                gercek.append(f'<rect class="ge" style="animation-delay:{don+0.15:.2f}s" x="{x}" y="{y}" width="{c}" height="{c}" '
+                gercek.append(f'<rect class="ge" style="animation-delay:{varis(x):.2f}s" x="{x}" y="{y}" width="{c}" height="{c}" '
                               f'rx="2" fill="{rampa[sv]}"><title>{gun["date"]}: {gun["contributionCount"]}</title></rect>')
-    s.append(f'  <g class="sl" style="animation-delay:{DONUS0-0.35:.2f}s" fill="{rampa[0]}">' + "".join(bos) + "</g>")
-    s.append("  <g>" + "".join(gercek) + "</g>")
+    # katman sırası: alt ızgara → (çizgiyle gelen) boş kutular onu örter → commit'ler → imza kutuları
     s.append("  " + desen)
+    s.append(f'  <g fill="{rampa[0]}">' + "".join(bos) + "</g>")
+    s.append("  <g>" + "".join(gercek) + "</g>")
     parca = []
     for _, wi, di, oz in alt_kutular:
-        don = DONUS0 + wi * DONUS_SUT + di * DONUS_SAT
-        parca.append(f'<rect class="sc" {oz.replace(f"TOPLA_{wi}_{di}", f"{don:.2f}")}/>')
+        topla = varis(x0 + wi * (c + g)) - 0.12      # çizgi gelmeden hemen önce kendi kutusuna toplanır
+        parca.append(f'<rect class="sc" {oz.replace(f"TOPLA_{wi}_{di}", f"{topla:.2f}")}/>')
     s.append("  <g>" + "".join(parca) + "</g>")
     s.append("  " + uc)
-    # tarayıcı geçerken dolu hücreler kıvılcımlanır: her hücrenin gecikmesi çizginin o sütuna varış anı
-    gezi = len(hafta) * (c + g)
+    # tarayıcı geçerken dolu hücreler kıvılcımlanır: ilk geçişte bir kez (flas), sonra her turda
     kv = []
     for wi, w in enumerate(hafta):
         for gun in w["contributionDays"]:
@@ -418,10 +428,10 @@ def activity():
                 di = dt.date.fromisoformat(gun["date"]).isoweekday() % 7
                 x, y = x0 + wi * (c + g), y0 + di * (c + g)
                 t = TARA0 + TUR * (x - x0 + 2) / gezi
-                kv.append(f'<rect class="kv" style="--t:{TUR}s;animation-delay:{t:.2f}s" x="{x}" y="{y}" width="{c}" height="{c}" rx="2"/>')
+                kv.append(f'<rect class="kv" style="--t:{TUR}s;animation-delay:{varis(x):.2f}s,{t:.2f}s" x="{x}" y="{y}" width="{c}" height="{c}" rx="2"/>')
     s.append('  <g fill="#ffd2dc">' + "".join(kv) + "</g>")
     for di, ad in ((1, "Mon"), (3, "Wed"), (5, "Fri")):
-        s.append(f'  <text class="sl data" style="animation-delay:{DONUS0:.2f}s" x="{x0-8}" y="{y0 + di*(c+g) + 9}" '
+        s.append(f'  <text class="sl data" style="animation-delay:{ILK0:.2f}s" x="{x0-8}" y="{y0 + di*(c+g) + 9}" '
                  f'text-anchor="end" font-size="8" fill="{INK3}">{ad}</text>')
     yuk = 7 * (c + g) + 1
     s.append(f'  <defs><linearGradient id="iz" x1="0" x2="1"><stop offset="0" stop-color="{ACCENT}" stop-opacity="0"/>'
@@ -432,7 +442,7 @@ def activity():
              f'<circle class="bas" cx="{x0-1}" cy="{y0+yuk+2}" r="3" fill="{ACCENT}"/></g>')
     sag = x0 + len(hafta) * (c + g) - g
     ly = y0 + 7 * (c + g) + 14
-    s.append(f'  <g class="sl" style="animation-delay:{DONUS0+0.8:.2f}s">')
+    s.append(f'  <g class="sl" style="animation-delay:{ILK0+ILK:.2f}s">')
     s.append(f'  <text x="{sag}" y="{ly+9}" text-anchor="end" class="data" font-size="8.5" fill="{INK3}">more</text>')
     for k, r in enumerate(reversed(rampa)):
         s.append(f'  <rect x="{sag-30-(k+1)*14}" y="{ly}" width="{c}" height="{c}" rx="2" fill="{r}"/>')
