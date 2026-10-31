@@ -58,7 +58,7 @@
   <text x="656" y="108" class="lbl" font-size="9.5" fill="#5c6579">13 repositories, each weighted equally</text>
   <rect x="656.0" y="124" width="86.4" height="14" rx="2" fill="#3987e5"><title>Python 29.3%</title></rect>
   <rect x="744.4" y="124" width="59.8" height="14" rx="2" fill="#d95926"><title>HTML 20.5%</title></rect>
-  <rect x="806.2" y="124" width="59.0" height="14" rx="2" fill="#199e70"><title>JavaScript 20.2%</title></rect>
+  <rect x="806.3" y="124" width="59.0" height="14" rx="2" fill="#199e70"><title>JavaScript 20.2%</title></rect>
   <rect x="867.2" y="124" width="35.2" height="14" rx="2" fill="#c98500"><title>TypeScript 12.3%</title></rect>
   <rect x="904.4" y="124" width="20.5" height="14" rx="2" fill="#d55181"><title>Luau 7.4%</title></rect>
   <rect x="926.9" y="124" width="13.4" height="14" rx="2" fill="#008300"><title>C++ 5.1%</title></rect>
