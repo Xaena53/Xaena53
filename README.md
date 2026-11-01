@@ -9,7 +9,7 @@
 <br/>
 
 <div align="center">
-<img src="assets/activity.svg?v=99dca90f" alt="Activity — the grid first signs BEDİRHAN ÇETİN, then turns into the contribution heatmap of the past year, with weekly commits per project" width="100%"/>
+<img src="assets/activity.svg?v=a295e368" alt="Activity — the grid first signs BEDİRHAN ÇETİN, then turns into the contribution heatmap of the past year, with weekly commits per project" width="100%"/>
 </div>
 
 <br/>
@@ -131,7 +131,7 @@ Every number on this page is measured: test counts come from the suites that gat
 <br/>
 
 <div align="center">
-<img src="assets/dials.svg?v=65e44676" alt="Telemetry dials — Aegis coverage, Asfalya mAP and capture rate, Warden tests, and the language mix" width="100%"/>
+<img src="assets/dials.svg?v=d6bda934" alt="Telemetry dials — Aegis coverage, Asfalya mAP and capture rate, Warden tests, and the language mix" width="100%"/>
 </div>
 
 <br/>
