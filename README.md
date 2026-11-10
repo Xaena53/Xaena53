@@ -9,7 +9,7 @@
 <br/>
 
 <div align="center">
-<img src="assets/activity.svg?v=fda5ba27" alt="Activity — the grid first signs BEDİRHAN ÇETİN, then turns into the contribution heatmap of the past year, with weekly commits per project" width="100%"/>
+<img src="assets/activity.svg?v=25ed4a0b" alt="Activity — the grid first signs BEDİRHAN ÇETİN, then turns into the contribution heatmap of the past year, with weekly commits per project" width="100%"/>
 </div>
 
 <br/>
