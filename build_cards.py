@@ -69,7 +69,7 @@ def build_metrics():
 
     H = 340
     s = [head(H, "Verified engineering metrics — test suites and model training", "g8m",
-              "11 — TELEMETRY · VERIFIED METRICS")]
+              "12 — TELEMETRY · VERIFIED METRICS")]
     s.append(f'<line x1="500" y1="56" x2="500" y2="{H-30}" stroke="#161d2b" stroke-width="1"/>')
 
     # --- sol panel: yatay çubuklar (tek seri => tek renk; rank'e göre renk yok)
@@ -178,6 +178,48 @@ def build_aegis():
     (ASSETS / "pipeline-aegis.svg").write_text("\n".join(s), encoding="utf-8")
 
 
+# ----------------------------------------------------------------- 06 · NÖBETÇİ MEMUR
+def build_nobetci():
+    """Oyun döngüsü (oku → karşılaştır → karar ver → eve dön → son) + ölçülmüş sayılar.
+
+    Sayılar oyunun kendi deposundan: tools/saglamlik.sh (4.322 denetim), tools/dil/kaynak.json
+    (955 metin), data/vatandaslar.json (89 sabit kimlik), README "Sonlar" (yedi gün, yedi son).
+    """
+    H = 300
+    css = "@keyframes flow{0%{stroke-dashoffset:14}100%{stroke-dashoffset:0}} .fl{stroke-dasharray:5 9;animation:flow 1.4s linear infinite}"
+    s = [head(H, "Nöbetçi Memur — a document-inspection game set in a 1984 registry office, playable in the browser",
+              "g6n", "06 — NÖBETÇİ MEMUR · PLAYABLE IN THE BROWSER", css)]
+    s.append(f'<text x="42" y="86" class="disp" font-size="21" fill="{INK}">Nöbetçi Memur</text>')
+    s.append(f'<text x="42" y="106" class="lbl" font-size="11.5" fill="{INK2}">A document-inspection game: window 2 of a small-town registry office, January 1984 · seven working days, seven endings</text>')
+
+    boxes = [(42, "READ", "papers slide onto the desk"), (256, "COMPARE", "click two facts · a line is drawn"),
+             (470, "DECIDE", "approve · reject · refer"), (684, "GO HOME", "rent · coal · food · medicine")]
+    for x, t, sub in boxes:
+        s.append(f'<rect x="{x}" y="132" width="190" height="54" fill="#0e131d" stroke="#243044"/>')
+        s.append(f'<rect x="{x}" y="132" width="3" height="54" fill="{ACCENT}"/>')
+        s.append(f'<text x="{x+14}" y="154" class="title" font-size="12" fill="{INK}" letter-spacing="1.2">{t}</text>')
+        s.append(f'<text x="{x+14}" y="171" class="data" font-size="9.5" fill="{INK3}">{esc(sub)}</text>')
+    for x in (232, 446, 660):
+        s.append(f'<line class="fl" x1="{x}" y1="159" x2="{x+24}" y2="159" stroke="{ACCENT}" stroke-width="1.6"/>')
+    s.append(f'<rect x="874" y="132" width="84" height="54" fill="#0e131d" stroke="#243044"/>')
+    s.append(f'<text x="916" y="154" text-anchor="middle" class="title" font-size="12" fill="{INK}">ENDING</text>')
+    s.append(f'<text x="916" y="171" text-anchor="middle" class="data" font-size="9" fill="{INK3}">1 of 7</text>')
+    s.append(f'<line class="fl" x1="850" y1="159" x2="874" y2="159" stroke="{ACCENT}" stroke-width="1.6"/>')
+
+    notes = [("4,322", "automated robustness checks"), ("955", "strings · Turkish, English, Russian"),
+             ("89", "citizens with a fixed identity"), ("7 × 7", "working days × endings")]
+    for i, (v, k) in enumerate(notes):
+        x = 42 + i * 235
+        s.append(f'<text x="{x}" y="222" class="data" font-size="16" fill="{INK}">{v}</text>')
+        s.append(f'<text x="{x}" y="236" class="lbl" font-size="10" fill="{INK3}">{esc(k)}</text>')
+    s.append(f'<line x1="32" y1="254" x2="968" y2="254" stroke="#161d2b"/>')
+    s.append(f'<circle cx="46" cy="272" r="3.5" fill="#2e9e4f"/>')
+    s.append(f'<text x="58" y="276" class="lbl" font-size="10.5" fill="{INK2}">Godot 4.3 · GDScript · rules and people in JSON · Windows build and a WebAssembly build served from GitHub Pages</text>')
+    s.append(f'<text x="958" y="276" text-anchor="end" class="data" font-size="9" fill="{INK3}" letter-spacing="1">PLAYABLE</text>')
+    s.append("</svg>")
+    (ASSETS / "pipeline-nobetci.svg").write_text("\n".join(s), encoding="utf-8")
+
+
 # ----------------------------------------------------------------- 06 · WORK INDEX
 def build_work():
     rows = [
@@ -196,7 +238,7 @@ def build_work():
     ]
     top, step = 86, 36
     H = top + len(rows) * step + 10
-    s = [head(H, "More work — shipped and in progress", "g6w", "07 — INDEX · MORE WORK")]
+    s = [head(H, "More work — shipped and in progress", "g6w", "08 — INDEX · MORE WORK")]
     for i, (name, what, stack, state) in enumerate(rows):
         y = top + i * step
         if i:
@@ -215,7 +257,7 @@ def build_work():
 def build_opensource():
     H = 250
     s = [head(H, "Open source contributions and shipped systems", "g9o",
-              "12 — CONTRIBUTIONS · SHIPPED SYSTEMS")]
+              "13 — CONTRIBUTIONS · SHIPPED SYSTEMS")]
     s.append(f'<text x="42" y="82" class="title" font-size="12" fill="{INK}" letter-spacing="1.5">UPSTREAM CONTRIBUTIONS</text>')
     items = [("microsoft/vscode", "PR #329128 — shared find-input toggle navigation · merged"),
              ("nasa/openmct", "PR #8393 — plot Y-axis label follows edits · in review"),
@@ -243,7 +285,8 @@ if __name__ == "__main__":
     build_metrics()
     build_asfalya()
     build_aegis()
+    build_nobetci()
     build_work()
     build_opensource()
-    for f in ("metrics.svg", "pipeline-asfalya.svg", "pipeline-aegis.svg", "work.svg", "opensource.svg"):
+    for f in ("metrics.svg", "pipeline-asfalya.svg", "pipeline-aegis.svg", "pipeline-nobetci.svg", "work.svg", "opensource.svg"):
         print(f"{f}: {(ASSETS / f).stat().st_size} bayt")

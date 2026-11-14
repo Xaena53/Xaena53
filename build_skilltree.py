@@ -54,9 +54,11 @@ TREE = [
         ("ffmpeg", "FFmpeg", "#3FA34D"),
         ("webrtc", "WebRTC", "#cfd6e4"),
     ]),
-    ("GAME ENGINES", "Warden of the Fields · Demir Cephe", [
+    ("GAME ENGINES", "Warden · Demir Cephe · Nöbetçi Memur", [
         ("unrealengine", "Unreal 5", "#cfd6e4"),
         ("roblox", "Roblox", "#cfd6e4"),
+        ("godotengine", "Godot · GDScript", "#478CBF"),
+        ("webassembly", "WebAssembly", "#8A7CF2"),
     ]),
     ("FRONTEND", "Asfalya panel · Hapivanak storefront", [
         ("react", "React", "#61DAFB"),
@@ -117,7 +119,7 @@ def build():
         f'  <rect width="1000" height="{H}" fill="url(#gst)"/>',
         f'  <rect x="0.5" y="0.5" width="999" height="{H-1}" fill="none" stroke="{FRAME}"/>',
         f'  <rect x="42" y="31" width="6" height="6" fill="{ACCENT}"/>',
-        f'  <text x="58" y="38" class="data" font-size="10.5" fill="{INK3}" letter-spacing="3">08 — CAPABILITY TREE · DRAWN FROM SHIPPED REPOSITORIES</text>',
+        f'  <text x="58" y="38" class="data" font-size="10.5" fill="{INK3}" letter-spacing="3">09 — CAPABILITY TREE · DRAWN FROM SHIPPED REPOSITORIES</text>',
         f'  <line x1="32" y1="56" x2="968" y2="56" stroke="{RULE}" stroke-width="1"/>',
         f'  <text x="42" y="78" class="lbl" font-size="10.5" fill="{INK3}">'
         'each branch names the projects where the tool is used</text>',

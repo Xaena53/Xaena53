@@ -98,7 +98,7 @@ def main():
   <rect width="1000" height="{H}" fill="url(#g6)"/>
   <rect x="0.5" y="0.5" width="999" height="{H-1}" fill="none" stroke="#1c2534"/>
 
-  <text x="32" y="38" class="data" font-size="10.5" fill="#5c6579" letter-spacing="3">09 — LIVE BUILD</text>
+  <text x="32" y="38" class="data" font-size="10.5" fill="#5c6579" letter-spacing="3">10 — LIVE BUILD</text>
   <text x="32" y="60" class="lbl" font-size="18" font-weight="700" fill="#eef1f6">onayAl() — the Aegis approval gate</text>
   <text x="32" y="80" class="lbl" font-size="12" fill="#8993a8">simplified from src/approval.ts · the network is asked first, then the human, and the agent's own flag comes last</text>
 

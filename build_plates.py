@@ -118,7 +118,7 @@ def repchat():
 
 
 def warden():
-    L = Levha(716, "07·A — WARDEN OF THE FIELDS · IN ENGINE", "Unreal Engine 5.8 captures",
+    L = Levha(716, "08·A — WARDEN OF THE FIELDS · IN ENGINE", "Unreal Engine 5.8 captures",
               "editor captures from the vertical slice", "XR-020·A")
     L.ekran("warden-1.jpg", 42, 110, 916, 390, ("A", "Village square during a work cycle"),
             odak=(0.5, 0.55))
@@ -129,7 +129,7 @@ def warden():
 
 
 def musteri():
-    L = Levha(342, "07·B — CLIENT WORK · LIVE", "Sites running for real clients",
+    L = Levha(342, "08·B — CLIENT WORK · LIVE", "Sites running for real clients",
               "ektakademi.com and cakmakpen.com.tr, both in production", "XR-021·A")
     for i, (f, e, n) in enumerate((("ekt-1.jpg", "EKT Akademi, home", "Node · Express 5 · PostgreSQL"),
                                    ("ekt-3.jpg", "EKT Akademi, programme page", "dynamic catalogue from the API"),
@@ -148,9 +148,23 @@ def kurenai():
     L.kaydet("plate-kurenai.jpg")
 
 
+def nobetci():
+    L = Levha(716, "06·A — NÖBETÇİ MEMUR · IN GAME", "Seven days at window 2",
+              "captures from the English build; the game also runs in Turkish and Russian", "XR-026·A")
+    L.ekran("nobetci-1.jpg", 42, 110, 600, 338, ("A", "Inspection mode: click two facts, a line joins them"),
+            "surname on the identity card against the residence certificate")
+    L.ekran("nobetci-3.jpg", 666, 110, 292, 146, ("B", "Day 5: X-ray alarm on a handbag"), odak=(0.0, 1.0))
+    L.ekran("nobetci-5.jpg", 666, 302, 292, 146, ("C", "Evening: the wage against the bills"), odak=(0.5, 0.35))
+    for i, (f, e) in enumerate((("nobetci-4.jpg", "Reference book of seals"), ("nobetci-6.jpg", "The screen between days"),
+                                ("nobetci-2.jpg", "Main menu"))):
+        L.ekran(f, 42 + i * 316, 508, 284, 160, ("DEF"[i], e), odak=(0.5, 0.5))
+    L.kaydet("plate-nobetci.jpg")
+
+
 if __name__ == "__main__":
     asfalya()
     repchat()
     warden()
     musteri()
     kurenai()
+    nobetci()

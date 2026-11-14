@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """Çark + etkinlik + kadran kartları.
 
-orbit.svg     08·B  teknoloji çarkı: yetkinlik ağacındaki 33 simge üç halkada döner (portfolyodaki çarkın SVG'si)
+orbit.svg     09·B  teknoloji çarkı: yetkinlik ağacındaki simgeler üç halkada döner (portfolyodaki çarkın SVG'si)
 activity.svg  00    açılışta commit kutularıyla yazılan Bedirhan Çetin imzası, sonra son 12 ayın katkı ısı haritası + proje başına son 26 haftanın haftalık commit'leri
-dials.svg     11·B  ölçülmüş oranlar için kadranlar + depo başına eşit ağırlıklı dil dağılımı
+dials.svg     12·B  ölçülmüş oranlar için kadranlar + depo başına eşit ağırlıklı dil dağılımı
 
 Veri: `python build_dash.py --cek` GitHub API'den veri/ altına çeker (gh girişli olmalı);
 argümansız çalıştırma veri/ içindekini çizer. Dil renkleri dataviz doğrulayıcısından geçti
@@ -28,7 +28,8 @@ ACCENT, INK, INK2, INK3, WIRE, BOX = "#e8003d", "#e6e9ef", "#8b93a7", "#5c6579",
 PROJE = [("AnimeRank-Project", "AnimeRank"), ("ekt-akademi", "EKT Akademi"), ("aegis", "Aegis"),
          ("baldefteri", "Hapivanak"), ("asfalya", "Asfalya"), ("RepChat", "RepChat"),
          ("cakmakpen", "Çakmak Pen"), ("Kurenai", "Kurenai"), ("warden-of-the-fields", "Warden"),
-         ("portfolio", "Portfolio"), ("demir-cephe", "Demir Cephe")]
+         ("portfolio", "Portfolio"), ("demir-cephe", "Demir Cephe"),
+         ("nobetci-memur", "Nöbetçi Memur")]
 DIL_DEPO = [d for d, _ in PROJE] + ["mhrs-veri", "avellana"]
 
 
@@ -101,7 +102,7 @@ def orbit():
                    f" .h{i} .k{{transform-origin:0px 0px;animation:{b} {sn}s linear infinite;}}")
     toplam = sum(len(h[3]) for h in halkalar)
     s = head(H, f"Toolchain orbit — {toplam} technologies on three rotating rings", "gob",
-             "08·B — TOOLCHAIN · ORBIT", " ".join(css))
+             "09·B — TOOLCHAIN · ORBIT", " ".join(css))
     for r, *_ in halkalar:
         s.append(f'  <circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="{WIRE}" stroke-width="1" stroke-dasharray="2 5"/>')
     # merkez
@@ -120,7 +121,7 @@ def orbit():
     # sağ panel: halka künyesi
     x0 = 600
     s.append(f'  <text x="{x0}" y="96" class="title" font-size="12" fill="{INK}" letter-spacing="1.5">THREE RINGS, INSIDE OUT</text>')
-    s.append(f'  <text x="{x0}" y="113" class="lbl" font-size="10.5" fill="{INK3}">the same 33 tools as the capability tree, ringed by layer</text>')
+    s.append(f'  <text x="{x0}" y="113" class="lbl" font-size="10.5" fill="{INK3}">the same {toplam} tools as the capability tree, ringed by layer</text>')
     y = 150
     for i, (r, sn, yon, simgeler, etiket) in enumerate(halkalar):
         s.append(f'  <line x1="{x0}" y1="{y-18}" x2="958" y2="{y-18}" stroke="#161d2b"/>')
@@ -504,7 +505,7 @@ def dials():
     css = ("@keyframes dol{from{stroke-dashoffset:var(--L);}} .yay{animation:dol 2.2s cubic-bezier(.2,.7,.2,1) both;}"
            " @keyframes nefes{0%,100%{opacity:.35;}50%{opacity:1;}} .uc{animation:nefes 2.6s ease-in-out infinite;}")
     s = head(H, "Telemetry dials — measured ratios, and the language mix across repositories", "gdi",
-             "11·B — TELEMETRY · DIALS", css)
+             "12·B — TELEMETRY · DIALS", css)
     R, sw = 46, 7
     tam = 2 * math.pi * R * 0.75                      # 270° yay
     for i, (v, buyuk, bas, alt, hedef) in enumerate(kadran):

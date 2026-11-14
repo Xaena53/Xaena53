@@ -1,21 +1,21 @@
 <div align="center">
 
-<img src="assets/hero.svg?v=e9443d73" alt="Xaena53 — Full-Stack Developer: backends, computer vision and AI tooling" width="100%"/>
+<img src="assets/hero.svg?v=99734e1a" alt="Xaena53 — Full-Stack Developer: backends, computer vision and AI tooling" width="100%"/>
 
-<img src="assets/status.svg?v=c5799134" alt="currently building Warden of the Fields" width="100%"/>
+<img src="assets/status.svg?v=78ad8264" alt="currently building Warden of the Fields" width="100%"/>
 
 </div>
 
 <br/>
 
 <div align="center">
-<img src="assets/activity.svg?v=50635d06" alt="Activity — the grid first signs BEDİRHAN ÇETİN, then turns into the contribution heatmap of the past year, with weekly commits per project" width="100%"/>
+<img src="assets/activity.svg?v=5a72c52f" alt="Activity — the grid first signs BEDİRHAN ÇETİN, then turns into the contribution heatmap of the past year, with weekly commits per project" width="100%"/>
 </div>
 
 <br/>
 
 <div align="center">
-<img src="assets/pipeline-asfalya.svg?v=063886e1" alt="Asfalya — vehicle-mounted road damage detection for municipalities" width="100%"/>
+<img src="assets/pipeline-asfalya.svg?v=61434e5f" alt="Asfalya — vehicle-mounted road damage detection for municipalities" width="100%"/>
 </div>
 
 Computer vision for municipal road maintenance. Phone cameras ride on city buses; a YOLO11 detector trained on 35,984 images finds potholes, cracks and sunken manholes; GPS interpolation and OSM map-matching pin each one to a street, and duplicate sightings across passes collapse into a single tracked repair. Faces and plates are blurred **before** detection, and the pipeline refuses to process an unmasked frame at all, so the privacy rule cannot be forgotten. Node/Express + PostGIS behind a MapLibre panel, with weekly PDF reports for the public works desk. Presented as my internship project at BAUM, Anadolu University.
@@ -29,7 +29,7 @@ Computer vision for municipal road maintenance. Phone cameras ride on city buses
 <br/>
 
 <div align="center">
-<img src="assets/pipeline-aegis.svg?v=f64cc43b" alt="Aegis — network-verified approvals for AI agents that spend money" width="100%"/>
+<img src="assets/pipeline-aegis.svg?v=e951f18d" alt="Aegis — network-verified approvals for AI agents that spend money" width="100%"/>
 </div>
 
 [Aegis](https://github.com/Xaena53/aegis) hands Google Ads and Meta to a language model and keeps the budget in human hands. Approval happens on the server: when the client supports MCP elicitation the server asks the person directly and ignores the agent's own `confirm` flag. Before that question is even shown, the mobile network is asked through GSMA Open Gateway / CAMARA whether the approver's SIM was swapped recently, and a failed or silent network check refuses the action. Campaigns are created paused, the account owner sets a ceiling the model cannot raise, and scraped site copy is treated as untrusted input. Started as AdsPilot; open source under AGPL-3.0.
@@ -37,7 +37,7 @@ Computer vision for municipal road maintenance. Phone cameras ride on city buses
 <br/>
 
 <div align="center">
-<img src="assets/pipeline-animerank.svg?v=58459a39" alt="AnimeRank media pipeline architecture" width="100%"/>
+<img src="assets/pipeline-animerank.svg?v=f3fa7bf2" alt="AnimeRank media pipeline architecture" width="100%"/>
 </div>
 
 A video platform for anime that I designed and built from the interface to the servers. Sources arrive over P2P, pass a season guard and a quality score, and are re-encoded to H.264 that every browser can play; selected series get a 4K pass through an Adore upscaling model running on TensorRT. Around it: MyAnimeList and AniList two-way sync per profile, multiple profiles per account, a community layer with daily quests and levels, a subtitle checker that measures timing against speech in the audio, and deployments that swap between two instances without dropping a request.
@@ -45,7 +45,7 @@ A video platform for anime that I designed and built from the interface to the s
 <br/>
 
 <div align="center">
-<img src="assets/pipeline-kurenai.svg?v=62b4bb6c" alt="Kurenai subtitle translation pipeline" width="100%"/>
+<img src="assets/pipeline-kurenai.svg?v=58bb042b" alt="Kurenai subtitle translation pipeline" width="100%"/>
 </div>
 
 Batch translation for anime subtitles. Karaoke, song and on-screen effect lines are filtered out before anything is sent, which also cut the cost of a typical episode several times over. A line-shift gate rejects any episode whose translated lines drifted out of step with the source, and nothing reaches viewers until it has passed the quality gates. A budget cap governs the translate step.
@@ -59,7 +59,7 @@ Batch translation for anime subtitles. Karaoke, song and on-screen effect lines 
 <br/>
 
 <div align="center">
-<img src="assets/pipeline-repchat.svg?v=17e84323" alt="RepChat live-support architecture" width="100%"/>
+<img src="assets/pipeline-repchat.svg?v=7eedd925" alt="RepChat live-support architecture" width="100%"/>
 </div>
 
 A live-support runtime running in production: embeddable widget, WebSocket gateway, category-routed queues, and an AI greeter that resolves the easy tickets before a human ever sees them.
@@ -73,31 +73,45 @@ A live-support runtime running in production: embeddable widget, WebSocket gatew
 <br/>
 
 <div align="center">
-<img src="assets/pipeline-security.svg?v=02a751de" alt="Production hardening — defense in depth" width="100%"/>
+<img src="assets/pipeline-nobetci.svg?v=2aac9947" alt="Nöbetçi Memur — a document-inspection game set in a 1984 registry office, playable in the browser" width="100%"/>
+</div>
+
+[Nöbetçi Memur](https://github.com/Xaena53/nobetci-memur) ("the clerk on duty") is a finished, released game. It is January 1984 and you are the new clerk at window 2 of a small-town civil registry office. Citizens hand over identity cards, residence certificates and fee receipts; you compare any two facts by clicking them, then approve, reject with a reason or refer the case to the director, and at night the wage has to cover rent, coal, food and medicine. The rules grow every morning: forged seals and signatures from day four, an X-ray for bags from day five, work visas from day six. Written in Godot 4.3 and GDScript with rules, citizens and story in JSON, it ships in Turkish, English and Russian from one source dictionary. A robustness suite of 4,322 checks cross-checks the data, corrupts save files and drives the game with random input, and a separate headless run plays all seven days to the end. The painted art was produced with generative image models and cut into assets by a Python toolchain. **[Play it in the browser](https://xaena53.github.io/nobetci-memur/)** or [download the Windows build](https://github.com/Xaena53/nobetci-memur/releases/latest).
+
+<br/>
+
+<div align="center">
+<img src="assets/plate-nobetci.jpg?v=c1619813" alt="Nöbetçi Memur screens — inspection mode at the desk, the X-ray alarm, the evening ledger, the reference book of seals, a town street between days and the main menu" width="100%"/>
 </div>
 
 <br/>
 
 <div align="center">
-<img src="assets/work.svg?v=735d7298" alt="More work — EKT Akademi, Warden of the Fields, Demir Cephe, Hapivanak, Çakmak Pen, MHRS data module" width="100%"/>
+<img src="assets/pipeline-security.svg?v=850720ae" alt="Production hardening — defense in depth" width="100%"/>
 </div>
 
 <br/>
 
 <div align="center">
-<img src="assets/plate-warden.jpg?v=8646f599" alt="Warden of the Fields — Unreal Engine 5.8 captures of the village" width="100%"/>
+<img src="assets/work.svg?v=589f1d4c" alt="More work — EKT Akademi, Warden of the Fields, Demir Cephe, Hapivanak, Çakmak Pen, MHRS data module" width="100%"/>
 </div>
 
 <br/>
 
 <div align="center">
-<img src="assets/plate-clients.jpg?v=967387c6" alt="Client sites in production — EKT Akademi and Çakmak Pen" width="100%"/>
+<img src="assets/plate-warden.jpg?v=bdab4cc0" alt="Warden of the Fields — Unreal Engine 5.8 captures of the village" width="100%"/>
 </div>
 
 <br/>
 
 <div align="center">
-<img src="assets/skilltree.svg?v=01459385" alt="Capability tree — 33 technologies grouped by role, each branch naming the projects that use it" width="100%"/>
+<img src="assets/plate-clients.jpg?v=ca3dc6e5" alt="Client sites in production — EKT Akademi and Çakmak Pen" width="100%"/>
+</div>
+
+<br/>
+
+<div align="center">
+<img src="assets/skilltree.svg?v=b1e41db9" alt="Capability tree — 35 technologies grouped by role, each branch naming the projects that use it" width="100%"/>
 </div>
 
 Grouped by the job each tool does, and every branch names the projects it is used in. The list was read off the dependency manifests in those repositories, so it records what ships.
@@ -105,25 +119,25 @@ Grouped by the job each tool does, and every branch names the projects it is use
 <br/>
 
 <div align="center">
-<img src="assets/orbit.svg?v=dd467b73" alt="Toolchain orbit — the same 33 technologies on three rotating rings" width="100%"/>
+<img src="assets/orbit.svg?v=62f90406" alt="Toolchain orbit — the same 35 technologies on three rotating rings" width="100%"/>
 </div>
 
 <br/>
 
 <div align="center">
-<img src="assets/code.svg?v=25f71875" alt="Live build — the Aegis approval gate typing itself out" width="100%"/>
+<img src="assets/code.svg?v=dbd3a3f7" alt="Live build — the Aegis approval gate typing itself out" width="100%"/>
 </div>
 
 <br/>
 
 <div align="center">
-<img src="assets/focus.svg?v=ef5b369a" alt="Engineering core competencies" width="100%"/>
+<img src="assets/focus.svg?v=ee2f7dd5" alt="Engineering core competencies" width="100%"/>
 </div>
 
 <br/>
 
 <div align="center">
-<img src="assets/metrics.svg?v=10426d80" alt="Verified metrics — 2,720 passing tests across six projects and the road-damage model training curve" width="100%"/>
+<img src="assets/metrics.svg?v=39c6a320" alt="Verified metrics — 2,720 passing tests across six projects and the road-damage model training curve" width="100%"/>
 </div>
 
 Every number on this page is measured: test counts come from the suites that gate each push, and the training curve is the actual run that produced the road-damage model, including the class it is still weak at. A passing test only proves a line ran, so the Aegis suite is held to a stricter standard: each guard is broken on purpose to confirm a test notices.
@@ -131,13 +145,13 @@ Every number on this page is measured: test counts come from the suites that gat
 <br/>
 
 <div align="center">
-<img src="assets/dials.svg?v=e4d2cb78" alt="Telemetry dials — Aegis coverage, Asfalya mAP and capture rate, Warden tests, and the language mix" width="100%"/>
+<img src="assets/dials.svg?v=9fd97349" alt="Telemetry dials — Aegis coverage, Asfalya mAP and capture rate, Warden tests, and the language mix" width="100%"/>
 </div>
 
 <br/>
 
 <div align="center">
-<img src="assets/opensource.svg?v=033ced70" alt="Upstream contributions and shipped systems" width="100%"/>
+<img src="assets/opensource.svg?v=92d05d74" alt="Upstream contributions and shipped systems" width="100%"/>
 </div>
 
 <br/>
@@ -148,6 +162,6 @@ Every number on this page is measured: test counts come from the suites that gat
 
 <br/>
 
-<sub><code>DWG SET XR-001 — XR-025 · REV 2026.10</code></sub>
+<sub><code>DWG SET XR-001 — XR-026 · REV 2026.11</code></sub>
 
 </div>
